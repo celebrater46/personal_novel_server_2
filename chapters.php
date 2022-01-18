@@ -37,38 +37,40 @@ if($has_episodes){
     <title><?php echo $title; ?></title>
 </head>
 <body>
-    <h1>
-        <?php echo $title; ?>
-    </h1>
+    <div class="containter">
+        <h1>
+            <?php echo $title; ?>
+        </h1>
 
-    <div class="caption">
-        <?php foreach ($caption as $line) : ?>
-            <p><?php echo $line ?></p>
-        <?php endforeach; ?>
-    </div>
-
-    <div class="chapters">
-        <?php if ($has_episodes) : ?>
-
-            <?php foreach ($episodes_and_chapters as $item) : ?>
-                <hr>
-                <h2><?php echo $item["episode"] ?></h2>
-                <div>
-                    <?php foreach ($item["chapters"] as $chapter) : ?>
-                        <?php echo $chapter . "<br>" ?>
-                    <?php endforeach; ?>
-                </div>
+        <div class="caption">
+            <?php foreach ($caption as $line) : ?>
+                <p><?php echo $line ?></p>
             <?php endforeach; ?>
+        </div>
 
-        <?php else : ?>
+        <div class="chapters">
+            <?php if ($has_episodes) : ?>
 
-            <?php foreach ($only_chapters as $chapter) : ?>
-                <?php echo $chapter . "<br>" ?>
-            <?php endforeach; ?>
+                <?php foreach ($episodes_and_chapters as $item) : ?>
+                    <hr>
+                    <h2><?php echo $item["episode"] ?></h2>
+                    <div>
+                        <?php foreach ($item["chapters"] as $chapter) : ?>
+                            <?php echo $chapter . "<br>" ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
 
-        <?php endif; ?>
+            <?php else : ?>
+
+                <?php foreach ($only_chapters as $chapter) : ?>
+                    <?php echo $chapter . "<br>" ?>
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+        </div>
+
+        <p class="back"><a href="index.php">- 戻る -</a></p>
     </div>
-
-    <p class="back"><a href="index.php">- 戻る -</a></p>
 </body>
 </html>
