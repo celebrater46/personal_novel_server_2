@@ -52,5 +52,15 @@
     <?php endforeach; ?>
 <?php endforeach; ?>
 
+
+
+<?php foreach ($test_array_chap_in_ep as $item) : ?>
+    <p>--------------------------------</p>
+    <h2><?php echo $item["episode"] ?></h2>
+    <?php foreach ($item["chapters"] as $chapter) : ?>
+        <?php echo $chapter . "<br>" ?>
+    <?php endforeach; ?>
+<?php endforeach; ?>
+
 </body>
 </html>

@@ -143,21 +143,31 @@ function get_num_of_each_episodes($list){
     return $nums; // [[1] => 2, [2] => 1, [3] => 4... ]
 }
 
-function get_part_of_chapters($ep, $list){
-    $array = file($list); // ["1|第一話", "2|第二話"]
-    $chapters = [];
-    foreach ($array as $item){
+//function get_ep_and_chapters($list){
+//    // $list == ["1|第一話", "2|第二話"]
+//    $array = [];
+//    foreach ($list as $item){
+//        $epid_chap = explode("|", $item); // [1, "第一話"]
+//        array_push($array, $epid_chap);
+//    }
+//    return $array; // [[1, "第一話"], [1, "第二話"], [2, "第三話"]...]
+//}
+
+function get_chapters($list){
+    // Before: ["1|第一話", "1|第二話", "2|第三話"...] == $list
+    // After: ["第一話", "第二話", "第三話"...]
+    $array = [];
+    foreach ($list as $item){
         $epid_chap = explode("|", $item); // [1, "第一話"]
-        if($ep == $epid_chap[0]){
-            array_push($chapters, $epid_chap[1]);
-        }
+        array_push($array, $epid_chap[1]);
     }
-    return $chapters; // ["第一話", "第二話"...]
+    return $array;
 }
 
 function split_list_of_chapters($nums, $list){
-    // Before: ["第一話", "第二話", "第三話", "第四話"...]
+    // Before: ["第一話", "第二話", "第三話", "第四話"...] == $list
     // After: [["第一話", "第二話"], ["第三話", "第四話"]...]
+    // $nums == [[1] => 2, [2] => 1, [3] => 4... ]
     $array = [];
     $chap_num = 0;
     foreach($nums as $num){
@@ -192,13 +202,26 @@ function get_array_chap_in_ep($episodes, $chapters){
     return $array;
 }
 
-function test_get_array_chap_in_ep(){
-    $episodes = ["第一章「日本編」", "第二章「北朝鮮編」"];
-    $chapters = [["第一話", "第二話"], ["第三話", "第四話"]]; // splitted
-    return get_array_chap_in_ep($episodes, $chapters);
+function get_novelist($path){
+    // return // ["episode" => "第一章「日本編", "chapters" => ["第一話", 第二話...]], [
+    $episodes = file($path . "/episodes.txt"); // ["第一章「日本編」", "第二章「北朝鮮編」"...]
+    $temp_chapters = file($path . "/list.txt"); // ["1|第一話", "1|第二話", "1|第三話", "2|第四話"...]
+    $chapters = get_chapters($temp_chapters); // ["第一話", "第二話", "第三話"...]
+    $nums = get_num_of_each_episodes($path . "/list.txt"); // [[1] => 2, [2] => 1, [3] => 4... ]
+    $splitted_chap = split_list_of_chapters($nums, $chapters); // [["第一話", "第二話"], ["第三話", "第四話"]...]
+    $array_chap_in_ep = get_array_chap_in_ep($episodes, $splitted_chap); // ["episode" => "第一章「日本編", "chapters" => ["第一話", 第二話...]], [
+    return $array_chap_in_ep;
 }
 
-$test_array_chap_in_ep = test_get_array_chap_in_ep();
+$test_get_novelist= get_novelist("shiroganeki");
+
+//function test_get_array_chap_in_ep(){
+//    $episodes = ["第一章「日本編」", "第二章「北朝鮮編」"];
+//    $chapters = [["第一話", "第二話"], ["第三話", "第四話"]]; // splitted
+//    return get_array_chap_in_ep($episodes, $chapters);
+//}
+//
+//$test_array_chap_in_ep = test_get_array_chap_in_ep();
 
 function get_episodes($list, $episodes){
     $ep_list = create_ep_list($episodes); // [[1, "第一話"], [2, "第二話"]]
@@ -277,8 +300,7 @@ $data = get_list_and_episodes($nove_list);
     </a>
 </h1>
 <p>Memo: ["episode" => "第一章「日本編", "chapters" => ["第一話", 第二話...]], [</p>
-<?php foreach ($test_array_chap_in_ep as $item) : ?>
-
+<?php foreach ($test_get_novelist as $item) : ?>
     <p>--------------------------------</p>
     <h2><?php echo $item["episode"] ?></h2>
     <?php foreach ($item["chapters"] as $chapter) : ?>
