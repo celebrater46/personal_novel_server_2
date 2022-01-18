@@ -16,8 +16,9 @@ function get_captions($list){
     $captions = [];
     foreach ($list as $item){
 //        $path = str_replace([" ", "　", "\n", "\r", "\r\n"], "", $item[1]); // 悪魔のバグ要因、全角＆半角スペース、改行コードの排除
-        if(file_exists("novels/" . $item[1] . "/caption.txt")){
-            $caption = file("novels/" . $item[1] . "/caption.txt");
+        $path = "novels/" . $item[1];
+        if(file_exists($path . "/caption.txt")){
+            $caption = file($path . "/caption.txt");
             array_push($captions, $caption);
         } else {
             $error = ["キャプションファイル（caption.txt）が見つからないか、読み込めません。caption.txt does not exist or unavailable."];
