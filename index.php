@@ -155,6 +155,25 @@ function get_part_of_chapters($ep, $list){
     return $chapters; // ["第一話", "第二話"...]
 }
 
+function split_list_of_chapters($nums, $list){
+    // Before: ["第一話", "第二話", "第三話", "第四話"...]
+    // After: [["第一話", "第二話"], ["第三話", "第四話"]...]
+    $array = [];
+//    $array_in_array =[];
+    $chap_num = 0;
+    foreach($nums as $num){
+        $temp_array = [];
+        var_dump($num);
+        for($i = 0; $i < $num; $i++) {
+            array_push($temp_array, $list[$chap_num]);
+            $chap_num++;
+        }
+        array_push($array, $temp_array);
+    }
+    var_dump($array);
+    return $array;
+}
+
 function get_episodes($list, $episodes){
     $ep_list = create_ep_list($episodes); // [[1, "第一話"], [2, "第二話"]]
     $array = [];
@@ -165,6 +184,27 @@ function get_episodes($list, $episodes){
         }
     }
 }
+
+function get_array_ep_chap($list, $episodes){
+    $ep_array = file($episodes); // ["日本編", "北朝鮮編"...]
+    $chap_array = file($list); // ["1|第一話", "1|第二話", "2|第三話"...]
+    $ep_nums = get_num_of_each_episodes($list);
+//    for($i = 1; $i <= count($ep_array); $i++){
+//        for()
+//    }
+//    foreach ($chap_array as $item){
+//        $epid_chap = explode("|", $item); // [1, "第一話"]
+//
+//    }
+}
+
+function test_split_list_of_chapters(){
+    $test_list = ["第一話", "第二話", "第三話", "第四話"];
+    $test_nums = [1, 3];
+    return split_list_of_chapters($test_nums, $test_list);
+}
+
+$test_splited_array = test_split_list_of_chapters();
 
 //$test_get_num_of_each_episodes = get_num_of_each_episodes("shiroganeki/list.txt");
 
@@ -210,8 +250,11 @@ $data = get_list_and_episodes($nove_list);
     </a>
 </h1>
 
-<?php foreach ($test_get_num_of_each_episodes as $item) : ?>
-    <?php echo $item . "<br>" ?>
+<?php foreach ($test_splited_array as $item) : ?>
+    <p>--------------------------------</p>
+    <?php foreach ($item as $chap) : ?>
+        <?php echo $chap . "<br>" ?>
+    <?php endforeach; ?>
 <?php endforeach; ?>
 
 </body>

@@ -37,5 +37,11 @@
     <?php echo $item . "<br>" ?>
 <?php endforeach; ?>
 
+
+
+<?php foreach ($test_get_num_of_each_episodes as $item) : ?>
+    <?php echo $item . "<br>" ?>
+<?php endforeach; ?>
+
 </body>
 </html>
