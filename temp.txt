@@ -72,3 +72,10 @@ $list_object = [
     ["ep_id" => 3, "chapter" => "第八話「飛翔」"],
     ["ep_id" => 3, "chapter" => "第九話「太陽」"],
 ];
+
+
+array(3)
+    { [0]=> array(2)
+        { [0]=> string(21) "第三世界収容所" [1]=> string(8) "prison " },
+        { [0]=> string(9) "白金記" [1]=> string(13) "shiroganeki " },
+        { [0]=> string(12) "極楽戦争" [1]=> string(8) "gokuraku" } }
