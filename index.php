@@ -105,32 +105,32 @@ for ($i = 0; $i < $count; $i++){
 //    return $array;
 //}
 
-function get_list($list){
-    $epid_sub = [];
-    foreach ($list as $item2) {
-        $epid_sub = explode("|", $item2); // [1, "第一話「訪問者」"]
-        array_push($array, $epid_sub[1]); // ["ep_id" => 1, "chapter" => "第一話「訪問者」"]
-    }
-    /*
-    $epid_sub =
-        [
-            [1, "第一話"],
-            [1, "第二話"],
-            [2, "第三話"]
-        ]
-    */
-}
+//function get_list($list){
+//    $epid_sub = [];
+//    foreach ($list as $item2) {
+//        $epid_sub = explode("|", $item2); // [1, "第一話「訪問者」"]
+//        array_push($array, $epid_sub[1]); // ["ep_id" => 1, "chapter" => "第一話「訪問者」"]
+//    }
+//    /*
+//    $epid_sub =
+//        [
+//            [1, "第一話"],
+//            [1, "第二話"],
+//            [2, "第三話"]
+//        ]
+//    */
+//}
 
-function create_ep_list($episodes){
-    $list = file($episodes); // ["1|第一話", "2|第二話"]
-    $array = [];
-    foreach ($list as $item) {
-        $id_ep = explode("|", $item); // [1, "第一話"]
-//        $id_ep2 = ["id" => $id_ep[0], "chapter" => $id_ep[1]];
-        array_push($array, $id_ep);
-    }
-    return $array; // [[1, "第一話"], [2, "第二話"]]
-}
+//function create_ep_list($episodes){
+//    $list = file($episodes); // ["1|第一話", "2|第二話"]
+//    $array = [];
+//    foreach ($list as $item) {
+//        $id_ep = explode("|", $item); // [1, "第一話"]
+////        $id_ep2 = ["id" => $id_ep[0], "chapter" => $id_ep[1]];
+//        array_push($array, $id_ep);
+//    }
+//    return $array; // [[1, "第一話"], [2, "第二話"]]
+//}
 
 function get_num_of_each_episodes($list){
     $array = file($list); // ["1|第一話「訪問者」", "1|第二話「蹂躙」"... ]
@@ -223,30 +223,30 @@ $test_get_novelist= get_novelist("shiroganeki");
 //
 //$test_array_chap_in_ep = test_get_array_chap_in_ep();
 
-function get_episodes($list, $episodes){
-    $ep_list = create_ep_list($episodes); // [[1, "第一話"], [2, "第二話"]]
-    $array = [];
-    for($i = 1; $i <= count($ep_list); $i++){
-        foreach ($list as $item2) {
-            $epid_sub = explode("|", $item2); // [1, "第一話「訪問者」"]
-            array_push($array, $epid_sub[1]); // ["ep_id" => 1, "chapter" => "第一話「訪問者」"]
-        }
-    }
-}
+//function get_episodes($list, $episodes){
+//    $ep_list = create_ep_list($episodes); // [[1, "第一話"], [2, "第二話"]]
+//    $array = [];
+//    for($i = 1; $i <= count($ep_list); $i++){
+//        foreach ($list as $item2) {
+//            $epid_sub = explode("|", $item2); // [1, "第一話「訪問者」"]
+//            array_push($array, $epid_sub[1]); // ["ep_id" => 1, "chapter" => "第一話「訪問者」"]
+//        }
+//    }
+//}
 
-function get_array_ep_chap($list, $episodes){
-    $ep_array = file($episodes); // ["日本編", "北朝鮮編"...]
-    $chap_array = file($list); // ["1|第一話", "1|第二話", "2|第三話"...]
-    $ep_nums = get_num_of_each_episodes($list); // [[1] => 2, [2] => 1, [3] => 4... ]
-    $splitted_list = split_list_of_chapters($ep_nums, $chap_array); // [["第一話", "第二話"], ["第三話", "第四話"]...]
-//    for($i = 1; $i <= count($ep_array); $i++){
-//        for()
-//    }
-//    foreach ($chap_array as $item){
-//        $epid_chap = explode("|", $item); // [1, "第一話"]
-//
-//    }
-}
+//function get_array_ep_chap($list, $episodes){
+//    $ep_array = file($episodes); // ["日本編", "北朝鮮編"...]
+//    $chap_array = file($list); // ["1|第一話", "1|第二話", "2|第三話"...]
+//    $ep_nums = get_num_of_each_episodes($list); // [[1] => 2, [2] => 1, [3] => 4... ]
+//    $splitted_list = split_list_of_chapters($ep_nums, $chap_array); // [["第一話", "第二話"], ["第三話", "第四話"]...]
+////    for($i = 1; $i <= count($ep_array); $i++){
+////        for()
+////    }
+////    foreach ($chap_array as $item){
+////        $epid_chap = explode("|", $item); // [1, "第一話"]
+////
+////    }
+//}
 
 //function test_split_list_of_chapters(){
 //    $test_list = ["第一話", "第二話", "第三話", "第四話"];
@@ -264,23 +264,23 @@ function get_array_ep_chap($list, $episodes){
 //}
 //$test_chapters = test_get_part_of_chapters();
 
-function get_list_and_episodes($list){
-    foreach ($list as $item){
-        $array = [];
-        if(file_exists($item[1] . "/list.txt")){
-            $list_array = file($item[1] . "/list.txt");
-            $list_object = [];
-            foreach ($list_array as $item2) {
-                $epid_sub = explode("|", $item2); // [1, "第一話「訪問者」"]
-                array_push($list_object, ["ep_id" => $epid_sub[0], "chapter" => $epid_sub[1]]); // ["ep_id" => 1, "chapter" => "第一話「訪問者」"]
-            }
-            array_push($array, $list_object);
-        } else {
-            array_push($array, ["ep_id" => 1, "chapter" => 'list.txt が存在しないか、壊れています。Could not load "list.txt"']);
-        }
-    }
-    return $array;
-}
+//function get_list_and_episodes($list){
+//    foreach ($list as $item){
+//        $array = [];
+//        if(file_exists($item[1] . "/list.txt")){
+//            $list_array = file($item[1] . "/list.txt");
+//            $list_object = [];
+//            foreach ($list_array as $item2) {
+//                $epid_sub = explode("|", $item2); // [1, "第一話「訪問者」"]
+//                array_push($list_object, ["ep_id" => $epid_sub[0], "chapter" => $epid_sub[1]]); // ["ep_id" => 1, "chapter" => "第一話「訪問者」"]
+//            }
+//            array_push($array, $list_object);
+//        } else {
+//            array_push($array, ["ep_id" => 1, "chapter" => 'list.txt が存在しないか、壊れています。Could not load "list.txt"']);
+//        }
+//    }
+//    return $array;
+//}
 
 $data = get_list_and_episodes($nove_list);
 
@@ -294,19 +294,19 @@ $data = get_list_and_episodes($nove_list);
     <title>Test TXT To Array</title>
 </head>
 <body>
-<h1>
-    <a href="/">
-        Test TXT To Array
-    </a>
-</h1>
-<p>Memo: ["episode" => "第一章「日本編", "chapters" => ["第一話", 第二話...]], [</p>
-<?php foreach ($test_get_novelist as $item) : ?>
-    <p>--------------------------------</p>
-    <h2><?php echo $item["episode"] ?></h2>
-    <?php foreach ($item["chapters"] as $chapter) : ?>
-        <?php echo $chapter . "<br>" ?>
+    <h1>
+        <a href="/">
+            Test TXT To Array
+        </a>
+    </h1>
+    <p>Memo: ["episode" => "第一章「日本編", "chapters" => ["第一話", 第二話...]], [</p>
+    <?php foreach ($test_get_novelist as $item) : ?>
+        <p>--------------------------------</p>
+        <h2><?php echo $item["episode"] ?></h2>
+        <?php foreach ($item["chapters"] as $chapter) : ?>
+            <?php echo $chapter . "<br>" ?>
+        <?php endforeach; ?>
     <?php endforeach; ?>
-<?php endforeach; ?>
 
 </body>
 </html>
