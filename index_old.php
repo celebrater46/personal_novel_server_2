@@ -28,14 +28,18 @@ $list_object = [
 
 $data = [
     [
-        ["ep_id" => 1, "chapter" => "第一話「訪問者」"],
-        ["ep_id" => 1, "chapter" => "第二話「蹂躙」"],
-        ["ep_id" => 2, "chapter" => "第三話「尋問」"],
+        "novel" => "白金記", "list" => [
+            ["ep_id" => 1, "chapter" => "第一話「訪問者」"],
+            ["ep_id" => 1, "chapter" => "第二話「蹂躙」"],
+            ["ep_id" => 2, "chapter" => "第三話「尋問」"],
+        ]
     ],
     [
-        ["ep_id" => 1, "chapter" => "第一話"],
-        ["ep_id" => 1, "chapter" => "第二話"],
-        ["ep_id" => 2, "chapter" => "第三話"],
+        "novel" => "極楽戦争", "list" => [
+                    ["ep_id" => 1, "chapter" => "第一話"],
+                    ["ep_id" => 1, "chapter" => "第二話"],
+                    ["ep_id" => 2, "chapter" => "第三話"],
+                ]
     ],
 */
 
@@ -56,15 +60,24 @@ function get_list_and_episodes($list){
 //            echo "$filename は存在しません";
 //        }
 //        $data =
-        if(file_exists($item[1] . "/list.txt")){
-            $list_array = file($item[1] . "/list.txt");
+        if(file_exists($item[1] . "list.txt")){
+            $list_array = file($item[1] . "list.txt");
             $list_object = [];
             foreach ($list_array as $item2) {
                 array_push($list_object, ["ep_id" => $list_array[0], "chapter" => $list_array[1]]);
             }
-            array_push($array, $list_object);
+            $temp = [
+                "novel" => $list[0],
+                "list" => $list_object
+            ];
+            array_push($array, $temp);
         } else {
-            array_push($array, ["ep_id" => 1, "chapter" => 'list.txt が存在しないか、壊れています。Could not load "list.txt"']);
+            $temp = [
+                "novel" => $list[0],
+                "list" =>
+                    ["ep_id" => 1, "chapter" => 'list.txt が存在しないか、壊れています。Could not load "list.txt"']
+            ];
+            array_push($array, $temp);
         }
     }
     return $array;
@@ -91,13 +104,12 @@ $data = get_list_and_episodes($nove_list);
     <?php echo "ID: " . $i . ", Title: " . $nove_list[$i][0] . ", Path: " . $nove_list[$i][1] . "<br>"; ?>
 <?php endfor; ?>
 
-<?php foreach ($data as $item) : ?>
-    <?php var_dump($item); ?>
-    <?php foreach ($item as $item2) : ?>
-        <?php var_dump($item2); ?>
+<?php for ($j = 0; $j < count($data); $j++) : ?>
+    <h2><?php echo "ID: " . $j . ", Title: " . $data[$j]["novel"]; ?></h2>
+    <?php foreach ($data[j] as $item2) : ?>
         <p><?php echo "Episode: " . $item2["ep_id"] . ", Sub Title: " . $item2["chapter"]; ?></p>
     <?php endforeach; ?>
-<?php endforeach; ?>
+<?php endfor; ?>
 
 </body>
 </html>
