@@ -166,11 +166,13 @@ function get_episodes($list, $episodes){
     }
 }
 
-function test_get_part_of_chapters(){
-    $array = get_part_of_chapters(2, "shiroganeki/list.txt");
-    return $array;
-}
-$test_chapters = test_get_part_of_chapters();
+//$test_get_num_of_each_episodes = get_num_of_each_episodes("shiroganeki/list.txt");
+
+//function test_get_part_of_chapters(){
+//    $array = get_part_of_chapters(2, "shiroganeki/list.txt");
+//    return $array;
+//}
+//$test_chapters = test_get_part_of_chapters();
 
 function get_list_and_episodes($list){
     foreach ($list as $item){
@@ -207,10 +209,10 @@ $data = get_list_and_episodes($nove_list);
         Test TXT To Array
     </a>
 </h1>
-<?php foreach ($test_chapters as $item) : ?>
+
+<?php foreach ($test_get_num_of_each_episodes as $item) : ?>
     <?php echo $item . "<br>" ?>
 <?php endforeach; ?>
-
 
 </body>
 </html>

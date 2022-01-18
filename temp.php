@@ -31,5 +31,11 @@
     <?php endforeach; ?>
 <?php endforeach; ?>
 
+
+
+<?php foreach ($test_chapters as $item) : ?>
+    <?php echo $item . "<br>" ?>
+<?php endforeach; ?>
+
 </body>
 </html>
