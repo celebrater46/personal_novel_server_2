@@ -60,7 +60,8 @@ function get_list_and_episodes($list){
             $list_array = file($item[1] . "/list.txt");
             $list_object = [];
             foreach ($list_array as $item2) {
-                array_push($list_object, ["ep_id" => $list_array[0], "chapter" => $list_array[1]]);
+                $epid_sub = explode("|", $item2); // [1, "第一話「訪問者」"]
+                array_push($list_object, ["ep_id" => $epid_sub[0], "chapter" => $epid_sub[1]]); // ["ep_id" => 1, "chapter" => "第一話「訪問者」"]
             }
             array_push($array, $list_object);
         } else {
@@ -92,7 +93,7 @@ $data = get_list_and_episodes($nove_list);
 <?php endfor; ?>
 
 <?php foreach ($data as $item) : ?>
-    <?php var_dump($item); ?>
+<!--    --><?php //var_dump($item); ?>
     <?php foreach ($item as $item2) : ?>
         <?php var_dump($item2); ?>
         <p><?php echo "Episode: " . $item2["ep_id"] . ", Sub Title: " . $item2["chapter"]; ?></p>
