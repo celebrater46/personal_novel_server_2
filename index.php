@@ -1,6 +1,6 @@
 <?php
 
-require_once "get_episodes_and_chapters.php";
+require_once "get_chapters_and_episodes.php";
 require_once "get_title_and_captions.php";
 
 // Test to create the array from List of TXT
@@ -29,7 +29,7 @@ $captions = get_captions($title_and_path);
         <?php for ($i = 0; $i < count($title_and_path); $i++) : ?>
             <hr>
             <h2>
-                <a href="chapters.php?novel_id=<?php echo $i; ?>">
+                <a href="episodes.php?novel_id=<?php echo $i; ?>">
                     <?php echo $title_and_path[$i][0] ?>
                 </a>
             </h2>

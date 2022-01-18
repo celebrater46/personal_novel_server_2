@@ -51,8 +51,8 @@ for ($i = 0; $i < $count; $i++){
 function get_list_and_episodes($list){
     foreach ($list as $item){
         $array = [];
-//        if (file_exists($list[1] . "episodes.txt")) {
-//            $episodes = file($list[1] . "episodes.txt");
+//        if (file_exists($list[1] . "chapters.txt")) {
+//            $episodes = file($list[1] . "chapters.txt");
 //            for ($i = 0; $i < count($episodes); $i++){
 //                $array[$i] = ["ep_id" => $episodes[i], ]
 //            }
