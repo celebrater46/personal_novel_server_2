@@ -43,5 +43,14 @@
     <?php echo $item . "<br>" ?>
 <?php endforeach; ?>
 
+
+
+<?php foreach ($test_splited_array as $item) : ?>
+    <p>--------------------------------</p>
+    <?php foreach ($item as $chap) : ?>
+        <?php echo $chap . "<br>" ?>
+    <?php endforeach; ?>
+<?php endforeach; ?>
+
 </body>
 </html>
