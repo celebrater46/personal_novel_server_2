@@ -60,7 +60,7 @@ function get_array_chap_in_ep($episodes, $chapters){
     return $array;
 }
 
-function get_novelist($path){
+function get_episodes_and_chapters($path){
     // return // ["episode" => "第一章「日本編", "chapters" => ["第一話", 第二話...]], [
     $episodes = file($path . "/episodes.txt"); // ["第一章「日本編」", "第二章「北朝鮮編」"...]
     $temp_chapters = file($path . "/list.txt"); // ["1|第一話", "1|第二話", "1|第三話", "2|第四話"...]
@@ -69,4 +69,13 @@ function get_novelist($path){
     $splitted_chap = split_list_of_chapters($nums, $chapters); // [["第一話", "第二話"], ["第三話", "第四話"]...]
     $array_chap_in_ep = get_array_chap_in_ep($episodes, $splitted_chap); // ["episode" => "第一章「日本編", "chapters" => ["第一話", 第二話...]], [
     return $array_chap_in_ep;
+}
+
+function has_episodes($path){
+    // $path == "shiroganeki"
+    if(file_exists($path . "/episodes.txt")){
+        return true;
+    } else {
+        return false;
+    }
 }

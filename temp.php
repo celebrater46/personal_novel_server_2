@@ -63,7 +63,7 @@
 <?php endforeach; ?>
 
 
-<?php foreach ($test_get_novelist as $item) : ?>
+<?php foreach ($episodes_and_chapters as $item) : ?>
     <p>--------------------------------</p>
     <h2><?php echo $item["episode"] ?></h2>
     <?php foreach ($item["chapters"] as $chapter) : ?>
