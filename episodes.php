@@ -14,13 +14,16 @@ $chapters_and_episodes = [];
 $only_episodes = [];
 $temp = [];
 
+//$txt_files = glob("novels/" . $path . "/*.txt");
+$txt_files = "hello World";
+
 //$test_get_episodes_and_chapters= get_episodes_and_chapters("shiroganeki");
 $has_chapters = has_chapters($path);
 if($has_chapters){
     $chapters_and_episodes = get_chapters_and_episodes($path); // ["chapter" => "第一章「日本編", "episodes" => ["第一話", 第二話...]], [
 } else {
-    if(file_exists($path . "/list.txt")){
-        $temp = file($path . "/list.txt"); // ["1|第一話", "1|第二話", "1|第三話", "2|第四話"...]
+    if(file_exists("novels/" . $path . "/list.txt")){
+        $temp = file("novels/" . $path . "/list.txt"); // ["1|第一話", "1|第二話", "1|第三話", "2|第四話"...]
         $only_episodes = get_episodes($temp); // ["第一話", "第二話", "第三話"...]
     } else {
         $only_episodes = ["チャプターリスト（list.txt）が存在しないか、読み込めません。list.txt does not exist or unavailable."];
@@ -47,6 +50,7 @@ if($has_chapters){
             <?php foreach ($caption as $line) : ?>
                 <p><?php echo $line; ?></p>
             <?php endforeach; ?>
+            <p><?php var_dump($txt_files); ?></p>
         </div>
 
         <div class="episodes">
