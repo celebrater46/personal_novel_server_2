@@ -4,6 +4,18 @@ body{
     text-align: center;
 }
 
+h1 a{
+    font-size: 64px;
+}
+
+a {
+    color: goldenrod;
+}
+
+hr{
+    opacity: 0.5;
+}
+
 div.containter {
     width: 1000px;
     text-align: left;
@@ -29,12 +41,4 @@ div.episodes div{
 
 p.back{
     margin: 0 50px;
-}
-
-a {
-    color: goldenrod;
-}
-
-hr{
-    opacity: 0.5;
 }
