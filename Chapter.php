@@ -4,22 +4,17 @@ require_once "Episode.php";
 
 class Chapter
 {
-//    public $novel_title; // 白金記
     public $id;
     public $title; // 第一章「日本編」
     public $path; // "novels/shiroganeki/"
-//    public $chap_num;
     public $ep_num;
     public $start_ep_num;
     public $episodes = [];
 
     function __construct($id, $title, $path, $ep_num, $start_ep_num){
-//        $temp = explode("|", $title_path);
-//        $this->novel_title = $temp[0];
         $this->id = $id;
         $this->title = $title;
         $this->path = $path; // "novels/shoroganeki/"
-//        $this->chap_num = $chap_num;
         $this->ep_num = $ep_num;
         $this->start_ep_num = $start_ep_num;
         $this->get_episodes();
