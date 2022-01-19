@@ -15,8 +15,6 @@ class Novel
     public $nums_eps_in_chap = []; // [3, 5, 2] (白金記サンプル、各チャプターの話数)
     public $nums_chap_start = [1]; // [1, 4, 8]（白金記サンプル、各チャプターが何話めから始まるか）
 
-//    public $test = [];
-
     function __construct($title_path){
         $temp = explode("|", $title_path);
         $this->title = $temp[0];
