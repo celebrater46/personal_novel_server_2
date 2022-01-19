@@ -2,14 +2,19 @@
 
 class Episode
 {
-    public $novel_title; // 白金記
-    public $chapter_title; // 第一章「日本編」
+    public $id;
     public $title; // 第一話「訪問者」
-    public $path; // novels/shiroganeki/
+    public $path; // "novels/shiroganeki/"
+//    public $link; // "novels/shiroganeki/001.txt
+    public $chap_num;
+    public $file_name; // 001
 
-    function __construct($title_path){
-        $temp = explode("|", $title_path);
-        $this->novel_title = $temp[0];
-        $this->path = "novels/" . $temp[1] . "/";
+    function __construct($id, $title, $path, $chap_num, $file_name){
+        $this->id = $id;
+        $this->title = $title;
+        $this->path = $path;
+        $this->chap_num = $chap_num;
+        $this->file_name = $file_name;
+//        $this->link = $this->path . $this->file_name . ".txt";
     }
 }

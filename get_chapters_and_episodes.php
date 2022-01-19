@@ -51,13 +51,13 @@ function get_path_eps($path, $list){
 //    // After: [["第一話", "第二話"], ["第三話", "第四話"]...]
 //    // $nums == [[1] => 2, [2] => 1, [3] => 4... ]
 //    $array = [];
-//    $ep_num = 0;
+//    $file_name = 0;
 //    foreach($nums as $num){
 //        $temp_array = [];
 ////        var_dump($num);
 //        for($i = 0; $i < $num; $i++) {
-//            array_push($temp_array, $list[$ep_num]);
-//            $ep_num++;
+//            array_push($temp_array, $list[$file_name]);
+//            $file_name++;
 //        }
 //        array_push($array, $temp_array);
 //    }
@@ -87,15 +87,15 @@ function split_eplist_each_chaps($nums, $list){
 //    // $episodes == [["第一話", "第二話"], ["第三話", "第四話"]...] // splitted
 //    // return ["chapter" => "第一章「日本編", "episodes" => ["第一話", 第二話...]], [
 //    $array = [];
-//    $ep_num = 0;
+//    $file_name = 0;
 //    foreach ($chapters as $chapter){
 //        $temp_episodes = [];
-//        foreach ($episodes[$ep_num] as $episode){
+//        foreach ($episodes[$file_name] as $episode){
 //            array_push($temp_episodes, $episode);
 //        }
 //        $temp = ["chapter" => $chapter, "episodes" => $temp_episodes];
 //        array_push($array, $temp);
-//        $ep_num++;
+//        $file_name++;
 //    }
 ////    var_dump($array);
 //    return $array;
