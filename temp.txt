@@ -79,3 +79,22 @@ array(3)
         { [0]=> string(21) "第三世界収容所" [1]=> string(8) "prison " },
         { [0]=> string(9) "白金記" [1]=> string(13) "shiroganeki " },
         { [0]=> string(12) "極楽戦争" [1]=> string(8) "gokuraku" } }
+
+
+#################################################################################
+Construction of classes
+
+class Television{
+    private $path;
+
+      function __construct(変数, 変数, ...){
+        // コンストラクタ内で行いたい処理
+      }
+
+    function init($channel){
+        $this->channelNo = $channel;
+    }
+}
+
+
+

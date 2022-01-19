@@ -1,15 +1,15 @@
 <?php
 
-function get_num_of_each_chapters($list){
-    $array = file($list); // ["1|001|第一話「訪問者」", "1|2|第二話「蹂躙」"... ]
-    $chapids = [];
-    foreach ($array as $item){
-        $chapid_ep = explode("|", $item);
-        array_push($chapids, $chapid_ep[0]); // [1, 1, 1, 2, 2, 2...]
-    }
-    $nums = array_count_values($chapids);
-    return $nums; // [[1] => 2, [2] => 1, [3] => 4... ]
-}
+//function get_num_of_each_chapters($list){
+//    $array = file($list); // ["1|001|第一話「訪問者」", "1|2|第二話「蹂躙」"... ]
+//    $chapids = [];
+//    foreach ($array as $item){
+//        $chapid_ep = explode("|", $item);
+//        array_push($chapids, $chapid_ep[0]); // [1, 1, 1, 2, 2, 2...]
+//    }
+//    $nums = array_count_values($chapids);
+//    return $nums; // [[1] => 2, [2] => 1, [3] => 4... ]
+//}
 
 function get_file_names($path, $list) {
     // Before: ["1|001|第一話", "1|2|第二話", "2|03|第三話"...] == $list
@@ -135,11 +135,11 @@ function get_chapters_and_episodes($path){
     return $array_pathep_in_chap;
 }
 
-function has_chapters($path){
-    // $path == "novels/shiroganeki"
-    if(file_exists($path . "/chapters.txt")){
-        return true;
-    } else {
-        return false;
-    }
-}
+//function has_chapters($path){
+//    // $path == "novels/shiroganeki"
+//    if(file_exists($path . "/chapters.txt")){
+//        return true;
+//    } else {
+//        return false;
+//    }
+//}
