@@ -18,8 +18,9 @@ class Novel
     function __construct($title_path){
         $temp = explode("|", $title_path);
         $this->title = $temp[0];
+        $temp[1] = str_replace([" ", "　", "\n", "\r", "\r\n"], "", $temp[1]); // 悪魔のバグ要因、全角＆半角スペース、改行コードの排除
         $this->path = "novels/" . $temp[1] . "/";
-        $this->caption = file($this->path . "txts/caption.txt");
+        $this->caption = file($this->path . "caption.txt");
         $this->has_chapters = $this->has_chapters();
     }
 
