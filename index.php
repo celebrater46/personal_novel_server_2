@@ -30,7 +30,7 @@ foreach ($novels_list as $novel){
         <?php for ($i = 0; $i < count($novels_list); $i++) : ?>
             <hr>
             <h2>
-                <a href="ep_list.php?novel_id=<?php echo $i; ?>">
+                <a href="ep_list.php?novel=<?php echo $i; ?>">
                     <?php echo $novels[$i]->title; ?>
                 </a>
             </h2>

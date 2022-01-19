@@ -2,7 +2,7 @@
 
 require_once "Novel.php";
 
-$id = (int)$_GET["novel_id"];
+$id = (int)$_GET["novel"];
 $list = file("novels/novels_list.txt"); // 第三世界収容所|prison, 白金記|shiroganeki, 極楽戦争|gokuraku
 $novel = new Novel($list[$id]);
 $has_chapters = $novel->has_chapters();
