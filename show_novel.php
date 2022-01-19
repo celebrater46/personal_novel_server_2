@@ -2,9 +2,16 @@
 
 require_once "Novel.php";
 
-$id = (int)$_GET["id"];
+$id = (int)$_GET["novel_id"];
 $list = file("novels/novels_list.txt"); // 第三世界収容所|prison, 白金記|shiroganeki, 極楽戦争|gokuraku
 $novel = new Novel($list[$id]);
+$has_chapters = $novel->has_chapters();
+
+if($has_chapters){
+    $novel->get_chapters();
+} else {
+    $novel->get_episodes();
+}
 
 ?>
 
@@ -14,31 +21,31 @@ $novel = new Novel($list[$id]);
     <meta charset="utf-8">
     <meta name="Author" content="Enin Fujimi">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title><?php echo $title; ?></title>
+    <title><?php echo $novel->title; ?></title>
 </head>
 <body>
     <div class="containter">
         <h1>
-            <?php echo $title; ?>
+            <?php echo $novel->title; ?>
         </h1>
 
         <div class="caption">
-            <?php foreach ($caption as $line) : ?>
+            <?php foreach ($novel->caption as $line) : ?>
                 <p><?php echo $line; ?></p>
             <?php endforeach; ?>
         </div>
 
         <div class="episodes">
             <?php if ($has_chapters) : ?>
-                <?php foreach ($chapters_and_episodes as $item) : ?>
+                <?php foreach ($novel->chapters as $item) : ?>
                     <hr>
-                    <h2><?php echo $item["chapter"]; ?></h2>
+                    <h2><?php echo $item->title; ?></h2>
                     <div>
                         <ul>
-                            <?php foreach ($item["path_eps"] as $path_ep) : ?>
+                            <?php foreach ($item->episodes as $episode) : ?>
                                 <li>
-                                    <a href="<?php echo $path_ep[0]; ?>">
-                                        <?php echo $path_ep[1]; ?>
+                                    <a href="<?php echo "/"; ?>">
+                                        <?php echo $episode->title; ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>
@@ -50,10 +57,10 @@ $novel = new Novel($list[$id]);
             <?php else : ?>
 
                 <ul>
-                    <?php foreach ($only_path_eps as $path_ep) : ?>
+                    <?php foreach ($novel->episodes as $episode) : ?>
                         <li>
-                            <a href="<?php echo $path_ep[0]; ?>">
-                                <?php echo $path_ep[1]; ?>
+                            <a href="<?php echo "/"; ?>">
+                                <?php echo $episode->title; ?>
                             </a>
                         </li>
                     <?php endforeach; ?>
