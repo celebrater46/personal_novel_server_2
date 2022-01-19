@@ -15,6 +15,8 @@ class Novel
     public $nums_eps_in_chap = []; // [3, 5, 2] (白金記サンプル、各チャプターの話数)
     public $nums_chap_start = [1]; // [1, 4, 8]（白金記サンプル、各チャプターが何話めから始まるか）
 
+//    public $test = [];
+
     function __construct($title_path){
         $temp = explode("|", $title_path);
         $this->title = $temp[0];
@@ -27,14 +29,14 @@ class Novel
     function get_chapters(){
         $this->get_starts_eps_in_chap(); // create $nums_eps_in_chap, $nums_chap_start
         if(file_exists($this->path . "chapters.txt")){
-            $this->chapters = file($this->path . "chapters.txt"); // ["第一章「日本編」", "第二章「北朝鮮編」", "第三章「アメリカ編」"]
+            $temp_chapters = file($this->path . "chapters.txt"); // ["第一章「日本編」", "第二章「北朝鮮編」", "第三章「アメリカ編」"]
             $j = 0;
-            foreach ($this->chapters as $chapter){
+            foreach ($temp_chapters as $chapter){
                 array_push(
                     $this->chapters,
                     new Chapter(
                         $j,
-                        $chapter[$j],
+                        $chapter,
                         $this->path,
                         $this->nums_eps_in_chap[$j],
                         $this->nums_chap_start[$j]
@@ -66,15 +68,18 @@ class Novel
             $list = file($this->path . "list.txt"); // ["1|001|第一話", "1|2|第二話"... ]
             $eps = 0;
             $start_ep = 1;
+            $current_chap = 1;
             foreach ($list as $item){
                 $chapid_ep = explode("|", $item); // [1, 001, "第一話"]
-                if((int)$chapid_ep[0] > $start_ep){
+                if((int)$chapid_ep[0] > $current_chap){
                     array_push($this->nums_eps_in_chap, $eps);
                     array_push($this->nums_chap_start, $start_ep);
                     $eps = 0;
+                    $current_chap++;
                 }
                 $eps++;
                 $start_ep++;
+//                array_push($this->test, (int)$chapid_ep[0]); // test
             }
             array_push($this->nums_eps_in_chap, $eps); // final
         } else {

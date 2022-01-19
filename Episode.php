@@ -9,10 +9,10 @@ class Episode
     public $file_name; // 001
 
     function __construct($id, $title, $path, $chap_num, $file_name){
-        $this->id = $id;
+        $this->id = (int)$id;
         $this->title = $title;
         $this->path = $path;
-        $this->chap_num = $chap_num;
+        $this->chap_num = (int)$chap_num;
         $this->file_name = $file_name;
     }
 }
