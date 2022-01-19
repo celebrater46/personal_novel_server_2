@@ -44,7 +44,7 @@ if($has_chapters){
                         <ul>
                             <?php foreach ($item->episodes as $episode) : ?>
                                 <li>
-                                    <a href="<?php echo "/"; ?>">
+                                    <a href="reader.php?novel=<?php echo $id; ?>&chap=0&ep=<?php echo $episode->id; ?>">
                                         <?php echo $episode->title; ?>
                                     </a>
                                 </li>
@@ -59,7 +59,7 @@ if($has_chapters){
                 <ul>
                     <?php foreach ($novel->episodes as $episode) : ?>
                         <li>
-                            <a href="<?php echo "/"; ?>">
+                            <a href="reader.php?novel=<?php echo $id; ?>&chap=0&ep=<?php echo $episode->id; ?>">
                                 <?php echo $episode->title; ?>
                             </a>
                         </li>
