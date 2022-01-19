@@ -77,7 +77,6 @@ class Novel
                 }
                 $eps++;
                 $start_ep++;
-//                array_push($this->test, (int)$chapid_ep[0]); // test
             }
             array_push($this->nums_eps_in_chap, $eps); // final
         } else {
