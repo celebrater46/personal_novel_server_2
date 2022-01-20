@@ -7,7 +7,6 @@ class Episode
     public $path; // "novels/shiroganeki/"
     public $chap_num;
     public $file_name; // 001
-//    public $text = [];
 
     function __construct($id, $title, $path, $chap_num, $file_name){
         $this->id = (int)$id;
@@ -26,20 +25,8 @@ class Episode
         $text = [];
         if(file_exists($this->path . "txts/" . $this->file_name . ".txt")){
             $array = file($this->path . "txts/" . $this->file_name . ".txt");
-//            foreach ($temp_array as $line){
-//                // <ruby>堕天男><rp>（</rp><rt>ルシファー</rt><rp>）</rp></ruby>
-//                $temp = $line;
-//                if($temp === "" || $temp === "\n" || $temp === "\r" || $temp === "\r\n") {
-//                    $temp = "　";
-//                }
-//                $temp = str_replace(["|", "｜"], "<ruby>", $temp);
-//                $temp = str_replace("《", "<rp>（</rp><rt>", $temp);
-//                $temp = str_replace("》", "</rt><rp>）</rp></ruby>", $temp);
-//                array_push($text, $temp);
-//            }
             $array2 = $this->convert_to_dot($array);
             $text = $this->convert_to_ruby($array2);
-//            $text = $array;
         } else {
             array_push($text, "[Error]");
             array_push($text, $this->file_name . ".txt が存在しないか、読み込めません。");
@@ -51,7 +38,6 @@ class Episode
         $temp_array = [];
         foreach ($array as $line){
             // <ruby>堕天男><rp>（</rp><rt>ルシファー</rt><rp>）</rp></ruby>
-
             $temp = $line;
             if($temp === "" || $temp === "\n" || $temp === "\r" || $temp === "\r\n") {
                 $temp = "　";
@@ -70,10 +56,6 @@ class Episode
             $start = mb_strpos($line, "《《");
             $end = mb_strpos($line, "》》");
             if($start !== false && $end !== false){
-//                $str = mb_substr($line, $start + 2, ($end - $start - 2));
-//                $str2 = $this->add_dot_ruby($str);
-//                $str3 = mb_substr($line, $start - 1, ($end - $start - 2));
-//                array_push($temp_array, $str2);
                 $str = str_replace("《《","《》《》",$line, $num); // $num == 2
                 $str2 = str_replace("》》","《》《》",$str);
                 $temp_array2 = explode("《》《》", $str2);
