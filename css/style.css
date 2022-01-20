@@ -85,7 +85,7 @@ p.text.line{
 
 @media screen and (max-width: 1000px){
     body{
-        font-size: 48px;
+        font-size: 4vw;
         font-family: sans-serif;
     }
 }
