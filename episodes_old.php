@@ -15,7 +15,7 @@ $chapters_and_episodes = [];
 $only_path_eps = [];
 $temp = [];
 
-$file_names = get_file_names($path, $list); // ["novels/shiroganeki/001.txt", "novels/shiroganeki/2.txt"...]
+$file_names = get_file_names($path, $list); // ["novels/shiroganeki/001.txt", "novels/shiroganeki/0002.txt"...]
 
 //$temp_txt_files = glob($path . "/txts/*.txt");
 //
@@ -34,7 +34,7 @@ if($has_chapters){
 } else {
     if(file_exists($path . "/list.txt")){
 //        $temp = file($path . "/list.txt"); // ["1|第一話", "1|第二話", "1|第三話", "2|第四話"...]
-        $only_path_eps = get_path_eps($path, $list); // [["~/001.txt", "第一話"], ["~/2.txt", "第二話"], ["~/03.txt", "第三話"]...]
+        $only_path_eps = get_path_eps($path, $list); // [["~/001.txt", "第一話"], ["~/0002.txt", "第二話"], ["~/03.txt", "第三話"]...]
     } else {
         $only_path_eps = ["チャプターリスト（list.txt）が存在しないか、読み込めません。list.txt does not exist or unavailable."];
     }

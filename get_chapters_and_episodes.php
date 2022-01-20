@@ -13,7 +13,7 @@
 
 function get_file_names($path, $list) {
     // Before: ["1|001|第一話", "1|2|第二話", "2|03|第三話"...] == $list
-    // After: ["novels/shiroganeki/001.txt", "novels/shiroganeki/2.txt"...]
+    // After: ["novels/shiroganeki/001.txt", "novels/shiroganeki/0002.txt"...]
     $array = [];
     foreach ($list as $item){
         $chapid_ep = explode("|", $item); // [1, "001", "第一話"]
@@ -36,7 +36,7 @@ function get_file_names($path, $list) {
 
 function get_path_eps($path, $list){
     // Before: ["1|001|第一話", "1|2|第二話", "2|03|第三話"...] == $list
-    // After: [["~/001.txt", "第一話"], ["~/2.txt", "第二話"], ["~/03.txt", "第三話"]...]
+    // After: [["~/001.txt", "第一話"], ["~/0002.txt", "第二話"], ["~/03.txt", "第三話"]...]
     $array = [];
     foreach ($list as $item){
         $chapid_ep = explode("|", $item); // [1, "001", "第一話"]
@@ -126,7 +126,7 @@ function get_chapters_and_episodes($path){
     $chapters = file($path . "/chapters.txt"); // ["第一章「日本編」", "第二章「北朝鮮編」"...]
     $temp_episodes = file($path . "/list.txt"); // ["1|001|第一話", "1|2|第二話", "1|03|第三話", "2|4|第四話"...]
 //    $episodes = get_episodes($temp_episodes); // ["第一話", "第二話", "第三話"...]
-    $filenames_eps = get_path_eps($path, $temp_episodes); // [["~/001.txt","第一話"], ["~/2.txt", "第二話"]...]
+    $filenames_eps = get_path_eps($path, $temp_episodes); // [["~/001.txt","第一話"], ["~/0002.txt", "第二話"]...]
     $nums = get_num_of_each_chapters($path . "/list.txt"); // [[1] => 2, [2] => 1, [3] => 4... ]
 //    $splitted_ep = split_list_of_episodes($nums, $episodes); // [["第一話", "第二話"], ["第三話", "第四話"]...]
     $splitted_eplist = split_eplist_each_chaps($nums, $filenames_eps); // [[[path, ep], [path, ep]], [[path, ep], [path, ep]]...]

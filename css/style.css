@@ -21,6 +21,12 @@ hr{
     opacity: 0.5;
 }
 
+ul{
+    list-style: none;
+    margin: 0 auto 0 0;
+    padding: 0;
+}
+
 div.containter {
     width: 1000px;
     text-align: left;
