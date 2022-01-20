@@ -68,8 +68,11 @@ if($has_chapters){
 
             <?php endif; ?>
         </div>
-
-        <p class="back"><a href="index.php">- 戻る -</a></p>
+        <div class="back">
+            <a href="index.php">
+                小説一覧へ戻る
+            </a>
+        </div>
     </div>
 </body>
 </html>

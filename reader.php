@@ -80,6 +80,11 @@ if(count($temp) === 3){
                     <?php endif; ?>
                 </div>
             </div>
+            <div class="back">
+                <a href="index.php">
+                    小説一覧へ戻る
+                </a>
+            </div>
         <?php endif; ?>
     </div>
 </body>
