@@ -74,3 +74,6 @@ If you find any bug, tell me it. I will fix the bugs, but I don't know when it r
 
 PNS is very simple and being developed quickly.
 If you change any folder name or mistake the syntax of each TXT files, PNS will be not working. Be careful.
+
+
+Copyright (C) Enin Fujimi All Rights Reserved.
