@@ -1,6 +1,8 @@
 <?php
 
+require_once "main.php";
 require_once "Novel.php";
+require_once "header.php";
 
 $id = (int)$_GET["novel"];
 $list = file("novels/novels_list.txt"); // 第三世界収容所|prison, 白金記|shiroganeki, 極楽戦争|gokuraku
@@ -21,17 +23,18 @@ if($has_chapters){
     <meta charset="utf-8">
     <meta name="Author" content="Enin Fujimi">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title><?php echo $novel->title; ?></title>
+    <title><?php echo h($novel->title); ?></title>
 </head>
 <body>
+    <?php echo h(get_header()); ?>
     <div class="containter">
         <h1>
-            <?php echo $novel->title; ?>
+            <?php echo h($novel->title); ?>
         </h1>
 
         <div class="caption">
             <?php foreach ($novel->caption as $line) : ?>
-                <p><?php echo $line; ?></p>
+                <p><?php echo h($line); ?></p>
             <?php endforeach; ?>
         </div>
 
@@ -39,13 +42,13 @@ if($has_chapters){
             <?php if ($has_chapters) : ?>
                 <?php foreach ($novel->chapters as $item) : ?>
                     <hr>
-                    <h2><?php echo $item->title; ?></h2>
+                    <h2><?php echo h($item->title); ?></h2>
                     <div>
                         <ul>
                             <?php foreach ($item->episodes as $episode) : ?>
                                 <li>
-                                    <a href="reader.php?novel=<?php echo $id; ?>&chap=0&ep=<?php echo $episode->id; ?>">
-                                        <?php echo $episode->title; ?>
+                                    <a href="reader.php?novel=<?php echo h($id); ?>&chap=0&ep=<?php echo h($episode->id); ?>">
+                                        <?php echo h($episode->title); ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>
@@ -59,8 +62,8 @@ if($has_chapters){
                 <ul>
                     <?php foreach ($novel->episodes as $episode) : ?>
                         <li>
-                            <a href="reader.php?novel=<?php echo $id; ?>&chap=0&ep=<?php echo $episode->id; ?>">
-                                <?php echo $episode->title; ?>
+                            <a href="reader.php?novel=<?php echo h($id); ?>&chap=0&ep=<?php echo h($episode->id); ?>">
+                                <?php echo h($episode->title); ?>
                             </a>
                         </li>
                     <?php endforeach; ?>
@@ -69,7 +72,7 @@ if($has_chapters){
             <?php endif; ?>
         </div>
         <div class="back">
-            <a href="index.php">
+            <a href="<?php echo h(INDEX_FILE); ?>">
                 小説一覧へ戻る
             </a>
         </div>
