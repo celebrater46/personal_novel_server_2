@@ -24,7 +24,7 @@ foreach ($novels_list as $novel){
     <title>Personal Novel Server</title>
 </head>
 <body>
-    <?php echo h(get_header()); ?>
+    <?php echo get_header(); ?>
     <div class="containter">
         <h1>
             <a href="/">

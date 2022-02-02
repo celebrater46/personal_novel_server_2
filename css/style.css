@@ -1,3 +1,7 @@
+html{
+    font-size: 18px;
+}
+
 body{
     color: silver;
     background-color: black;
@@ -6,12 +10,22 @@ body{
     font-family: Hiragino Kaku Gothic ProN W3, Helvetica, Meiryo, Tahoma;
 }
 
+header{
+    background-color: #333333;
+}
+
+header > div{
+    width: 1000px;
+    display: flex;
+    margin: 0 auto;
+}
+
 h1 a{
-    font-size: 2em;
+    font-size: 4rem;
 }
 
 h2{
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
 a {
@@ -31,6 +45,14 @@ ul{
     list-style: none;
     margin: 0 auto 0 0;
     padding: 0;
+}
+
+div.label{
+    margin: 0 10px;
+}
+
+div.select{
+    margin: 0 20px 0 0;
 }
 
 div.containter {
@@ -80,7 +102,7 @@ div.back{
 p.text.line{
     margin: 0;
     line-height: 180%;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 @media screen and (max-width: 1000px){

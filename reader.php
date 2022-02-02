@@ -48,6 +48,7 @@ if(count($temp) === 3){
 </head>
 <body>
     <?php echo h(get_header()); ?>
+    <?php echo h(get_header()); ?>
     <div class="containter">
         <?php if ($is_error === true) : ?>
             <h1>ERROR</h1>
@@ -59,7 +60,7 @@ if(count($temp) === 3){
             <h2><?php echo h($episode->title); ?></h2>
             <div class="text">
                 <?php foreach ($text as $line) : ?>
-                    <p class="text line"><?php echo h($line); ?></p>
+                    <p class="text line"><?php echo $line; ?></p>
                 <?php endforeach; ?>
             </div>
             <div class="text links">
