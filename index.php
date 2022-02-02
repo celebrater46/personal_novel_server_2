@@ -46,5 +46,7 @@ foreach ($novels_list as $novel){
             </div>
         <?php endfor; ?>
     </div>
+    <?php echo get_nav(); ?>
+    <script type="text/javascript" src="js/burger.js"></script>
 </body>
 </html>

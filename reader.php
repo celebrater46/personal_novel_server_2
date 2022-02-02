@@ -91,5 +91,6 @@ if(count($temp) === 3){
             </div>
         <?php endif; ?>
     </div>
+    <script type="text/javascript" src="js/burger.js"></script>
 </body>
 </html>

@@ -10,16 +10,6 @@ body{
     font-family: Hiragino Kaku Gothic ProN W3, Helvetica, Meiryo, Tahoma;
 }
 
-header{
-    background-color: #333333;
-}
-
-header > div{
-    width: 1000px;
-    display: flex;
-    margin: 0 auto;
-}
-
 h1 a{
     font-size: 4rem;
 }
@@ -58,6 +48,16 @@ div.select{
 div.containter {
     width: 1000px;
     text-align: left;
+    margin: 0 auto;
+}
+
+div.novel.controller{
+    background-color: #333333;
+}
+
+div.novel.controller > div{
+    width: 1000px;
+    display: flex;
     margin: 0 auto;
 }
 
@@ -105,9 +105,103 @@ p.text.line{
     font-size: 1rem;
 }
 
+div#burger {
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    right: -200%;
+    transition: 1s;
+}
+
+div#nav {
+    position: absolute;
+    top: 0;
+    /*ナビメニューを左に隠した状態になる*/
+    left: -50vw;
+    padding: 3vh 3vw 0;
+    width: 44vw;
+    height: 97vh;
+    background: #222222;
+    /*０.7秒かけてナビメニューがスライドする*/
+    transition: .7s;
+}
+
+div#nav a{
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    margin: 0 15px;
+    padding: 10px;
+    transition: .5s;
+}
+
+div#nav a:hover{
+    color: #ffffff;
+    background: #cd5c5c;
+    border-bottom: none;
+}
+
+.in{
+    transform: translateX(100%);
+}
+
+div#navi_close{
+    background-color: #b4ada9;
+    width: 90%;
+    height: 80%;
+    margin: 0 0 0 auto;
+    padding: 0;
+}
+
 @media screen and (max-width: 1000px){
-    body{
+    html{
         font-size: 4vw;
         font-family: sans-serif;
+    }
+
+    div.containter {
+        width: 94vw;
+        text-align: left;
+        margin: 0 3vw;
+    }
+
+    div.novel.controller{
+        /*height: 0;*/
+        position: fixed;
+        right: -300%;
+    }
+
+    div.caption p{
+        line-height: 1.5rem;
+    }
+
+    div#nav{
+        text-align: left;
+    }
+
+    div#nav > div > label{
+        /*list-style-type: none;*/
+        font-size: 1.5rem;
+        padding: 1vh 0;
+    }
+
+    div#nav > div > select{
+        font-size: 1.2rem;
+        width: 35vw;
+        padding: 1vh 0;
+        margin: 0 auto 2vh;
+    }
+
+    div#burger{
+        position: absolute;
+        top: 3vw;
+        right: 3vw;
+        width: 15vw;
+        height: 15vw;
+    }
+
+    img.burger{
+        width: 100%;
+        height: 100%;
     }
 }

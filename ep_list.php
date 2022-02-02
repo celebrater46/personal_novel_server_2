@@ -77,5 +77,6 @@ if($has_chapters){
             </a>
         </div>
     </div>
+    <script type="text/javascript" src="js/burger.js"></script>
 </body>
 </html>
