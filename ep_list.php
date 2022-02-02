@@ -1,6 +1,7 @@
 <?php
 
 require_once "main.php";
+require_once "State.php";
 require_once "Novel.php";
 require_once "header.php";
 
@@ -8,6 +9,9 @@ $id = (int)$_GET["novel"];
 $list = file("novels/novels_list.txt"); // 第三世界収容所|prison, 白金記|shiroganeki, 極楽戦争|gokuraku
 $novel = new Novel($list[$id]);
 $has_chapters = $novel->has_chapters();
+
+//$p = get_parameters(); // font_family, font_size, color, x
+$state = new State();
 
 if($has_chapters){
     $novel->get_chapters();
@@ -22,11 +26,13 @@ if($has_chapters){
 <head>
     <meta charset="utf-8">
     <meta name="Author" content="Enin Fujimi">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title><?php echo h($novel->title); ?></title>
+    <?php echo get_style($state); ?>
 </head>
 <body>
-    <?php echo h(get_header()); ?>
+    <?php echo get_header(); ?>
     <div class="containter">
         <h1>
             <?php echo h($novel->title); ?>

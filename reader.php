@@ -1,6 +1,7 @@
 <?php
 
 require_once "main.php";
+require_once "State.php";
 require_once "Novel.php";
 require_once "Episode.php";
 require_once "header.php";
@@ -18,6 +19,9 @@ $novel = new Novel($novels_list[$novel_id]);
 
 $list = file($novel->path . "list.txt"); // ["1|001|第一話", "1|2|第二話", "1|03|第三話", "2|4|第四話"...]
 $temp = explode("|", $list[$ep_id]); // 1, 001, "第一話"
+
+//$p = get_parameters(); // font_family, font_size, color, x
+$state = new State();
 
 // list.txt の書式が正しいかのチェック
 if(count($temp) === 3){
@@ -43,12 +47,13 @@ if(count($temp) === 3){
 <head>
     <meta charset="utf-8">
     <meta name="Author" content="Enin Fujimi">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title><?php echo h($novel->title); ?></title>
+    <?php echo get_style($state); ?>
 </head>
 <body>
-    <?php echo h(get_header()); ?>
-    <?php echo h(get_header()); ?>
+    <?php echo get_header(); ?>
     <div class="containter">
         <?php if ($is_error === true) : ?>
             <h1>ERROR</h1>
