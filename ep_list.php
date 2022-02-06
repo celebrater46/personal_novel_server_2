@@ -27,6 +27,7 @@ if($has_chapters){
     <meta charset="utf-8">
     <meta name="Author" content="Enin Fujimi">
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title><?php echo h($novel->title); ?></title>
     <?php echo get_style($state); ?>

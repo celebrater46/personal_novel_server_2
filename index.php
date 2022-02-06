@@ -25,6 +25,7 @@ foreach ($novels_list as $novel){
     <meta charset="utf-8">
     <meta name="Author" content="Enin Fujimi">
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Personal Novel Server</title>
     <?php echo get_style($state); ?>
@@ -54,5 +55,6 @@ foreach ($novels_list as $novel){
     </div>
     <?php echo get_nav(); ?>
     <script type="text/javascript" src="js/burger.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

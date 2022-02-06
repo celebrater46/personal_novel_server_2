@@ -6,7 +6,8 @@ body{
     color: silver;
     background-color: black;
     text-align: center;
-    font-family: Hiragino Kaku Gothic ProN W3, Helvetica, Meiryo, Tahoma;
+    /* font-family: 左に行くほど優先順位高い */
+    font-family: Sawarabi Gothic, Hiragino Kaku Gothic ProN W3, Helvetica, Meiryo, Tahoma;
 }
 
 h1 a{

@@ -15,10 +15,10 @@ define('IMAGES_DIR_HTTP', 'img'); // HTTPでアクセスした際にディレク
 //}
 
 function get_font_family($num){
-    if($num !== 1){
+    if($num !== 0){
         return 'body{ font-family: "Sawarabi Mincho"; }' . "\n";
     } else {
-        return "";
+        return 'body{ font-family: "Sawarabi Gothic"; }' . "\n";
     }
 }
 

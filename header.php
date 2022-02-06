@@ -18,7 +18,7 @@ function get_nav(){
 
 function get_controller(){
     $font_family = '<div class="font family label"><label for="font_family">文字の種類</label></div>';
-    $font_family .= '<div class="font family select"><select id="font_family">\n<option selected>ゴシック</option>\n<option>明朝</option>\n</select></div>';
+    $font_family .= '<div class="font family select"><select id="font_family">\n<option value="gothic" selected>ゴシック</option>\n<option value="mincho">明朝</option>\n</select></div>';
     $font_size = '<div class="font size label"><label for="font_size">文字の大きさ</label></div>';
     $font_size .= '<div class="font size select"><select id="font_size">\n';
     $font_size .= '<option>極小</option>' . "\n";
