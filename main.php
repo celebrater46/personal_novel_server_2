@@ -77,6 +77,14 @@ function get_style($state) {
     return $top . $mincho . $size . $color . $bottom;
 }
 
+function get_parameter($state){
+    $family = "&family=" . $state->font_family;
+    $size = "&size=" . $state->font_size;
+    $color = "&color=" . $state->color;
+    $xy = "&x=" . $state->x;
+    return $family . $size . $color . $xy;
+}
+
 // エスケープ
 function h($s) {
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
