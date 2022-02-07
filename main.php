@@ -5,15 +5,6 @@ define("INDEX_FILE", __DIR__ . '/index.php'); // 小説一覧ページを別途�
 define('NOVELS_DIR', __DIR__ . '/novels'); // 小説のディレクトリ（__DIR__ は現在のディレクトリ取得）
 define('IMAGES_DIR_HTTP', 'img'); // HTTPでアクセスした際にディレクトリが変わるので用意
 
-//function get_parameters(){
-//    return [
-//        "font_family" => $font_family,
-//        "font_size" => $font_size,
-//        "color" => $color,
-//        "x" => $x
-//    ];
-//}
-
 function get_font_family($num){
     if($num !== 0){
         return 'body{ font-family: "Sawarabi Mincho"; }' . "\n";
@@ -79,13 +70,8 @@ function get_style($state) {
     $mincho = get_font_family($state->font_family);
     $size = get_font_size($state->font_size, true);
     $color = get_color($state->color);
-//    $x = style_mincho($state->font_size);
     $bottom = "</style>" . "\n";
     return $top . $mincho . $size . $color . $bottom;
-}
-
-function style_fontsize($num){
-
 }
 
 // エスケープ
