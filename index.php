@@ -31,7 +31,7 @@ foreach ($novels_list as $novel){
     <?php echo get_style($state); ?>
 </head>
 <body>
-    <?php echo get_header(); ?>
+    <?php echo get_header($state); ?>
     <div class="containter">
         <h1>
             <a href="/">
@@ -53,7 +53,7 @@ foreach ($novels_list as $novel){
             </div>
         <?php endfor; ?>
     </div>
-    <?php echo get_nav(); ?>
+    <?php echo get_nav($state); ?>
     <script type="text/javascript" src="js/burger.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
