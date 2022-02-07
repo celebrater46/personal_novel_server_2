@@ -2,7 +2,8 @@
 
 const storage = localStorage;
 const current_url = location.pathname;
-const current_parameter = location.search;
+// const current_parameter = location.search;
+const current_parameter = location.search === "" ? "?family=0&size=5&color=0&x=1" : location.search;
 
 // get data from local storage
 // ?family=0&size=5&color=0&x=1
@@ -21,9 +22,18 @@ const color_options = document.querySelectorAll("#color option");
 const xy = document.querySelector("#xy");
 const xy_options = document.querySelectorAll("#xy option");
 
+// const get_new_parameter = () => {
+//     return current_parameter === "" ? "?family=0&size=5&color=0&x=1" : current_parameter;
+// }
+
 font_family.onchange = event => {
-    console.log(font_family.selectedIndex);
-    const new_parameter = current_parameter === "" ? "?family=0&size=5&color=0&x=1" : current_parameter;
-    const new_url = current_url + new_parameter.substring(0, 8) + font_family.selectedIndex + new_parameter.substring(9);
+    // console.log(location.search);
+    // console.log(typeof location.search);
+    // const new_parameter = get_new_parameter();
+    const new_url = current_url + current_parameter.substring(0, 8) + font_family.selectedIndex + current_parameter.substring(9);
     window.location.href = new_url;
 }
+
+// font_size.onchange = event => {
+//     const new
+// }
