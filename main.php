@@ -46,18 +46,21 @@ function get_color($num){
         case 1:
             $str .= "body{ background-color: white; color: black; }" . "\n";
             $str .= "div.novel.controller{ background-color: silver; color: black; }" . "\n";
+            $str .= "div#nav{ background-color: silver; color: black; }" . "\n";
             $str .= "a{ color: blueviolet; }" . "\n";
             $str .= "a:hover{ color: blue; }" . "\n";
             break;
         case 2:
             $str .= "body{ background-color: #000001; color: silver; }" . "\n";
             $str .= "div.novel.controller{ background-color: #333333; color: silver; }" . "\n";
+            $str .= "div#nav{ background-color: #333333; color: silver; }" . "\n";
             $str .= "a{ color: goldenrod; }" . "\n";
             $str .= "a:hover{ color: gold; }" . "\n";
             break;
         case 3:
             $str .= "body{ background-color: #fedcbb; color: #443322; }" . "\n";
             $str .= "div.novel.controller{ background-color: #333333; color: silver; }" . "\n";
+            $str .= "div#nav{ background-color: #333333; color: silver; }" . "\n";
             $str .= "a{ color: brown; }" . "\n";
             $str .= "a:hover{ color: orangered; }" . "\n";
             break;
