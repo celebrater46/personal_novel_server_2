@@ -12,8 +12,10 @@ $novels = [];
 
 $state = new State();
 
+$i = 0;
 foreach ($novels_list as $novel){
-    array_push($novels, new Novel($novel));
+    array_push($novels, new Novel($i, $novel));
+    $i++;
 }
 
 ?>

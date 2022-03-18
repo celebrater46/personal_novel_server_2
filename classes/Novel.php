@@ -5,6 +5,7 @@ require_once "Episode.php";
 
 class Novel
 {
+    public $id;
     public $title; // 白金記
     public $path; // novels/shiroganeki/
     public $caption; // 世界からありとあらゆる争いを根絶し……
@@ -15,13 +16,27 @@ class Novel
     public $nums_eps_in_chap = []; // [3, 5, 2] (白金記サンプル、各チャプターの話数)
     public $nums_chap_start = [1]; // [1, 4, 8]（白金記サンプル、各チャプターが何話めから始まるか）
 
-    function __construct($title_path){
+    function __construct($id, $title_path){
+        $this->id = $id;
         $temp = explode("|", $title_path);
         $this->title = $temp[0];
         $temp[1] = str_replace([" ", "　", "\n", "\r", "\r\n"], "", $temp[1]); // 悪魔のバグ要因、全角＆半角スペース、改行コードの排除
         $this->path = "novels/" . $temp[1] . "/";
-        $this->caption = file($this->path . "caption.txt");
+        $this->caption = $this->get_caption();
         $this->has_chapters = $this->has_chapters();
+    }
+
+    function get_caption(){
+        if(file_exists($this->path . "caption.txt")){
+            $temp_array = file($this->path . "caption.txt");
+            $caption_lines = [];
+            foreach ($temp_array as $line){
+                array_push($caption_lines, str_replace(["\n", "\r", "\r\n"], "", $line));
+            }
+            return $caption_lines;
+        } else {
+            return ["Not found: caption.txt"];
+        }
     }
 
     function get_chapters(){
@@ -34,7 +49,7 @@ class Novel
                     $this->chapters,
                     new Chapter(
                         $j,
-                        $chapter,
+                        str_replace(["\n", "\r", "\r\n"], "", $chapter),
                         $this->path,
                         $this->nums_eps_in_chap[$j],
                         $this->nums_chap_start[$j]
@@ -53,7 +68,16 @@ class Novel
             $i = 0;
             foreach ($list as $item){
                 $temp = explode("|", $item); // [1, 001, "第一話"]
-                array_push($this->episodes, new Episode($i, $temp[2], $this->path, $temp[0], $temp[1]));
+                array_push(
+                    $this->episodes,
+                    new Episode(
+                        $i,
+                        str_replace(["\n", "\r", "\r\n"], "", $temp[2]),
+                        $this->path,
+                        $temp[0],
+                        $temp[1]
+                    )
+                );
                 $i++;
             }
         } else {
