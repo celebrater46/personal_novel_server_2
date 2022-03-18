@@ -59,11 +59,15 @@ div.containter {
     margin: 0 auto;
 }
 
-div.novel.controller{
-    background-color: #333333;
+div#navPc{
+    /*background-color: #333333;*/
+    width: 100vw;
+    position: fixed;
+    top: -50px;
+    transition: .7s;
 }
 
-div.novel.controller > div{
+div#navPc > div{
     width: 1000px;
     display: flex;
     margin: 0 auto;
@@ -120,7 +124,7 @@ div#burger {
     cursor: pointer;
     /*right: -200%;*/
     top: 30px;
-    right: -200vw;
+    right: 30px;
     width: 60px;
     height: 60px;
     transition: 1s;
@@ -131,7 +135,7 @@ img.burger{
     height: 100%;
 }
 
-div#nav {
+div#navMobile {
     position: absolute;
     text-align: left;
     top: 5vh;
@@ -145,7 +149,7 @@ div#nav {
     transition: .7s;
 }
 
-div#nav a{
+div#navMobile a{
     display: block;
     text-decoration: none;
     color: #000000;
@@ -154,22 +158,26 @@ div#nav a{
     transition: .5s;
 }
 
-div#nav a:hover{
+div#navMobile a:hover{
     color: #ffffff;
     background: #cd5c5c;
     border-bottom: none;
 }
 
-.in{
+.pcPanelIn{
+    transform: translateY(60px);
+}
+
+.mobilePanelIn{
     transform: translateX(1000px);
 }
 
-div#nav > div > label{
+div#navMobile > div > label{
     font-size: 1rem;
     padding: 15px 0;
 }
 
-div#nav > div > select{
+div#navMobile > div > select{
     font-size: 1rem;
     width: 5rem;
     padding: 15px 0;
@@ -211,13 +219,13 @@ div#navi_close{
         line-height: 1.5rem;
     }
 
-    div#nav > div > label{
+    div#navMobile > div > label{
         /*list-style-type: none;*/
         font-size: 1.5rem;
         padding: 1vh 0;
     }
 
-    div#nav > div > select{
+    div#navMobile > div > select{
         font-size: 1rem;
         width: 35vw;
         padding: 1vh 0;
@@ -232,7 +240,7 @@ div#navi_close{
         height: 15vw;
     }
 
-    .in{
+    .mobilePanelIn{
         transform: translateX(350%);
     }
 }

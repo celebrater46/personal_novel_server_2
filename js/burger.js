@@ -4,7 +4,8 @@ const burger = document.getElementById('burger');
 const div = document.getElementById('navi_close');
 
 const toggle = () => {
-    document.getElementById('nav').classList.toggle('in');
+    document.getElementById('navMobile').classList.toggle('mobilePanelIn');
+    document.getElementById('navPc').classList.toggle('pcPanelIn');
 }
 
 burger.addEventListener('click' , () => {

@@ -1,9 +1,9 @@
 <?php
 
 require_once "main.php";
-require_once "State.php";
-require_once "Novel.php";
-require_once "Episode.php";
+require_once "classes/State.php";
+require_once "classes/Novel.php";
+require_once "classes/Episode.php";
 require_once "header.php";
 
 $novel_id = (int)$_GET["novel"];
@@ -54,7 +54,7 @@ if(count($temp) === 3){
     <?php echo get_style($state); ?>
 </head>
 <body>
-    <?php echo get_header(); ?>
+    <?php echo get_header($state); ?>
     <div class="containter">
         <?php if ($is_error === true) : ?>
             <h1>ERROR</h1>

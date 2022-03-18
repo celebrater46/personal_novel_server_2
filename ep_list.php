@@ -1,8 +1,8 @@
 <?php
 
 require_once "main.php";
-require_once "State.php";
-require_once "Novel.php";
+require_once "classes/State.php";
+require_once "classes/Novel.php";
 require_once "header.php";
 
 $id = (int)$_GET["novel"];
@@ -33,7 +33,7 @@ if($has_chapters){
     <?php echo get_style($state); ?>
 </head>
 <body>
-    <?php echo get_header(); ?>
+    <?php echo get_header($state); ?>
     <div class="containter">
         <h1>
             <?php echo h($novel->title); ?>

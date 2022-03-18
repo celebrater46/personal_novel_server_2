@@ -3,12 +3,12 @@
 function get_header($state){
     $controller = get_controller($state, false);
     $burger = '<div id="burger"><img class="burger" src="burger.png"></div>' . "\n";
-    return "<div class='novel controller'><div>" . $controller . "</div></div>" . "\n" . $burger;
+    return "<div id='navPc' class='novel controller'><div>" . $controller . "</div></div>" . "\n" . $burger;
 }
 
 function get_nav($state){
     $controller = get_controller($state, true);
-    return '<div id="nav">' . "\n" . $controller . '<div id="navi_close">　</div></div>' . "\n";
+    return '<div id="navMobile">' . "\n" . $controller . '<div id="navi_close">　</div></div>' . "\n";
 }
 
 function get_controller($state, $is_nav){

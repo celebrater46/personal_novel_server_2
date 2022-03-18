@@ -3,8 +3,8 @@
 //Copyright (C) Enin Fujimi All Rights Reserved.
 
 require_once "main.php";
-require_once "State.php";
-require_once "Novel.php";
+require_once "classes/State.php";
+require_once "classes/Novel.php";
 require_once "header.php";
 
 $novels_list = file("novels/novels_list.txt"); // 第三世界収容所|prison, 白金記|shiroganeki, 極楽戦争|gokuraku
