@@ -2,6 +2,7 @@
 
 require_once "Chapter.php";
 require_once "Episode.php";
+require_once "converter.php";
 
 class Novel
 {
@@ -24,6 +25,25 @@ class Novel
         $this->path = "novels/" . $temp[1] . "/";
         $this->caption = $this->get_caption();
         $this->has_chapters = $this->has_chapters();
+    }
+
+    function get_text($chap, $ep){
+//        $file_name = "";
+        if($this->has_chapters){
+            $file_name = $this->chapters[$chap]->episodes[$ep]->file_name;
+        } else {
+            $file_name = $this->episodes[$ep]->file_name;
+        }
+        $text = [];
+        if(file_exists($this->path . "txts/" . $file_name . ".txt")){
+            $array = file($this->path . "txts/" . $file_name . ".txt");
+            $array2 = convert_to_dot($array);
+            $text = convert_to_ruby($array2);
+        } else {
+            array_push($text, "[Error]");
+            array_push($text, $file_name . ".txt が存在しないか、読み込めません。");
+        }
+        return $text;
     }
 
     function get_caption(){

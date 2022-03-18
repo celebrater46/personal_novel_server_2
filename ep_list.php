@@ -1,12 +1,11 @@
 <?php
 
 require_once "main.php";
-require_once "get_ep_list.php";
+require_once "pns_get_html.php";
 require_once "classes/State.php";
 require_once "classes/Novel.php";
 require_once "header.php";
 
-$use_get_function = true; // 外部サイト組込用の関数を使用するか（true で使用）
 $id = (int)$_GET["novel"];
 $novel = get_novel_obj($id);
 $state = new State();
@@ -27,7 +26,7 @@ $state = new State();
 <body>
     <?php echo get_header($state); ?>
     <div class="containter">
-        <?php if($use_get_function) : ?>
+        <?php if(USE_GET_FUNCTION) : ?>
             <?php echo get_html_ep_list($id); ?>
         <?php else: ?>
             <h1>

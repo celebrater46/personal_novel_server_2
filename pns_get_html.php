@@ -1,10 +1,18 @@
 <?php
 
+// 外部サイト組込出力用
+
 require_once "classes/Novel.php";
+require_once "main.php";
 
 function get_html_ep_list($id){
     $novel = get_novel_obj($id);
     $html = create_html_ep_list($novel);
+    return $html;
+}
+
+function get_html_reader($novel, $chap, $ep){
+    $html = "";
     return $html;
 }
 
@@ -27,11 +35,6 @@ function get_novel_list(){
     } else {
         return ["Not found: " . $list];
     }
-}
-
-function space_br($html, $num){
-    $space = str_repeat("    ", $num);
-    return $space . $html . "\n";
 }
 
 function create_li_ep($novel_id, $episodes, $file){
@@ -68,7 +71,7 @@ function create_html_chap_ep($novel, $file){
 
 function create_html_ep_list($novel){
     $file = "reader.php";
-    $html = space_br("<h1>" . $novel->title . "</h1>", 2);
+    $html = space_br("<h1>" . $novel->title . "</h1>", 0);
     $html .= space_br('<div class="caption">', 2);
     foreach ($novel->caption as $line){
         $html .= space_br("<p>" . $line . "</p>", 3);
