@@ -15,7 +15,7 @@ $is_error = false;
 $error_msg = "";
 
 $novels_list = file("novels/novels_list.txt");
-$novel = new Novel($novels_list[$novel_id]);
+$novel = new Novel($novel_id, $novels_list[$novel_id]);
 
 $list = file($novel->path . "list.txt"); // ["1|001|第一話", "1|2|第二話", "1|03|第三話", "2|4|第四話"...]
 $temp = explode("|", $list[$ep_id]); // 1, 001, "第一話"

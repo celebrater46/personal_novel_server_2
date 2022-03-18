@@ -85,6 +85,11 @@ function get_parameter($state){
     return $family . $size . $color . $xy;
 }
 
+function insert_br_and_space($html){
+    $tab = 1;
+    preg_match("/<>/i", $html, );
+}
+
 // エスケープ
 function h($s) {
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");

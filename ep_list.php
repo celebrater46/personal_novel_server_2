@@ -8,19 +8,8 @@ require_once "header.php";
 
 $use_get_function = true; // 外部サイト組込用の関数を使用するか（true で使用）
 $id = (int)$_GET["novel"];
-//$list = get_novel_list(); // 第三世界収容所|prison, 白金記|shiroganeki, 極楽戦争|gokuraku
-//$novel = new Novel($list[$id]);
 $novel = get_novel_obj($id);
-//$has_chapters = $novel->has_chapters();
-
-//$p = get_parameters(); // font_family, font_size, color, x
 $state = new State();
-
-//if($has_chapters){
-//    $novel->get_chapters();
-//} else {
-//    $novel->get_episodes();
-//}
 
 ?>
 
