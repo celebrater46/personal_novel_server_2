@@ -3,47 +3,15 @@
 require_once "modules/main.php";
 require_once "pns_get_html.php";
 require_once "classes/State.php";
-//require_once "classes/Novel.php";
 require_once "classes/Episode.php";
 require_once "header.php";
 
 $state = new State();
-//$novel_id = (int)$_GET["novel"];
-//$chap_id = (int)$_GET["chap"];
-//$ep_id = (int)$_GET["ep"];
-//$prev = -1;
-//$next = 1;
 $is_error = false;
 $error_msg = "";
-
-//$novels_list = file("novels/novels_list.txt");
-//$novel = new Novel($novel_id, $novels_list[$novel_id]);
 $novel = get_novel_obj($state->novel_id);
 $text = $novel->get_text($state->chap_id, $state->ep_id);
 $start_ep_num = $novel->has_chapters ? $novel->chapters[$state->chap_id]->start_ep_num : 0;
-
-//$list = file($novel->path . "list.txt"); // ["1|001|第一話", "1|2|第二話", "1|03|第三話", "2|4|第四話"...]
-//$temp = explode("|", $list[$ep_id]); // 1, 001, "第一話"
-
-//$p = get_parameters(); // font_family, font_size, color, x
-//$state = new State();
-
-// list.txt の書式が正しいかのチェック
-//if(count($temp) === 3){
-//    $episode = new Episode($ep_id, $temp[2], $novel->path, $temp[0], $temp[1]);
-//    $text = $episode->get_text();
-//    if($ep_id < count($list) - 1){
-//        $next = $ep_id + 1;
-//    } else {
-//        $next = 0;
-//    }
-//    if($ep_id > 0) {
-//        $prev = $ep_id - 1;
-//    }
-//} else {
-//    $is_error = true;
-//    $error_msg = "list.txt の書き方が間違っています。";
-//}
 
 ?>
 

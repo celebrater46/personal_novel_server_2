@@ -27,7 +27,6 @@ function get_div_text($novel, $chap, $ep){
 function get_new_chap($novel, $chap, $ep){
     if($novel->has_chapters){
         $start_ep_num = $novel->chapters[$chap]->start_ep_num;
-//        $next_start_ep_num = isset($novel->chapters[$chap + 1]) ? $novel->chapters[$chap + 1]->start_ep_num : 0;
         $next_start_ep_num = count($novel->chapters[$chap]->episodes) + $novel->chapters[$chap]->start_ep_num;
         if($ep < $start_ep_num){
             return $chap > 0 ? $chap - 1 : 0;
@@ -44,7 +43,6 @@ function get_new_chap($novel, $chap, $ep){
 function get_div_text_links($novel, $chap, $ep){
     $file = "reader.php";
     $list_php = "ep_list.php";
-    $index_php = "index.php";
     $ep_sum = $novel->get_max_ep();
     $chap_prev = get_new_chap($novel, $chap, $ep - 1);
     $chap_next = get_new_chap($novel, $chap, $ep + 1);

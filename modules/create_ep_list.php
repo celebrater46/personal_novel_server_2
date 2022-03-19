@@ -21,7 +21,6 @@ function create_html_ep($novel, $file){
 }
 
 function create_html_chap_ep($novel, $file){
-    $array = [];
     $html = space_br("<hr>", 3);
     foreach ($novel->chapters as $chapter){
         $html .= space_br("<h2>" . $chapter->title . "</h2>", 3);

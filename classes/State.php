@@ -26,8 +26,6 @@ class State
 
     function get_other_states(){
         $keys = array_keys($_GET);
-//        $other_states = [];
-//        $other_states_str = "?";
         foreach ($keys as $key){
             if($key !== "novel"
             && $key !== "chap"

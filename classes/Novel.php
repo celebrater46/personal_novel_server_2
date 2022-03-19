@@ -28,11 +28,7 @@ class Novel
     }
 
     function get_text($chap, $ep){
-//        $file_name = "";
         if($this->has_chapters){
-//            echo $chap . "<br>";
-//            echo $ep . "<br>";
-//            var_dump($this->chapters[2]);
             $start_ep_num = $this->chapters[$chap]->start_ep_num;
             $file_name = $this->chapters[$chap]->episodes[$ep - $start_ep_num]->file_name;
         } else {
