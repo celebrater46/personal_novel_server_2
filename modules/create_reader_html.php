@@ -24,14 +24,32 @@ function get_div_text($novel, $chap, $ep){
     return $html;
 }
 
+function get_new_chap($novel, $chap, $ep){
+    if($novel->has_chapters){
+        $start_ep_num = $novel->chapters[$chap]->start_ep_num;
+        $next_start_ep_num = isset($novel->chapters[$chap + 1]) ? $novel->chapters[$chap + 1]->start_ep_num : 0;
+        if($ep < $start_ep_num){
+            return $chap > 0 ? $chap - 1 : 0;
+        } else if($ep >= $next_start_ep_num){
+            return $chap + 1;
+        } else {
+            return $chap;
+        }
+    } else {
+        return null;
+    }
+}
+
 function get_div_text_links($novel, $chap, $ep){
     $file = "reader.php";
     $list_php = "ep_list.php";
     $ep_sum = $novel->get_max_ep();
+    $chap_prev = get_new_chap($novel, $chap, $ep - 1);
+    $chap_next = get_new_chap($novel, $chap, $ep + 1);
     $html = space_br('<div class="text links">', 2);
     $html .= space_br('<div>', 3);
     if($ep - 1 > 0) {
-        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap . '&ep=' . ($ep - 1) . '">＜＜</a>', 4);
+        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap_prev . '&ep=' . ($ep - 1) . '">＜＜</a>', 4);
     }
     $html .= space_br('</div>', 3);
     $html .= space_br('<div>', 3);
@@ -40,7 +58,7 @@ function get_div_text_links($novel, $chap, $ep){
     $html .= space_br('<div>', 3);
 //    $html .= space_br('<div>', 2);
     if($ep + 1 < $ep_sum){
-        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap . '&ep=' . ($ep + 1) . '">＞＞</a>', 4);
+        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap_next . '&ep=' . ($ep + 1) . '">＞＞</a>', 4);
     }
     $html .= space_br('</div>', 3);
     $html .= space_br('</div>', 2);
