@@ -40,23 +40,7 @@ foreach ($novels_list as $novel){
                 Personal Novel Server
             </a>
         </h1>
-        <?php if(USE_GET_FUNCTION) : ?>
-            <?php echo pns_get_html(); ?>
-        <?php else: ?>
-            <?php for ($i = 0; $i < count($novels_list); $i++) : ?>
-                <hr>
-                <h2>
-                    <a href="ep_list.php?novel=<?php echo h($i) . get_parameter($state); ?>">
-                        <?php echo h($novels[$i]->title); ?>
-                    </a>
-                </h2>
-                <div class="caption">
-                    <?php foreach ($novels[$i]->caption as $line) : ?>
-                        <p><?php echo h($line) ?></p>
-                    <?php endforeach; ?>
-                </div>
-            <?php endfor; ?>
-        <?php endif; ?>
+        <?php echo pns_get_html(); ?>
     </div>
     <?php echo get_nav($state); ?>
     <script type="text/javascript" src="js/burger.js"></script>
