@@ -2,6 +2,7 @@
 
 class State
 {
+    public $pns; // 0 = index, 1 = ep_list, 2 = reader
     public $novel_id;
     public $chap_id;
     public $ep_id;
@@ -14,6 +15,7 @@ class State
     public $other_states_str = "";
 
     function __construct(){
+        $this->pns = isset($_GET["pns"]) ? (int)$_GET["pns"] : 0;
         $this->novel_id = isset($_GET["novel"]) ? (int)$_GET["novel"] : 0;
         $this->chap_id = isset($_GET["chap"]) ? (int)$_GET["chap"] : 0;
         $this->ep_id = isset($_GET["ep"]) ? (int)$_GET["ep"] : 1;
@@ -27,7 +29,8 @@ class State
     function get_other_states(){
         $keys = array_keys($_GET);
         foreach ($keys as $key){
-            if($key !== "novel"
+            if($key !== "pns"
+            && $key !== "novel"
             && $key !== "chap"
             && $key !== "ep"
             && $key !== "family"

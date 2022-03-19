@@ -36,7 +36,7 @@ foreach ($novels_list as $novel){
     <?php echo get_header($state); ?>
     <div class="containter">
         <?php if(USE_GET_FUNCTION) : ?>
-            <?php echo get_html_index(); ?>
+            <?php echo pns_get_html(); ?>
         <?php else: ?>
             <h1>
                 <a href="/">

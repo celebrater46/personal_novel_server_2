@@ -41,24 +41,24 @@ function get_new_chap($novel, $chap, $ep){
 }
 
 function create_div_text_links($novel, $chap, $ep){
-    $file = "reader.php";
-    $list_php = "ep_list.php";
+//    $file = "reader.php";
+//    $list_php = "ep_list.php";
     $ep_sum = $novel->get_max_ep();
     $chap_prev = get_new_chap($novel, $chap, $ep - 1);
     $chap_next = get_new_chap($novel, $chap, $ep + 1);
     $html = space_br('<div class="text links">', 2);
     $html .= space_br('<div>', 3);
     if($ep - 1 > 0) {
-        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap_prev . '&ep=' . ($ep - 1) . '">＜＜</a>', 4);
+        $html .= space_br('<a href="' . INDEX_FILE . '?pns=2&novel=' . $novel->id . '&chap=' . $chap_prev . '&ep=' . ($ep - 1) . '">＜＜</a>', 4);
     }
     $html .= space_br('</div>', 3);
     $html .= space_br('<div>', 3);
-    $html .= space_br('<a href="' . $list_php . '?novel=' . $novel->id . '">一覧へ戻る</a>', 4);
+    $html .= space_br('<a href="' . INDEX_FILE . '?pns=1&novel=' . $novel->id . '">一覧へ戻る</a>', 4);
     $html .= space_br('</div>', 3);
     $html .= space_br('<div>', 3);
 //    $html .= space_br('<div>', 2);
     if($ep + 1 <= $ep_sum){
-        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap_next . '&ep=' . ($ep + 1) . '">＞＞</a>', 4);
+        $html .= space_br('<a href="' . INDEX_FILE . '?pns=2&novel=' . $novel->id . '&chap=' . $chap_next . '&ep=' . ($ep + 1) . '">＞＞</a>', 4);
     }
     $html .= space_br('</div>', 3);
     $html .= space_br('</div>', 2);

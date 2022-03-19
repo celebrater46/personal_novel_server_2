@@ -9,23 +9,33 @@ require_once "modules/create_index_html.php";
 require_once "modules/create_ep_list_html.php";
 require_once "modules/create_reader_html.php";
 
-function get_html_index(){
+function pns_get_html(){
     $state = new State();
+    switch ($state->pns){
+        case 0: return get_html_index($state);
+        case 1: return get_html_ep_list($state);
+        case 2: return get_html_reader($state);
+        default: return get_html_index($state);
+    }
+}
+
+function get_html_index($state){
+//    $state = new State();
     $list = get_novel_list();
     $novels = get_novel_obj_all($list);
     return create_index_html($novels, $state);
 }
 
-function get_html_ep_list(){
-    $state = new State();
-    $list = get_novel_list();
+function get_html_ep_list($state){
+//    $state = new State();
+//    $list = get_novel_list();
     $novel = get_novel_obj_once($state->novel_id);
     return create_ep_list_html($novel);
 }
 
-function get_html_reader(){
+function get_html_reader($state){
     $state = new State();
-    $list = get_novel_list();
+//    $list = get_novel_list();
     $novel = get_novel_obj_once($state->novel_id);
     $html = space_br("<h1>" . $novel->title . "</h1>", 2);
     $html .= create_title_chap_ep($novel, $state->chap_id, $state->ep_id);
