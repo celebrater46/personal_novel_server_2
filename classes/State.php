@@ -20,9 +20,9 @@ class State
         $this->chap_id = isset($_GET["chap"]) ? (int)$_GET["chap"] : 0;
         $this->ep_id = isset($_GET["ep"]) ? (int)$_GET["ep"] : 1;
         $this->font_family = isset($_GET["family"]) ? (int)$_GET["family"] : 0;
-        $this->font_size = isset($_GET["size"]) ? (int)$_GET["size"] : 5;
+        $this->font_size = isset($_GET["size"]) ? (int)$_GET["size"] : 1;
         $this->color = isset($_GET["color"]) ? (int)$_GET["color"] : 0;
-        $this->x = isset($_GET["x"]) ? (int)$_GET["x"] : 1;
+        $this->x = isset($_GET["x"]) ? (int)$_GET["x"] : 0;
         $this->get_other_states();
     }
 
