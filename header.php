@@ -24,7 +24,6 @@ function get_html_font_family($state, $is_nav){
     $html .= space_br('</div>', 3);
     $html .= space_br('<div class="font family select">', 3);
     $html .= space_br('<select name="font_family' . ($is_nav ? "_nav" : "") . '">', 4);
-//    echo $state->font_family;
     $html .= space_br('<option value="mincho"' . ($state->font_family === 0 ? " selected" : "") . '>明朝</option>', 5);
     $html .= space_br('<option value="gothic"' . ($state->font_family === 1 ? " selected" : "") . '>ゴシック</option>', 5);
     $html .= space_br('</select>', 4);
@@ -40,23 +39,8 @@ function get_html_font_size($state, $is_nav){
     $html .= space_br('<select name="font_size' . ($is_nav ? "_nav" : "") . '">', 4);
     $html .= space_br('<option' . ($state->font_size === 0 ? " selected" : "") . '>小</option>', 5);
     $html .= space_br('<option' . ($state->font_size === 1 ? " selected" : "") . '>中</option>', 5);
-//    echo $state->font_size;
-//    if($state->font_size === 1){
-//        $html .= space_br('<option selected>中</option>', 5);
-//    } else {
-//        $html .= space_br('<option>中</option>', 5);
-//    }
     $html .= space_br('<option' . ($state->font_size === 2 ? " selected" : "") . '>大</option>', 5);
     $html .= space_br('<option' . ($state->font_size === 3 ? " selected" : "") . '>特大</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 1 ? " selected" : "") . '>極小</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 2 ? " selected" : "") . '>特小</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 3 ? " selected" : "") . '>小</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 4 ? " selected" : "") . '>やや小</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 5 ? " selected" : "") . '>中</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 6 ? " selected" : "") . '>やや大</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 7 ? " selected" : "") . '>大</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 8 ? " selected" : "") . '>特大</option>', 5);
-//    $html .= space_br('<option' . ($state->font_size === 9 ? " selected" : "") . '>極大</option>', 5);
     $html .= space_br('</select>', 4);
     $html .= space_br('</div>', 3);
     return $html;

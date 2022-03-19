@@ -34,15 +34,6 @@ function calc_font_size($size, $base){
         case 1: return round($base * 1.0);
         case 2: return round($base * 1.3);
         case 3: return round($base * 1.6);
-//        case 1: return round($base * 0.2);
-//        case 2: return round($base * 0.4);
-//        case 3: return round($base * 0.6);
-//        case 4: return round($base * 0.8);
-//        case 5: return round($base * 1.0);
-//        case 6: return round($base * 1.5);
-//        case 7: return round($base * 2.0);
-//        case 8: return round($base * 3.0);
-//        case 9: return round($base * 5.0);
         default: return $base;
     }
 }
