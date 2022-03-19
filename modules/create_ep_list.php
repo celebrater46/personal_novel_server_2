@@ -13,9 +13,23 @@ function create_li_ep($novel_id, $chapter, $file){
     return implode("", $array);
 }
 
+function create_li_ep_no_chapter($novel_id, $episodes, $file){
+    $array = [];
+    foreach ($episodes as $episode){
+        $html = '<li><a href="' . $file;
+        $html .= "?novel=" . $novel_id;
+        $html .= "&chap=0&ep=" . ($episode->id + 1) . '">';
+        $html .= $episode->title;
+        $html .= '</a></li>';
+        array_push($array, space_br($html, 4));
+    }
+    return implode("", $array);
+}
+
 function create_html_ep($novel, $file){
+//    $temp_chapter = new Chapter();
     $html = space_br("<ul>", 3);
-    $html .= create_li_ep($novel->id, $novel->episodes, $file);
+    $html .= create_li_ep_no_chapter($novel->id, $novel->episodes, $file);
     $html .= space_br("</ul>", 3);
     return $html;
 }

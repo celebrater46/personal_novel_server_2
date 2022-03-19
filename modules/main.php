@@ -22,8 +22,9 @@ function get_font_size($num, $is_pc){
     $font_size = calc_font_size($num, $base);
     $html = space_br("div.containter, p.text.line{", 2);
     $html .= space_br("font-size: " . $font_size . $scale . "; }", 2);
-    $html .= space_br("h1{ font-size: " . round($font_size * 1.5) . $scale . "; }", 2);
-    $html .= space_br("h2{ font-size: " . round($font_size * 1.2) . $scale . "; }", 2);
+    $html .= space_br("h1{ font-size: " . round($font_size * 2) . $scale . "; }", 2);
+    $html .= space_br("h2{ font-size: " . round($font_size * 1.5) . $scale . "; }", 2);
+    $html .= space_br("h3{ font-size: " . round($font_size * 1.2) . $scale . "; }", 2);
     return $html;
 }
 
