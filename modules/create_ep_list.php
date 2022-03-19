@@ -1,11 +1,11 @@
 <?php
 
-function create_li_ep($novel_id, $episodes, $file){
+function create_li_ep($novel_id, $chapter, $file){
     $array = [];
-    foreach ($episodes as $episode){
+    foreach ($chapter->episodes as $episode){
         $html = '<li><a href="' . $file;
         $html .= "?novel=" . $novel_id;
-        $html .= "&chap=0&ep=" . $episode->id + 1 . '">';
+        $html .= "&chap=" . $chapter->id . "&ep=" . ($episode->id + 1) . '">';
         $html .= $episode->title;
         $html .= '</a></li>';
         array_push($array, space_br($html, 4));
@@ -23,10 +23,10 @@ function create_html_ep($novel, $file){
 function create_html_chap_ep($novel, $file){
     $array = [];
     $html = space_br("<hr>", 3);
-    foreach ($novel->chapters as $item){
-        $html .= space_br("<h2>" . $item->title . "</h2>", 3);
+    foreach ($novel->chapters as $chapter){
+        $html .= space_br("<h2>" . $chapter->title . "</h2>", 3);
         $html .= space_br("<div><ul>", 3);
-        $html .= create_li_ep($novel->id, $item->episodes, $file);
+        $html .= create_li_ep($novel->id, $chapter, $file);
         $html .= space_br("</ul></div>", 3);
     }
     return $html;
