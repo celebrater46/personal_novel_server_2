@@ -27,7 +27,6 @@ function create_li_ep_no_chapter($novel_id, $episodes){
 }
 
 function create_html_ep($novel){
-//    $temp_chapter = new Chapter();
     $html = space_br("<ul>", 3);
     $html .= create_li_ep_no_chapter($novel->id, $novel->episodes);
     $html .= space_br("</ul>", 3);
@@ -46,7 +45,6 @@ function create_html_chap_ep($novel){
 }
 
 function create_ep_list_html($novel){
-//    $file = "reader.php";
     $html = space_br("<h1>" . $novel->title . "</h1>", 0);
     $html .= space_br('<div class="caption">', 2);
     foreach ($novel->caption as $line){

@@ -6,7 +6,6 @@ require_once "classes/State.php";
 require_once "classes/Novel.php";
 require_once "header.php";
 
-//$id = (int)$_GET["novel"];
 $state = new State();
 $novel = get_novel_obj_once($state->novel_id);
 
@@ -48,7 +47,7 @@ $novel = get_novel_obj_once($state->novel_id);
                             <ul>
                                 <?php foreach ($item->episodes as $episode) : ?>
                                     <li>
-                                        <a href="reader.php?novel=<?php echo h($id); ?>&chap=<?php echo h($item->id); ?>&ep=<?php echo h($episode->id + 1); ?>">
+                                        <a href="reader.php?novel=<?php echo h($state->novel_id); ?>&chap=<?php echo h($item->id); ?>&ep=<?php echo h($episode->id + 1); ?>">
                                             <?php echo h($episode->title); ?>
                                         </a>
                                     </li>
@@ -63,7 +62,7 @@ $novel = get_novel_obj_once($state->novel_id);
                     <ul>
                         <?php foreach ($novel->episodes as $episode) : ?>
                             <li>
-                                <a href="reader.php?novel=<?php echo h($id); ?>&chap=0&ep=<?php echo h($episode->id + 1); ?>">
+                                <a href="reader.php?novel=<?php echo h($state->novel_id); ?>&chap=0&ep=<?php echo h($episode->id + 1); ?>">
                                     <?php echo h($episode->title); ?>
                                 </a>
                             </li>

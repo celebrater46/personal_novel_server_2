@@ -73,7 +73,6 @@ function get_color($num){
 }
 
 function get_style($state) {
-//    $state = new State();
     $top = space_br("<style>", 0);
     $mincho = get_font_family($state->font_family);
     $size = get_font_size($state->font_size, true);

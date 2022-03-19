@@ -20,22 +20,18 @@ function pns_get_html(){
 }
 
 function get_html_index($state){
-//    $state = new State();
     $list = get_novel_list();
     $novels = get_novel_obj_all($list);
     return create_index_html($novels, $state);
 }
 
 function get_html_ep_list($state){
-//    $state = new State();
-//    $list = get_novel_list();
     $novel = get_novel_obj_once($state->novel_id);
     return create_ep_list_html($novel);
 }
 
 function get_html_reader($state){
     $state = new State();
-//    $list = get_novel_list();
     $novel = get_novel_obj_once($state->novel_id);
     $html = space_br("<h1>" . $novel->title . "</h1>", 2);
     $html .= create_title_chap_ep($novel, $state->chap_id, $state->ep_id);
