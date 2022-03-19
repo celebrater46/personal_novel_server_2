@@ -14,11 +14,11 @@ function create_caption_html($caption){
 function create_index_html($novels, $state){
     $html = "";
     foreach ($novels as $novel){
-        $html .= space_br("<hr>", 2);
+        $html .= $novel->id === 0 ? "" : space_br("<hr>", 2);
         $html .= space_br("<h2>", 2);
         $html .= space_br("<a href='" . INDEX_FILE . "?pns=1&novel=" . $novel->id . get_parameter($state) . "'>" . $novel->title . "</a>", 3);
         $html .= space_br("</h2>", 2);
         $html .= create_caption_html($novel->caption);
     }
-    return $html;
+    return add_iframe($state->x, $html);
 }

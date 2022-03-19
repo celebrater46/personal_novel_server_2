@@ -34,7 +34,8 @@ color.onchange = event => {
 }
 
 xy.onchange = event => {
-    go_new_url("x", xy.selectedIndex);
+    const index = xy.selectedIndex === 1 ? 0 : 1;
+    go_new_url("x", index);
 }
 
 font_family_nav.onchange = event => {
@@ -50,5 +51,6 @@ color_nav.onchange = event => {
 }
 
 xy_nav.onchange = event => {
-    go_new_url("x", xy_nav.selectedIndex);
+    const index = xy_nav.selectedIndex === 1 ? 0 : 1;
+    go_new_url("x", index);
 }

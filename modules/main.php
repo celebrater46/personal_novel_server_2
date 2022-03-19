@@ -9,9 +9,10 @@ define('USE_GET_FUNCTION', true); // 外部サイト組込用の関数を使用�
 
 function get_font_family($num){
     if($num === 0){
-        return space_br('body{ font-family: "Sawarabi Mincho"; }', 2);
+//        return space_br('body{ font-family: "Sawarabi Mincho"; }', 2);
+        return space_br('body{ font-family: "Noto Serif JP"; }', 2);
     } else {
-        return space_br('body{ font-family: "Sawarabi Gothic"; }', 2);
+        return space_br('body{ font-family: "Kosugi"; }', 2);
     }
 }
 

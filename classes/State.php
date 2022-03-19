@@ -22,7 +22,7 @@ class State
         $this->font_family = isset($_GET["family"]) ? (int)$_GET["family"] : 0;
         $this->font_size = isset($_GET["size"]) ? (int)$_GET["size"] : 1;
         $this->color = isset($_GET["color"]) ? (int)$_GET["color"] : 0;
-        $this->x = isset($_GET["x"]) ? (int)$_GET["x"] : 0;
+        $this->x = isset($_GET["x"]) ? (int)$_GET["x"] : 1;
         $this->get_other_states();
     }
 

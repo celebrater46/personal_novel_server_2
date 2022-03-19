@@ -19,6 +19,17 @@ function pns_get_html(){
     }
 }
 
+function add_iframe($x, $html){
+    if($x === 0){
+        $div = space_br("<div class='iframe'>", 1);
+        $div .= $html;
+        $div .= space_br("</div>", 1);
+        return $div;
+    } else {
+        return $html;
+    }
+}
+
 function get_html_index($state){
     $list = get_novel_list();
     $novels = get_novel_obj_all($list);
@@ -27,16 +38,16 @@ function get_html_index($state){
 
 function get_html_ep_list($state){
     $novel = get_novel_obj_once($state->novel_id);
-    return create_ep_list_html($novel);
+    return create_ep_list_html($novel, $state);
 }
 
 function get_html_reader($state){
-    $state = new State();
     $novel = get_novel_obj_once($state->novel_id);
     $html = space_br("<h1>" . $novel->title . "</h1>", 2);
     $html .= create_title_chap_ep($novel, $state->chap_id, $state->ep_id);
     $html .= create_div_text($novel, $state->chap_id, $state->ep_id);
-    $html .= create_div_text_links($novel, $state->chap_id, $state->ep_id);
+    $html = add_iframe($state->x, $html);
+    $html .= create_div_text_links($novel, $state);
     return $html;
 }
 

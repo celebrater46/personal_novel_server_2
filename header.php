@@ -9,7 +9,7 @@ function get_header($state){
     $div .= get_controller($state, false);
     $div .= space_br("</div>", 2);
     $div .= space_br("</div>", 1);
-    $burger = space_br('<div id="burger"><img class="burger" src="burger.png"></div>', 1);
+    $burger = space_br('<div id="burger"><img class="burger" src="img/burger.png"></div>', 1);
     return $div . $burger;
 }
 
@@ -60,14 +60,14 @@ function get_html_color($state, $is_nav){
     return $html;
 }
 
-function get_html_xy($is_nav){
+function get_html_xy($state, $is_nav){
     $html = space_br('<div class="xy label">', 3);
     $html .= space_br('<label for="xy' . ($is_nav ? "_nav" : "") . '">組み方向</label>', 3);
     $html .= space_br('</div>', 4);
     $html .= space_br('<div class="xy select">', 3);
     $html .= space_br('<select name="xy' . ($is_nav ? "_nav" : "") . '">', 4);
-    $html .= space_br('<option selected>横書き</option>', 5);
-    $html .= space_br('<option>縦書き</option>', 5);
+    $html .= space_br('<option' . ($state->x === 1 ? " selected" : "") . '>横書き</option>', 5);
+    $html .= space_br('<option' . ($state->x === 0 ? " selected" : "") . '>縦書き</option>', 5);
     $html .= space_br('</select>', 4);
     $html .= space_br('</div>', 3);
     return $html;
@@ -77,6 +77,6 @@ function get_controller($state, $is_nav){
     $family = get_html_font_family($state, $is_nav);
     $size = get_html_font_size($state, $is_nav);
     $color = get_html_color($state, $is_nav);
-    $xy = get_html_xy($is_nav);
+    $xy = get_html_xy($state, $is_nav);
     return $family . $size . $color . $xy;
 }
