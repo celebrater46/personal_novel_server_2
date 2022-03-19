@@ -26,7 +26,7 @@ function convert_to_dot($array){
             $str2 = str_replace("》》","《》《》",$str);
             $temp_array2 = explode("《》《》", $str2);
             for($i = 0; $i < $num; $i++){
-                $temp_array2[$i * 2 + 1] = $this->add_dot_ruby($temp_array2[$i * 2 + 1]);
+                $temp_array2[$i * 2 + 1] = add_dot_ruby($temp_array2[$i * 2 + 1]);
             }
             $str3 = implode($temp_array2);
             array_push($temp_array, $str3);

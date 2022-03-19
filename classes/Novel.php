@@ -32,11 +32,11 @@ class Novel
         if($this->has_chapters){
 //            echo $chap . "<br>";
 //            echo $ep . "<br>";
-//            var_dump($this->chapters);
+//            var_dump($this->chapters[2]);
             $start_ep_num = $this->chapters[$chap]->start_ep_num;
             $file_name = $this->chapters[$chap]->episodes[$ep - $start_ep_num]->file_name;
         } else {
-            $file_name = $this->episodes[$ep]->file_name;
+            $file_name = $this->episodes[$ep - 1]->file_name;
         }
         $text = [];
         if(file_exists($this->path . "txts/" . $file_name . ".txt")){

@@ -20,7 +20,7 @@ $error_msg = "";
 //$novel = new Novel($novel_id, $novels_list[$novel_id]);
 $novel = get_novel_obj($state->novel_id);
 $text = $novel->get_text($state->chap_id, $state->ep_id);
-$start_ep_num = $novel->chapters[$state->chap_id]->start_ep_num;
+$start_ep_num = $novel->has_chapters ? $novel->chapters[$state->chap_id]->start_ep_num : 0;
 
 //$list = file($novel->path . "list.txt"); // ["1|001|第一話", "1|2|第二話", "1|03|第三話", "2|4|第四話"...]
 //$temp = explode("|", $list[$ep_id]); // 1, 001, "第一話"
