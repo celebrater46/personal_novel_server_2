@@ -1,6 +1,6 @@
 <?php
 
-require_once "main.php";
+require_once "modules/main.php";
 require_once "pns_get_html.php";
 require_once "classes/State.php";
 require_once "classes/Novel.php";
@@ -48,7 +48,7 @@ $state = new State();
                             <ul>
                                 <?php foreach ($item->episodes as $episode) : ?>
                                     <li>
-                                        <a href="reader.php?novel=<?php echo h($id); ?>&chap=0&ep=<?php echo h($episode->id); ?>">
+                                        <a href="reader.php?novel=<?php echo h($id); ?>&chap=<?php echo h($item->id); ?>&ep=<?php echo h($episode->id + 1); ?>">
                                             <?php echo h($episode->title); ?>
                                         </a>
                                     </li>
@@ -63,7 +63,7 @@ $state = new State();
                     <ul>
                         <?php foreach ($novel->episodes as $episode) : ?>
                             <li>
-                                <a href="reader.php?novel=<?php echo h($id); ?>&chap=0&ep=<?php echo h($episode->id); ?>">
+                                <a href="reader.php?novel=<?php echo h($id); ?>&chap=0&ep=<?php echo h($episode->id + 1); ?>">
                                     <?php echo h($episode->title); ?>
                                 </a>
                             </li>

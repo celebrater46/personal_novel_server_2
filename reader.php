@@ -1,30 +1,32 @@
 <?php
 
-require_once "main.php";
+require_once "modules/main.php";
 require_once "pns_get_html.php";
 require_once "classes/State.php";
 //require_once "classes/Novel.php";
 require_once "classes/Episode.php";
 require_once "header.php";
 
-$novel_id = (int)$_GET["novel"];
-$chap_id = (int)$_GET["chap"];
-$ep_id = (int)$_GET["ep"];
-$prev = -1;
-$next = 1;
+$state = new State();
+//$novel_id = (int)$_GET["novel"];
+//$chap_id = (int)$_GET["chap"];
+//$ep_id = (int)$_GET["ep"];
+//$prev = -1;
+//$next = 1;
 $is_error = false;
 $error_msg = "";
 
 //$novels_list = file("novels/novels_list.txt");
 //$novel = new Novel($novel_id, $novels_list[$novel_id]);
-$novel = get_novel_obj($novel_id);
-$text = $novel->get_text($chap_id, $ep_id);
+$novel = get_novel_obj($state->novel_id);
+$text = $novel->get_text($state->chap_id, $state->ep_id);
+$start_ep_num = $novel->chapters[$state->chap_id]->start_ep_num;
 
 //$list = file($novel->path . "list.txt"); // ["1|001|第一話", "1|2|第二話", "1|03|第三話", "2|4|第四話"...]
 //$temp = explode("|", $list[$ep_id]); // 1, 001, "第一話"
 
 //$p = get_parameters(); // font_family, font_size, color, x
-$state = new State();
+//$state = new State();
 
 // list.txt の書式が正しいかのチェック
 //if(count($temp) === 3){
@@ -54,13 +56,13 @@ $state = new State();
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title><?php echo h($novel->title); ?></title>
-    <?php echo get_style($state); ?>
+    <?php echo get_style(); ?>
 </head>
 <body>
-    <?php echo get_header($state); ?>
+    <?php echo get_header(); ?>
     <div class="containter">
         <?php if(USE_GET_FUNCTION) : ?>
-            <?php echo get_html_reader($novel_id, $chap_id, $ep_id); ?>
+            <?php echo get_html_reader(); ?>
         <?php else: ?>
             <?php if ($is_error === true) : ?>
                 <h1>ERROR</h1>
@@ -70,10 +72,10 @@ $state = new State();
                     <?php echo h($novel->title); ?>
                 </h1>
                 <?php if($novel->has_chapters) : ?>
-                    <h2><?php echo h($novel->chapters[$chap_id]->title); ?></h2>
-                    <h3><?php echo h($novel->chapters[$chap_id]->episodes[$ep_id]->title); ?></h3>
+                    <h2><?php echo h($novel->chapters[$state->chap_id]->title); ?></h2>
+                    <h3><?php echo h($novel->chapters[$state->chap_id]->episodes[$state->ep_id - $start_ep_num]->title); ?></h3>
                 <?php else : ?>
-                    <h2><?php echo h($novel->episodes[$ep_id]->title); ?></h2>
+                    <h2><?php echo h($novel->episodes[$state->ep_id]->title); ?></h2>
                 <?php endif; ?>
                 <div class="text">
                     <?php foreach ($text as $line) : ?>
@@ -82,20 +84,20 @@ $state = new State();
                 </div>
                 <div class="text links">
                     <div>
-                        <?php if ($prev >= 0) : ?>
-                            <a href="reader.php?novel=<?php echo h($novel_id); ?>&chap=<?php echo h($chap_id); ?>&ep=<?php echo h($prev); ?>">
+                        <?php if ($state->ep_id - 1 >= 0) : ?>
+                            <a href="reader.php?novel=<?php echo h($state->novel_id); ?>&chap=<?php echo h($state->chap_id); ?>&ep=<?php echo h($state->ep_id - 1); ?>">
                                 ＜＜
                             </a>
                         <?php endif; ?>
                     </div>
                     <div>
-                        <a href="ep_list.php?novel=<?php echo h($novel_id); ?>">
+                        <a href="ep_list.php?novel=<?php echo h($state->novel_id); ?>">
                             一覧へ戻る
                         </a>
                     </div>
                     <div>
-                        <?php if ($next > 0) : ?>
-                            <a href="reader.php?novel=<?php echo h($novel_id); ?>&chap=<?php echo h($chap_id); ?>&ep=<?php echo h($next); ?>">
+                        <?php if ($state->ep_id + 1 > $novel->get_max_ep()) : ?>
+                            <a href="reader.php?novel=<?php echo h($state->novel_id); ?>&chap=<?php echo h($state->chap_id); ?>&ep=<?php echo h($state->ep_id + 1); ?>">
                                 ＞＞
                             </a>
                         <?php endif; ?>

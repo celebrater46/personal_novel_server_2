@@ -2,7 +2,7 @@
 
 //Copyright (C) Enin Fujimi All Rights Reserved.
 
-require_once "main.php";
+require_once "modules/main.php";
 require_once "classes/State.php";
 require_once "classes/Novel.php";
 require_once "header.php";

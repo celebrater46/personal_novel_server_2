@@ -1,8 +1,10 @@
 <?php
 
-require_once "main.php";
+require_once "modules/main.php";
+require_once "classes/State.php";
 
 function get_header($state){
+//    $state = new State();
     $div = space_br("<div id='navPc' class='novel controller'>", 0);
     $div .= space_br("<div>", 2);
     $div .= get_controller($state, false);
@@ -13,11 +15,13 @@ function get_header($state){
 }
 
 function get_nav($state){
+//    $state = new State();
     $controller = get_controller($state, true);
     return '<div id="navMobile">' . "\n" . $controller . '<div id="navi_close">　</div></div>' . "\n";
 }
 
 function get_html_font_family($state, $is_nav){
+//    $state = new State();
     $html = space_br('<div class="font family label">', 3);
     $html .= space_br('<label for="font_family' . ($is_nav ? "_nav" : "") . '">文字の種類</label>', 4);
     $html .= space_br('</div>', 3);
@@ -31,6 +35,7 @@ function get_html_font_family($state, $is_nav){
 }
 
 function get_html_font_size($state, $is_nav){
+//    $state = new State();
     $html = space_br('<div class="font size label">', 3);
     $html .= space_br('<label for="font_size' . ($is_nav ? "_nav" : "") . '">文字の大きさ</label>', 3);
     $html .= space_br('</div>', 3);
@@ -51,6 +56,7 @@ function get_html_font_size($state, $is_nav){
 }
 
 function get_html_color($state, $is_nav){
+//    $state = new State();
     $html = space_br('<div class="color label">', 3);
     $html .= space_br('<label for="color' . ($is_nav ? "_nav" : "") . '">背景色</label>', 4);
     $html .= space_br('</div>', 3);
@@ -78,6 +84,7 @@ function get_html_xy($is_nav){
 }
 
 function get_controller($state, $is_nav){
+//    $state = new State();
     $family = get_html_font_family($state, $is_nav);
     $size = get_html_font_size($state, $is_nav);
     $color = get_html_color($state, $is_nav);

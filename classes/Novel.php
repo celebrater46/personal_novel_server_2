@@ -2,7 +2,7 @@
 
 require_once "Chapter.php";
 require_once "Episode.php";
-require_once "converter.php";
+require_once "modules/converter.php";
 
 class Novel
 {
@@ -30,7 +30,11 @@ class Novel
     function get_text($chap, $ep){
 //        $file_name = "";
         if($this->has_chapters){
-            $file_name = $this->chapters[$chap]->episodes[$ep]->file_name;
+            echo $chap . "<br>";
+            echo $ep . "<br>";
+//            var_dump($this->chapters);
+            $start_ep_num = $this->chapters[$chap]->start_ep_num;
+            $file_name = $this->chapters[$chap]->episodes[$ep - $start_ep_num]->file_name;
         } else {
             $file_name = $this->episodes[$ep]->file_name;
         }
@@ -133,6 +137,18 @@ class Novel
             return true;
         } else {
             return false;
+        }
+    }
+
+    function get_max_ep(){
+        if($this->has_chapters){
+            $sum = 0;
+            foreach ($this->chapters as $chapter){
+                $sum += count($chapter->episodes);
+            }
+            return $sum;
+        } else {
+            return count($this->episodes);
         }
     }
 
