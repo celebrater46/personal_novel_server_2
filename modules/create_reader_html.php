@@ -17,7 +17,8 @@ function get_div_text($novel, $chap, $ep){
     $text = $novel->get_text($chap, $ep);
     $html = space_br("<div class='text'>", 2);
     foreach ($text as $line){
-        $html .= space_br('<p class="text line">' . $line . '</p>', 3);
+        $deleted = delete_br($line);
+        $html .= space_br('<p class="text line">' . $deleted . '</p>', 3);
     }
     $html .= space_br("</div>", 2);
     return $html;
@@ -37,11 +38,12 @@ function get_div_text_links($novel, $chap, $ep){
     $html .= space_br('<a href="' . $list_php . '?novel=' . $novel->id . '">一覧へ戻る</a>', 4);
     $html .= space_br('</div>', 3);
     $html .= space_br('<div>', 3);
-    $html .= space_br('<div>', 2);
+//    $html .= space_br('<div>', 2);
     if($ep + 1 < $ep_sum){
-        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap . '&ep=' . ($ep + 1) . '">＜＜</a>', 4);
+        $html .= space_br('<a href="' . $file . '?novel=' . $novel->id . '&chap=' . $chap . '&ep=' . ($ep + 1) . '">＞＞</a>', 4);
     }
     $html .= space_br('</div>', 3);
+    $html .= space_br('</div>', 2);
     $html .= space_br('<div class="back">', 2);
     $html .= space_br('<a href="' . INDEX_FILE . '">小説一覧へ戻る</a>', 3);
     $html .= space_br('</div>', 2);

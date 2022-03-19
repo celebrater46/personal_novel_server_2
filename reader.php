@@ -56,10 +56,10 @@ $start_ep_num = $novel->chapters[$state->chap_id]->start_ep_num;
     <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title><?php echo h($novel->title); ?></title>
-    <?php echo get_style(); ?>
+    <?php echo get_style($state); ?>
 </head>
 <body>
-    <?php echo get_header(); ?>
+    <?php echo get_header($state); ?>
     <div class="containter">
         <?php if(USE_GET_FUNCTION) : ?>
             <?php echo get_html_reader(); ?>
