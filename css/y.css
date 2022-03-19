@@ -19,3 +19,8 @@ div.iframe{
 div.caption p{
     margin: 0;
 }
+
+img.cover{
+    width: auto;
+    height: 100%;
+}

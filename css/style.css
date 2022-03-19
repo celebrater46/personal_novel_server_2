@@ -140,6 +140,10 @@ img.burger{
     height: 100%;
 }
 
+img.cover{
+    width: 100%;
+}
+
 div#navMobile {
     position: absolute;
     text-align: left;

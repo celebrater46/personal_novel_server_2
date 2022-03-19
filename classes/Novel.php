@@ -16,6 +16,7 @@ class Novel
     public $episodes = [];
     public $links = [];
     public $error = "";
+    public $cover = null; // cover.jpg || cover.png が作品フォルダ内にあるか
     public $nums_eps_in_chap = []; // [3, 5, 2] (白金記サンプル、各チャプターの話数)
     public $nums_chap_start = [1]; // [1, 4, 8]（白金記サンプル、各チャプターが何話めから始まるか）
 
@@ -27,6 +28,7 @@ class Novel
         $this->path = "novels/" . $temp[1] . "/";
         $this->caption = $this->get_caption();
         $this->has_chapters = $this->has_chapters();
+        $this->cover = $this->get_cover();
     }
 
     function get_text($chap, $ep){
@@ -61,6 +63,14 @@ class Novel
                     ]
                 );
             }
+        }
+    }
+
+    function get_cover(){
+        if(file_exists($this->path . "cover.png")){
+            return $this->path . "cover.png";
+        } else if(file_exists($this->path . "cover.jpg")){
+            return $this->path . "cover.jpg";
         }
     }
 
