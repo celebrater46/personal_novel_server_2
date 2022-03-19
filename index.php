@@ -35,14 +35,14 @@ foreach ($novels_list as $novel){
 <body>
     <?php echo get_header($state); ?>
     <div class="containter">
+        <h1>
+            <a href="/">
+                Personal Novel Server
+            </a>
+        </h1>
         <?php if(USE_GET_FUNCTION) : ?>
             <?php echo pns_get_html(); ?>
         <?php else: ?>
-            <h1>
-                <a href="/">
-                    Personal Novel Server
-                </a>
-            </h1>
             <?php for ($i = 0; $i < count($novels_list); $i++) : ?>
                 <hr>
                 <h2>
