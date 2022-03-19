@@ -148,13 +148,11 @@ div#navMobile {
     position: absolute;
     text-align: left;
     top: 5vh;
-    /*ナビメニューを左に隠した状態になる*/
     left: -150%;
     padding: 3vh 3vw 0;
     width: 44vw;
     height: 84vh;
     background: #222222;
-    /*０.7秒かけてナビメニューがスライドする*/
     transition: .7s;
 }
 

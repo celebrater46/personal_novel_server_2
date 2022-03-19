@@ -94,6 +94,12 @@ function delete_br($line){
     return str_replace(["\n", "\r", "\r\n"], "", $line);
 }
 
+function create_cover_img($cover){
+    if($cover !== null){
+        return space_br("<img class='cover' src='" . $cover . "' />", 2);
+    }
+}
+
 // エスケープ
 function h($s) {
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");

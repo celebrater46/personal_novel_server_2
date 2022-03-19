@@ -55,11 +55,6 @@ function get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, $arrow){
         if($ep - 1 > 0){
             $chap_prev = get_new_chap($novel, $chap, $ep - 1);
             return create_link_new_ep($novel->id, $chap_prev, $ep - 1, $arrow, $state);
-//                $html = '<a href="' . INDEX_FILE;
-//                $html .= '?pns=2&novel=' . $novel;
-//                $html .= '&chap=' . $chap . '&ep=' . ($ep - 1);
-//                $html .= '">' . $arrow . '</a>';
-//                return space_br($html, 4);
         } else {
             return "";
         }
@@ -70,11 +65,6 @@ function get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, $arrow){
         if($ep + 1 <= $ep_sum){
             $chap_next = get_new_chap($novel, $chap, $ep + 1);
             return create_link_new_ep($novel->id, $chap_next, $ep + 1, $arrow, $state);
-//                $html = '<a href="' . INDEX_FILE;
-//                $html .= '?pns=2&novel=' . $novel;
-//                $html .= '&chap=' . $chap . '&ep=' . ($ep + 1);
-//                $html .= '">' . $arrow . '</a>';
-//                return space_br($html, 4);
         } else {
             return "";
         }
@@ -85,15 +75,9 @@ function create_div_text_links($novel, $state){
     $chap = $state->chap_id;
     $ep = $state->ep_id;
     $ep_sum = $novel->get_max_ep();
-//    $chap_prev = get_new_chap($novel, $chap, $ep - 1);
-//    $chap_next = get_new_chap($novel, $chap, $ep + 1);
     $html = space_br('<div class="text links">', 2);
     $html .= space_br('<div>', 3);
     $html .= get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, "＜＜");
-//    if($ep - 1 > 0) {
-//        $new_ep = $state->x === 0 ? $ep + 1 : $ep - 1;
-//        $html .= space_br('<a href="' . INDEX_FILE . '?pns=2&novel=' . $novel->id . '&chap=' . $chap_prev . '&ep=' . $new_ep . '">＜＜</a>', 4);
-//    }
     $html .= space_br('</div>', 3);
     $html .= space_br('<div>', 3);
     $html .= space_br('<a href="' . INDEX_FILE . '?pns=1&novel=' . $novel->id . get_parameter($state) . '">一覧へ戻る</a>', 4);

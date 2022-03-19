@@ -11,12 +11,6 @@ function create_caption_html($caption){
     return $html;
 }
 
-function create_cover_img($cover){
-    if($cover !== null){
-        return space_br("<img class='cover' src='" . $cover . "' />", 2);
-    }
-}
-
 function create_index_html($novels, $state){
     $html = "";
     foreach ($novels as $novel){
