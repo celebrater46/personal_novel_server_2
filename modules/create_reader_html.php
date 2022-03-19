@@ -2,7 +2,7 @@
 
 require_once "main.php";
 
-function get_title_chap_ep($novel, $chap, $ep){
+function create_title_chap_ep($novel, $chap, $ep){
     if($novel->has_chapters){
         $start_ep_num = $novel->chapters[$chap]->start_ep_num;
         $html = space_br("<h2>" . $novel->chapters[$chap]->title . "</h2>", 2);
@@ -13,7 +13,7 @@ function get_title_chap_ep($novel, $chap, $ep){
     }
 }
 
-function get_div_text($novel, $chap, $ep){
+function create_div_text($novel, $chap, $ep){
     $text = $novel->get_text($chap, $ep);
     $html = space_br("<div class='text'>", 2);
     foreach ($text as $line){
@@ -40,7 +40,7 @@ function get_new_chap($novel, $chap, $ep){
     }
 }
 
-function get_div_text_links($novel, $chap, $ep){
+function create_div_text_links($novel, $chap, $ep){
     $file = "reader.php";
     $list_php = "ep_list.php";
     $ep_sum = $novel->get_max_ep();

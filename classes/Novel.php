@@ -2,6 +2,7 @@
 
 require_once "Chapter.php";
 require_once "Episode.php";
+require_once "modules/main.php";
 require_once "modules/converter.php";
 
 class Novel
@@ -13,6 +14,7 @@ class Novel
     public $has_chapters;
     public $chapters = [];
     public $episodes = [];
+    public $links = [];
     public $error = "";
     public $nums_eps_in_chap = []; // [3, 5, 2] (白金記サンプル、各チャプターの話数)
     public $nums_chap_start = [1]; // [1, 4, 8]（白金記サンプル、各チャプターが何話めから始まるか）
@@ -44,6 +46,22 @@ class Novel
             array_push($text, $file_name . ".txt が存在しないか、読み込めません。");
         }
         return $text;
+    }
+
+    function get_links_to_posting_sites(){
+        if(file_exists($this->path . "links.txt")){
+            $lines = file($this->path . "links.txt");
+            foreach ($lines as $line){
+                $temp = explode("|", $line);
+                array_push(
+                    $this->links,
+                    [
+                        "site_name" => $temp[0],
+                        "url" => delete_br($temp[1])
+                    ]
+                );
+            }
+        }
     }
 
     function get_caption(){

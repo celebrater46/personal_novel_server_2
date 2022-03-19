@@ -3,6 +3,7 @@
 //Copyright (C) Enin Fujimi All Rights Reserved.
 
 require_once "modules/main.php";
+require_once "pns_get_html.php";
 require_once "classes/State.php";
 require_once "classes/Novel.php";
 require_once "header.php";
@@ -34,25 +35,28 @@ foreach ($novels_list as $novel){
 <body>
     <?php echo get_header($state); ?>
     <div class="containter">
-        <h1>
-            <a href="/">
-                Personal Novel Server
-            </a>
-        </h1>
-
-        <?php for ($i = 0; $i < count($novels_list); $i++) : ?>
-            <hr>
-            <h2>
-                <a href="ep_list.php?novel=<?php echo h($i) . get_parameter($state); ?>">
-                    <?php echo h($novels[$i]->title); ?>
+        <?php if(USE_GET_FUNCTION) : ?>
+            <?php echo get_html_index(); ?>
+        <?php else: ?>
+            <h1>
+                <a href="/">
+                    Personal Novel Server
                 </a>
-            </h2>
-            <div class="caption">
-                <?php foreach ($novels[$i]->caption as $line) : ?>
-                    <p><?php echo h($line) ?></p>
-                <?php endforeach; ?>
-            </div>
-        <?php endfor; ?>
+            </h1>
+            <?php for ($i = 0; $i < count($novels_list); $i++) : ?>
+                <hr>
+                <h2>
+                    <a href="ep_list.php?novel=<?php echo h($i) . get_parameter($state); ?>">
+                        <?php echo h($novels[$i]->title); ?>
+                    </a>
+                </h2>
+                <div class="caption">
+                    <?php foreach ($novels[$i]->caption as $line) : ?>
+                        <p><?php echo h($line) ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endfor; ?>
+        <?php endif; ?>
     </div>
     <?php echo get_nav($state); ?>
     <script type="text/javascript" src="js/burger.js"></script>

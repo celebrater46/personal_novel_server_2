@@ -9,7 +9,7 @@ require_once "header.php";
 $state = new State();
 $is_error = false;
 $error_msg = "";
-$novel = get_novel_obj($state->novel_id);
+$novel = get_novel_obj_once($state->novel_id);
 $text = $novel->get_text($state->chap_id, $state->ep_id);
 $start_ep_num = $novel->has_chapters ? $novel->chapters[$state->chap_id]->start_ep_num : 0;
 

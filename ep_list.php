@@ -6,9 +6,9 @@ require_once "classes/State.php";
 require_once "classes/Novel.php";
 require_once "header.php";
 
-$id = (int)$_GET["novel"];
-$novel = get_novel_obj($id);
+//$id = (int)$_GET["novel"];
 $state = new State();
+$novel = get_novel_obj_once($state->novel_id);
 
 ?>
 
@@ -27,7 +27,7 @@ $state = new State();
     <?php echo get_header($state); ?>
     <div class="containter">
         <?php if(USE_GET_FUNCTION) : ?>
-            <?php echo get_html_ep_list($id); ?>
+            <?php echo get_html_ep_list(); ?>
         <?php else: ?>
             <h1>
                 <?php echo h($novel->title); ?>

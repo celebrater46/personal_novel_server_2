@@ -45,7 +45,7 @@ function create_html_chap_ep($novel, $file){
     return $html;
 }
 
-function create_html_ep_list($novel){
+function create_ep_list_html($novel){
     $file = "reader.php";
     $html = space_br("<h1>" . $novel->title . "</h1>", 0);
     $html .= space_br('<div class="caption">', 2);
