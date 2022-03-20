@@ -1,6 +1,6 @@
 "use strict";
 
-const burger = document.getElementById('burger');
+const burger = document.getElementById('pns_burger');
 const div = document.getElementById('navi_close');
 
 const toggle = () => {

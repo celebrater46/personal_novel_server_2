@@ -29,6 +29,8 @@ function create_caption_html($caption){
 
 function create_index_html($novels, $state){
     $html = get_header($state);
+    $html .= space_br('<h1><a href="/">' . ($state->pns === 0 ? SITE_NAME : "") . '</a></h1>', 2);
+    $html .= space_br('<p class="description">'. ($state->pns === 0 ? DESCRIPTION : "") . '</p>', 2);
     foreach ($novels as $novel){
         $html .= $novel->id === 0 ? "" : space_br("<hr>", 2);
         if($state->x === 1){

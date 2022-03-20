@@ -57,7 +57,7 @@ function get_color($num){
             $str .= space_br("a:hover{ color: orangered; }", 2);
             break;
         case 3:
-            $str .= space_br("body{ background-color: #cccccc; color: black; background-image : url(img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+            $str .= space_br("body{ background-color: #cccccc; color: black; background-image : url(" . PNS_PATH . "img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
 //            $str .= space_br("div.container{ background-image : url(img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
             $str .= space_br("div.novel.controller{ background-color: silver; color: black; }", 2);
             $str .= space_br("div#nav{ background-color: silver; color: black; }", 2);
@@ -65,7 +65,7 @@ function get_color($num){
             $str .= space_br("a:hover{ color: blue; }", 2);
             break;
         case 4:
-            $str .= space_br("body{ background-color: black; color: silver; background-image : url(img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+            $str .= space_br("body{ background-color: black; color: silver; background-image : url(" . PNS_PATH . "img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
 //            $str .= space_br("div.container{  }", 2);
             $str .= space_br("div.novel.controller{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("div#nav{ background-color: #333333; color: silver; }", 2);
@@ -133,12 +133,10 @@ EOT;
 }
 
 function get_js_links(){
-    return <<<EOT
-<script type="text/javascript" src="js/burger.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/movePage.js"></script>
-EOT;
-
+    $html = '<script type="text/javascript" src="' . PNS_PATH . 'js/burger.js"></script>';
+    $html .= '<script type="text/javascript" src="' . PNS_PATH . 'js/main.js"></script>';
+    $html .= '<script type="text/javascript" src="' . PNS_PATH . 'js/movePage.js"></script>';
+    return $html;
 }
 
 // エスケープ

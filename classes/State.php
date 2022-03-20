@@ -3,6 +3,7 @@
 namespace personal_novel_server\classes;
 
 //require_once "./init.php";
+require_once( dirname(__FILE__) . '/../init.php');
 
 class State
 {

@@ -62,10 +62,10 @@ img.cover{
     width: auto; height: 100%;
 }
 
-div#burger {
+div#pns_burger {
     display: block;
     position: static;
-    margin: -5vh -2vw auto auto;
+    margin: 0 -2vw auto auto;
 }
 
 @media screen and (max-width: 1000px){
@@ -89,7 +89,7 @@ div#burger {
         transform: translateY(100vh);
     }
 
-    div#burger {
+    div#pns_burger {
         margin-top: -2vh;
     }
 }

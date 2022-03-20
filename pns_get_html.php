@@ -78,7 +78,7 @@ function get_novel_obj_all($list){
 }
 
 function get_novel_list(){
-    $list = "novels/novels_list.txt";
+    $list = PNS_PATH . "novels/novels_list.txt";
     if(file_exists($list)){
         return file($list);
     } else {
