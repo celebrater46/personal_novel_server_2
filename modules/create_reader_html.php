@@ -124,7 +124,6 @@ function create_div_text_links($novel, $state){
 
 function create_html_reader($novel, $state){
     $html = get_header($state);
-//    $html = $state->x === 0 ? create_burger_img_into_div() : "";
     $html .= space_br("<h1>" . $novel->title . "</h1>", 2);
     $html .= create_title_chap_ep($novel, $state->chap_id, $state->ep_id);
     $html .= create_div_text($novel, $state->chap_id, $state->ep_id);

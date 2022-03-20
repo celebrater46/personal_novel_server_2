@@ -23,7 +23,6 @@ $state = new State();
     <?php echo get_style($state); ?>
 </head>
 <body>
-<!--    --><?php //echo get_header($state); ?>
     <div class="containter">
         <h1>
             <a href="/">

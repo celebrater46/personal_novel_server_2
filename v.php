@@ -24,7 +24,6 @@ $state = new State();
     <?php echo get_style($state); ?>
 </head>
 <body>
-<?php //echo get_header($state); ?>
 <div id="container" class="containter">
     <?php echo pns_get_html(); ?>
     <div class="backHome">
