@@ -48,17 +48,21 @@ function get_html_font_size($state, $is_nav){
 }
 
 function get_html_color($state, $is_nav){
-    $html = space_br('<div class="color label">', 3);
-    $html .= space_br('<label for="color' . ($is_nav ? "_nav" : "") . '">背景色</label>', 4);
-    $html .= space_br('</div>', 3);
-    $html .= space_br('<div class="color select">', 3);
-    $html .= space_br('<select name="color' . ($is_nav ? "_nav" : "") . '">', 4);
-    $html .= space_br('<option' . ($state->color === 0 ? " selected" : "") . '>黒</option>', 5);
-    $html .= space_br('<option' . ($state->color === 1 ? " selected" : "") . '>白</option>', 5);
-    $html .= space_br('<option' . ($state->color === 2 ? " selected" : "") . '>ベージュ</option>', 5);
-    $html .= space_br('</select>', 4);
-    $html .= space_br('</div>', 3);
-    return $html;
+    if(LIGHT_AND_DARK !== true){
+        $html = space_br('<div class="color label">', 3);
+        $html .= space_br('<label for="color' . ($is_nav ? "_nav" : "") . '">背景色</label>', 4);
+        $html .= space_br('</div>', 3);
+        $html .= space_br('<div class="color select">', 3);
+        $html .= space_br('<select name="color' . ($is_nav ? "_nav" : "") . '">', 4);
+        $html .= space_br('<option' . ($state->color === 0 ? " selected" : "") . '>黒</option>', 5);
+        $html .= space_br('<option' . ($state->color === 1 ? " selected" : "") . '>白</option>', 5);
+        $html .= space_br('<option' . ($state->color === 2 ? " selected" : "") . '>ベージュ</option>', 5);
+        $html .= space_br('</select>', 4);
+        $html .= space_br('</div>', 3);
+        return $html;
+    } else {
+        return "";
+    }
 }
 
 function get_html_xy($state, $is_nav){

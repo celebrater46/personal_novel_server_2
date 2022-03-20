@@ -23,13 +23,13 @@ $state = new State();
     <?php echo get_style($state); ?>
 </head>
 <body>
-    <div class="containter">
+    <div id="container" class="container">
         <h1>
             <a href="/">
-                <?php echo SITE_NAME; ?>
+                <?php echo $state->pns === 0 ? SITE_NAME : ""; ?>
             </a>
         </h1>
-        <p class="description"><?php echo DESCRIPTION; ?></p>
+        <p class="description"><?php echo $state->pns === 0 ? DESCRIPTION : ""; ?></p>
         <?php echo pns_get_html(); ?>
     </div>
     <?php echo get_nav($state); ?>

@@ -24,7 +24,7 @@ $state = new State();
     <?php echo get_style($state); ?>
 </head>
 <body>
-<div id="container" class="containter">
+<div id="container" class="container">
     <?php echo pns_get_html(); ?>
     <div class="backHome">
         <a href="<?php echo INDEX_FILE; ?>">トップへ戻る</a>

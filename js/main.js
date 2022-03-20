@@ -50,8 +50,10 @@ font_size.onchange = event => {
     go_new_url("size", font_size.selectedIndex);
 }
 
-color.onchange = event => {
-    go_new_url("color", color.selectedIndex);
+if(color !== null){
+    color.onchange = event => {
+        go_new_url("color", color.selectedIndex);
+    }
 }
 
 xy.onchange = event => {
@@ -67,8 +69,10 @@ font_size_nav.onchange = event => {
     go_new_url("size", font_size_nav.selectedIndex);
 }
 
-color_nav.onchange = event => {
-    go_new_url("color", color_nav.selectedIndex);
+if(color_nav !== null){
+    color_nav.onchange = event => {
+        go_new_url("color", color_nav.selectedIndex);
+    }
 }
 
 xy_nav.onchange = event => {

@@ -56,6 +56,22 @@ function get_color($num){
             $str .= space_br("a{ color: brown; }", 2);
             $str .= space_br("a:hover{ color: orangered; }", 2);
             break;
+        case 3:
+            $str .= space_br("body{ background-color: #cccccc; color: black; background-image : url(img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+//            $str .= space_br("div.container{ background-image : url(img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+            $str .= space_br("div.novel.controller{ background-color: silver; color: black; }", 2);
+            $str .= space_br("div#nav{ background-color: silver; color: black; }", 2);
+            $str .= space_br("a{ color: blueviolet; }", 2);
+            $str .= space_br("a:hover{ color: blue; }", 2);
+            break;
+        case 4:
+            $str .= space_br("body{ background-color: black; color: silver; background-image : url(img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+//            $str .= space_br("div.container{  }", 2);
+            $str .= space_br("div.novel.controller{ background-color: #333333; color: silver; }", 2);
+            $str .= space_br("div#nav{ background-color: #333333; color: silver; }", 2);
+            $str .= space_br("a{ color: goldenrod; }", 2);
+            $str .= space_br("a:hover{ color: gold; }", 2);
+            break;
     }
     return $str;
 }
