@@ -14,6 +14,11 @@ div.containter{
     overflow: auto;
 }
 
+div#navPc{
+    left: auto;
+    right: 0;
+}
+
 div.iframe{
     writing-mode: vertical-rl;
     margin: 5vh 0;

@@ -87,10 +87,13 @@ div.iframe{
 
 div#navPc{
     /*background-color: #333333;*/
+    font-size: 1rem;
     width: 100vw;
     position: fixed;
     top: -50px;
+    left: 0;
     transition: .7s;
+    writing-mode: horizontal-tb;
 }
 
 div#navPc > div{

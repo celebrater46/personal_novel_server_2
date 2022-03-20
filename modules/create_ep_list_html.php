@@ -47,7 +47,8 @@ function create_html_chap_ep($novel, $state){
 }
 
 function create_ep_list_html($novel, $state){
-    $html = $state->x === 0 ? create_burger_img_into_div() : "";
+    $html = get_header($state);
+//    $html = $state->x === 0 ? create_burger_img_into_div() : "";
     if($state->x === 1){
         $html .= create_cover_img($novel->cover);
     }

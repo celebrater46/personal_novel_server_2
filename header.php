@@ -9,7 +9,9 @@ function get_header($state){
     $div .= get_controller($state, false);
     $div .= space_br("</div>", 2);
     $div .= space_br("</div>", 1);
-    $burger = $state->x === 1 ? space_br('<div id="burger"><img class="burger" src="img/burger.png"></div>', 1) : "";
+//    $burger = $state->x === 1 ? space_br('<div id="burger"><img class="burger" src="img/burger.png"></div>', 1) : "";
+    $burger = space_br('<div id="burger"><img class="burger" src="img/burger.png"></div>', 1);
+//    return $div;
     return $div . $burger;
 }
 

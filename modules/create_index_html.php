@@ -26,7 +26,9 @@ function create_caption_html($caption){
 }
 
 function create_index_html($novels, $state){
-    $html = $state->x === 0 ? create_burger_img_into_div() : "";
+//    $html = $state->x === 0 ? create_burger_img_into_div() : "";
+    $html = get_header($state);
+//    $html .= create_burger_img_into_div();
     foreach ($novels as $novel){
         $html .= $novel->id === 0 ? "" : space_br("<hr>", 2);
         if($state->x === 1){
