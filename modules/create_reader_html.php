@@ -13,12 +13,25 @@ function create_title_chap_ep($novel, $chap, $ep){
     }
 }
 
+function get_text_line($line){
+    $deleted = delete_br($line);
+    return space_br('<p class="text line">' . $deleted . '</p>', 3);
+}
+
 function create_div_text($novel, $chap, $ep){
     $text = $novel->get_text($chap, $ep);
     $html = space_br("<div class='text'>", 2);
+    $deleted_first_blank = false;
     foreach ($text as $line){
-        $deleted = delete_br($line);
-        $html .= space_br('<p class="text line">' . $deleted . '</p>', 3);
+        if($line !== "" && $line !== "　"){
+            $deleted_first_blank = true;
+            $html .= get_text_line($line);
+        } else {
+            if($deleted_first_blank){
+                $html .= get_text_line($line);
+            }
+        }
+
     }
     $html .= space_br("</div>", 2);
     return $html;
