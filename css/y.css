@@ -60,7 +60,7 @@ img.cover{
 div#burger {
     display: block;
     position: static;
-    margin: -2vh -2vw auto auto;
+    margin: -5vh -2vw auto auto;
 }
 
 @media screen and (max-width: 1000px){
@@ -82,5 +82,9 @@ div#burger {
 
     .mobilePanelIn{
         transform: translateY(100vh);
+    }
+
+    div#burger {
+        margin-top: -2vh;
     }
 }

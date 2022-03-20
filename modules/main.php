@@ -120,6 +120,7 @@ function get_js_links(){
     return <<<EOT
 <script type="text/javascript" src="js/burger.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/movePage.js"></script>
 EOT;
 
 }

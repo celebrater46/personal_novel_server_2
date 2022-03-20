@@ -25,13 +25,19 @@ $state = new State();
 </head>
 <body>
 <?php echo get_header($state); ?>
-<div class="containter">
+<div id="container" class="containter">
     <?php echo pns_get_html(); ?>
     <div class="backHome">
         <a href="<?php echo INDEX_FILE; ?>">トップへ戻る</a>
     </div>
 </div>
 <?php echo get_nav($state); ?>
+<div id="leftButton" class="stealthButton lr" onclick="clickedButton(true)">
+    ＜＜
+</div>
+<div id="rightButton" class="stealthButton lr" onclick="clickedButton(false)">
+    ＞＞
+</div>
 <?php echo get_js_links(); ?>
 <script>
     window.scrollTo({

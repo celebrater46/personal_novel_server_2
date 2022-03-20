@@ -227,6 +227,36 @@ div#navi_close{
     font-family: "Sawarabi Mincho";
 }
 
+div.stealthButton{
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    color: white;
+    background-color: gray;
+    position: fixed;
+    border-radius: 50%;
+}
+
+div.stealthButton:hover{
+    opacity: 0.5;
+}
+
+div.stealthButton.lr{
+    width: 30vh;
+    height: 30vh;
+    top: 35vh;
+}
+
+div#leftButton{
+    left: 5vw;
+}
+
+div#rightButton{
+    right: 5vw;
+}
+
 @media screen and (max-width: 1000px){
     html{
         font-size: 4vw;
