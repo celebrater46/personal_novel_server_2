@@ -1,5 +1,7 @@
 <?php
 
+namespace personal_novel_server\modules;
+
 require_once "main.php";
 
 function create_title_chap_ep($novel, $chap, $ep){
@@ -24,9 +26,9 @@ function create_div_text($novel, $chap, $ep){
     foreach ($text as $line){
         $deleted = delete_br($line);
         if($deleted !== "" && $deleted !== "　"
-        && preg_match("/<Title>/i", $line) === 0
-        && preg_match("/<Chapter>/i", $line) === 0
-        && preg_match("/<Sub>/i", $line) === 0)
+            && preg_match("/<Title>/i", $line) === 0
+            && preg_match("/<Chapter>/i", $line) === 0
+            && preg_match("/<Sub>/i", $line) === 0)
         {
             $deleted_first_blank = true;
             $html .= get_text_line($deleted);
@@ -130,3 +132,4 @@ function create_html_reader($novel, $state){
     $html .= create_div_text_links($novel, $state);
     return $html;
 }
+

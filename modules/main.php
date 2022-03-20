@@ -1,6 +1,6 @@
 <?php
 
-require_once "./init.php";
+namespace personal_novel_server\modules;
 
 function get_font_family($num){
     if($num === 0){
@@ -145,3 +145,4 @@ EOT;
 function h($s) {
     return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
 }
+

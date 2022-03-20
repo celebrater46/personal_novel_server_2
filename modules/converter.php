@@ -1,5 +1,7 @@
 <?php
 
+namespace personal_novel_server\modules;
+
 function convert_to_ruby($array){
     $temp_array = [];
     foreach ($array as $line){
@@ -51,3 +53,4 @@ function add_dot_ruby($str) {
     }
     return $temp_str;
 }
+

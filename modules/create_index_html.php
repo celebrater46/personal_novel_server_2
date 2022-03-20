@@ -1,5 +1,7 @@
 <?php
 
+namespace personal_novel_server\modules;
+
 require_once "main.php";
 
 function create_links_to_posting_sites($novel, $state){

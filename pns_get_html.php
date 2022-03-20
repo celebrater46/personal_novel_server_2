@@ -1,6 +1,11 @@
 <?php
 
 // 外部サイト組込出力用
+namespace personal_novel_server;
+
+use personal_novel_server\classes\State;
+use personal_novel_server\classes\Novel;
+use personal_novel_server\modules as modules;
 
 require_once "classes/Novel.php";
 require_once "classes/State.php";
@@ -21,9 +26,9 @@ function pns_get_html(){
 
 function add_iframe($x, $html){
     if($x === 0){
-        $div = space_br("<div class='iframe'>", 1);
+        $div = modules\space_br("<div class='iframe'>", 1);
         $div .= $html;
-        $div .= space_br("</div>", 1);
+        $div .= modules\space_br("</div>", 1);
         return $div;
     } else {
         return $html;
@@ -33,17 +38,17 @@ function add_iframe($x, $html){
 function get_html_index($state){
     $list = get_novel_list();
     $novels = get_novel_obj_all($list);
-    return create_index_html($novels, $state);
+    return modules\create_index_html($novels, $state);
 }
 
 function get_html_ep_list($state){
     $novel = get_novel_obj_once($state->novel_id);
-    return create_ep_list_html($novel, $state);
+    return modules\create_ep_list_html($novel, $state);
 }
 
 function get_html_reader($state){
     $novel = get_novel_obj_once($state->novel_id);
-    return create_html_reader($novel, $state);
+    return modules\create_html_reader($novel, $state);
 }
 
 function get_novel_obj($id, $line){
@@ -80,3 +85,4 @@ function get_novel_list(){
         return ["Not found: " . $list];
     }
 }
+

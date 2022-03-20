@@ -1,5 +1,7 @@
 <?php
 
+namespace personal_novel_server\modules;
+
 function create_li_ep($novel_id, $chapter, $state){
     $array = [];
     foreach ($chapter->episodes as $episode){

@@ -1,5 +1,7 @@
 <?php
 
+namespace personal_novel_server\classes;
+
 //require_once "./init.php";
 
 class State

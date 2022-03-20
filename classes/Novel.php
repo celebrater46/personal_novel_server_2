@@ -1,9 +1,13 @@
 <?php
 
+namespace personal_novel_server\classes;
+
+use personal_novel_server\modules as modules;
+
 require_once "Chapter.php";
 require_once "Episode.php";
-require_once "modules/main.php";
-require_once "modules/converter.php";
+//require_once "modules/main.php";
+//require_once "modules/converter.php";
 
 class Novel
 {
@@ -42,8 +46,8 @@ class Novel
         $text = [];
         if(file_exists($this->path . "txts/" . $file_name . ".txt")){
             $array = file($this->path . "txts/" . $file_name . ".txt");
-            $array2 = convert_to_dot($array);
-            $text = convert_to_ruby($array2);
+            $array2 = modules\convert_to_dot($array);
+            $text = modules\convert_to_ruby($array2);
         } else {
             array_push($text, "[Error]");
             array_push($text, $file_name . ".txt が存在しないか、読み込めません。");
@@ -60,7 +64,7 @@ class Novel
                     $this->links,
                     [
                         "site_name" => $temp[0],
-                        "url" => delete_br($temp[1])
+                        "url" => modules\delete_br($temp[1])
                     ]
                 );
             }

@@ -1,5 +1,9 @@
 <?php
 
+namespace personal_novel_server;
+
+use personal_novel_server\classes\Novel;
+
 require_once "classes/Novel.php";
 
 $path = isset($_POST["path"]) ? $_POST["path"] : null;
@@ -70,3 +74,4 @@ function get_list (){
     }
     return $separated;
 }
+

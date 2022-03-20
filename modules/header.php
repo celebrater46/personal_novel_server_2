@@ -1,5 +1,7 @@
 <?php
 
+namespace personal_novel_server\modules;
+
 require_once "modules/main.php";
 require_once "classes/State.php";
 

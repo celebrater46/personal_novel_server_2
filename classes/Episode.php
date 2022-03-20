@@ -1,5 +1,7 @@
 <?php
 
+namespace personal_novel_server\classes;
+
 class Episode
 {
     public $id;
