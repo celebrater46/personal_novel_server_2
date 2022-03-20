@@ -14,13 +14,6 @@ function create_title_chap_ep($novel, $chap, $ep){
 }
 
 function get_text_line($line){
-//    var_dump($line);
-//    if(preg_match("/<Title>/i", $line) === 0
-//    && preg_match("/<Chapter>/i", $line) === 0
-//    && preg_match("/<Sub>/i", $line) === 0)
-//    {
-//        return space_br('<p class="text line">' . $line . '</p>', 3);
-//    }
     return space_br('<p class="text line">' . $line . '</p>', 3);
 }
 
