@@ -32,7 +32,7 @@ function separate_once($path){
     delete_texts($path);
     if(file_exists($unified)){
         $lines = file($unified);
-        $novel = new Novel(0, $path);
+        $novel = new Novel(0, "hoge|" . $path);
         $novel->separate_unified_text(1, $lines);
         echo "Separated: " . $unified . ".<br>";
     } else {

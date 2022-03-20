@@ -14,8 +14,14 @@ function create_title_chap_ep($novel, $chap, $ep){
 }
 
 function get_text_line($line){
-    $deleted = delete_br($line);
-    return space_br('<p class="text line">' . $deleted . '</p>', 3);
+//    var_dump($line);
+//    if(preg_match("/<Title>/i", $line) === 0
+//    && preg_match("/<Chapter>/i", $line) === 0
+//    && preg_match("/<Sub>/i", $line) === 0)
+//    {
+//        return space_br('<p class="text line">' . $line . '</p>', 3);
+//    }
+    return space_br('<p class="text line">' . $line . '</p>', 3);
 }
 
 function create_div_text($novel, $chap, $ep){
@@ -23,12 +29,17 @@ function create_div_text($novel, $chap, $ep){
     $html = space_br("<div class='text'>", 2);
     $deleted_first_blank = false;
     foreach ($text as $line){
-        if($line !== "" && $line !== "　"){
+        $deleted = delete_br($line);
+        if($deleted !== "" && $deleted !== "　"
+        && preg_match("/<Title>/i", $line) === 0
+        && preg_match("/<Chapter>/i", $line) === 0
+        && preg_match("/<Sub>/i", $line) === 0)
+        {
             $deleted_first_blank = true;
-            $html .= get_text_line($line);
+            $html .= get_text_line($deleted);
         } else {
             if($deleted_first_blank){
-                $html .= get_text_line($line);
+                $html .= get_text_line($deleted);
             }
         }
 
