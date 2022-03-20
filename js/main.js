@@ -64,7 +64,7 @@ font_family_nav.onchange = event => {
 }
 
 font_size_nav.onchange = event => {
-    go_new_url("sizes", font_size_nav.selectedIndex);
+    go_new_url("size", font_size_nav.selectedIndex);
 }
 
 color_nav.onchange = event => {

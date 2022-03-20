@@ -43,12 +43,7 @@ function get_html_ep_list($state){
 
 function get_html_reader($state){
     $novel = get_novel_obj_once($state->novel_id);
-    $html = space_br("<h1>" . $novel->title . "</h1>", 2);
-    $html .= create_title_chap_ep($novel, $state->chap_id, $state->ep_id);
-    $html .= create_div_text($novel, $state->chap_id, $state->ep_id);
-//    $html = add_iframe($state->x, $html);
-    $html .= create_div_text_links($novel, $state);
-    return $html;
+    return create_html_reader($novel, $state);
 }
 
 function get_novel_obj($id, $line){

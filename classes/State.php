@@ -3,6 +3,7 @@
 class State
 {
     public $pns; // 0 = index, 1 = ep_list, 2 = reader
+    public $is_phone;
     public $novel_id;
     public $chap_id;
     public $ep_id;
@@ -16,6 +17,7 @@ class State
 
     function __construct(){
         $this->pns = isset($_GET["pns"]) ? (int)$_GET["pns"] : 0;
+        $this->is_phone = $this->check_is_phone();
         $this->novel_id = isset($_GET["novel"]) ? (int)$_GET["novel"] : 0;
         $this->chap_id = isset($_GET["chap"]) ? (int)$_GET["chap"] : 0;
         $this->ep_id = isset($_GET["ep"]) ? (int)$_GET["ep"] : 1;
@@ -24,6 +26,11 @@ class State
         $this->color = isset($_GET["color"]) ? (int)$_GET["color"] : 0;
         $this->x = isset($_GET["x"]) ? (int)$_GET["x"] : 1;
         $this->get_other_states();
+    }
+
+    function check_is_phone(){
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        return preg_match('/iphone|ipod|ipad|android/ui', $user_agent) != 0;
     }
 
     function get_other_states(){

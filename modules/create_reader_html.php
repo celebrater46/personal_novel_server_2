@@ -49,11 +49,6 @@ function create_link_new_ep($novel, $chap, $ep, $arrow, $state){
 }
 
 function get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, $arrow){
-//    if($state->x === 0)
-//    {
-//        return "";
-//    }
-//    else if($state->x === 1 && $arrow === "＜＜")
     if($arrow === "＜＜" || $arrow === "前の話へ")
     {
         if($ep - 1 > 0){
@@ -63,7 +58,6 @@ function get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, $arrow){
             return "";
         }
     }
-//    else if($state->x === 1 && $arrow === "＞＞")
     else if($arrow === "＞＞" || $arrow === "次の話へ")
     {
         if($ep + 1 <= $ep_sum){
@@ -108,5 +102,14 @@ function create_div_text_links($novel, $state){
     $html .= space_br('<div class="back">', 2);
     $html .= space_br('<a href="' . get_page_file_name($state->x) . "?pns=0" . get_parameter($state) . '">小説一覧へ戻る</a>', 3);
     $html .= space_br('</div>', 2);
+    return $html;
+}
+
+function create_html_reader($novel, $state){
+    $html = $state->x === 0 ? create_burger_img_into_div() : "";
+    $html .= space_br("<h1>" . $novel->title . "</h1>", 2);
+    $html .= create_title_chap_ep($novel, $state->chap_id, $state->ep_id);
+    $html .= create_div_text($novel, $state->chap_id, $state->ep_id);
+    $html .= create_div_text_links($novel, $state);
     return $html;
 }

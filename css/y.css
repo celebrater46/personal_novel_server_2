@@ -60,5 +60,27 @@ img.cover{
 div#burger {
     display: block;
     position: static;
-    margin: -5vh -2vw auto auto;
+    margin: -2vh -2vw auto auto;
+}
+
+@media screen and (max-width: 1000px){
+    div.containter{
+        margin: 0;
+    }
+
+    div#navMobile {
+        position: fixed;
+        text-align: left;
+        top: -90vh;
+        left: 28vw;
+        right: 0;
+        padding: 3vh 3vw 0;
+        width: 44vw;
+        height: 60vh;
+        transition: .7s;
+    }
+
+    .mobilePanelIn{
+        transform: translateY(100vh);
+    }
 }

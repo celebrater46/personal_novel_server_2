@@ -26,11 +26,6 @@ $state = new State();
 <body>
 <?php echo get_header($state); ?>
 <div class="containter">
-    <h1>
-        <a href="/">
-            <!--                --><?php //echo SITE_NAME; ?>
-        </a>
-    </h1>
     <?php echo pns_get_html(); ?>
     <div class="backHome">
         <a href="<?php echo INDEX_FILE; ?>">トップへ戻る</a>
@@ -39,9 +34,8 @@ $state = new State();
 <?php echo get_nav($state); ?>
 <?php echo get_js_links(); ?>
 <script>
-    // document.getElementById("container").scrollLeft = 10000;
     window.scrollTo({
-        left: 10000,
+        left: 1000000,
     });
 </script>
 </body>

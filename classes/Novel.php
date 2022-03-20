@@ -55,9 +55,7 @@ class Novel
         if(file_exists($this->path . "links.txt")){
             $lines = file($this->path . "links.txt");
             foreach ($lines as $line){
-//                echo $line . "<br>";
                 $temp = explode("|", $line);
-//                var_dump($temp);
                 array_push(
                     $this->links,
                     [

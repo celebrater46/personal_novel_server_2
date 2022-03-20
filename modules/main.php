@@ -4,20 +4,17 @@ require_once "./init.php";
 
 function get_font_family($num){
     if($num === 0){
-//        return space_br('body{ font-family: "Sawarabi Mincho"; }', 2);
         return space_br('body{ font-family: "Noto Serif JP"; }', 2);
     } else {
         return space_br('body{ font-family: "Kosugi"; }', 2);
     }
 }
 
-function get_font_size($num, $is_pc){
-    // 1 = 0.2x, 2 = 0.4x, 3 = 0.6x, 4 = 0.8x, 5 = 1x, 6 = 1.5x, 7 = 2x , 8 = 4x, 9 = 10x
-    $base = $is_pc ? 18 : 4; // px(PC), vw(Phone)
-    $scale = $is_pc ? "px" : "vw";
-    $font_size = calc_font_size($num, $base);
-    $html = space_br("div.containter, p.text.line{", 2);
-    $html .= space_br("font-size: " . $font_size . $scale . "; }", 2);
+function get_font_size($state){
+    $base = $state->is_phone ? 4 : 18; // px(PC), vw(Phone)
+    $scale = $state->is_phone ? "vw" : "px";
+    $font_size = calc_font_size($state->font_size, $base);
+    $html = space_br("div.containter, p.text.line{ font-size: " . $font_size . $scale . "; }", 2);
     $html .= space_br("h1{ font-size: " . round($font_size * 2) . $scale . "; }", 2);
     $html .= space_br("h2{ font-size: " . round($font_size * 1.5) . $scale . "; }", 2);
     $html .= space_br("h3{ font-size: " . round($font_size * 1.2) . $scale . "; }", 2);
@@ -26,10 +23,10 @@ function get_font_size($num, $is_pc){
 
 function calc_font_size($size, $base){
     switch($size){
-        case 0: return round($base * 0.7);
-        case 1: return round($base * 1.0);
-        case 2: return round($base * 1.3);
-        case 3: return round($base * 1.6);
+        case 0: return $base * 0.7;
+        case 1: return $base * 1.0;
+        case 2: return $base * 1.3;
+        case 3: return $base * 1.6;
         default: return $base;
     }
 }
@@ -72,7 +69,7 @@ function get_xy($x){
 function get_style($state) {
     $top = space_br("<style>", 0);
     $mincho = get_font_family($state->font_family);
-    $size = get_font_size($state->font_size, true);
+    $size = get_font_size($state);
     $color = get_color($state->color);
     $xy = get_xy($state->x);
     $bottom = space_br("</style>", 1);
@@ -94,6 +91,10 @@ function space_br($html, $num){
 
 function delete_br($line){
     return str_replace(["\n", "\r", "\r\n"], "", $line);
+}
+
+function create_burger_img_into_div(){
+    return space_br('<div id="burger"><img class="burger" src="img/burger.png"></div>', 2);
 }
 
 function create_cover_img($cover){

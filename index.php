@@ -27,7 +27,7 @@ $state = new State();
     <div class="containter">
         <h1>
             <a href="/">
-<!--                --><?php //echo SITE_NAME; ?>
+                <?php echo SITE_NAME; ?>
             </a>
         </h1>
         <?php echo pns_get_html(); ?>

@@ -174,14 +174,15 @@ div#navMobile {
     padding: 3vh 3vw 0;
     width: 44vw;
     height: 84vh;
-    background: #222222;
+    color: white;
+    background: gray;
     transition: .7s;
 }
 
 div#navMobile a{
     display: block;
     text-decoration: none;
-    color: #000000;
+    color: #cccc00;
     margin: 0 15px;
     padding: 10px;
     transition: .5s;
@@ -232,6 +233,14 @@ div#navi_close{
         font-family: sans-serif;
     }
 
+    ul.read{
+        margin: 3vh 0 5vh 5vw;
+    }
+
+    li{
+        line-height: 150%;
+    }
+
     div.containter {
         width: 94vw;
         text-align: left;
@@ -245,7 +254,7 @@ div#navi_close{
     }
 
     div.caption p{
-        line-height: 1.5rem;
+        line-height: 150%;
     }
 
     div#navMobile > div > label{

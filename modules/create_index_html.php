@@ -3,7 +3,6 @@
 require_once "main.php";
 
 function create_links_to_posting_sites($novel, $state){
-//    var_dump($novel->links);
     if($novel->links !== null){
         $html = space_br("<ul class='read'>", 2);
         $html .= space_br("<li><a href='" . get_page_file_name($state->x) . "?pns=1&novel=" . $novel->id . get_parameter($state) . "'>当サイトで読む</a></li>", 3);
@@ -26,10 +25,6 @@ function create_caption_html($caption){
     return $html;
 }
 
-function create_burger_img_into_div(){
-    return space_br('<div id="burger"><img class="burger" src="img/burger.png"></div>', 2);
-}
-
 function create_index_html($novels, $state){
     $html = $state->x === 0 ? create_burger_img_into_div() : "";
     foreach ($novels as $novel){
@@ -46,6 +41,5 @@ function create_index_html($novels, $state){
         $html .= create_caption_html($novel->caption);
         $html .= create_links_to_posting_sites($novel, $state);
     }
-//    return add_iframe($state->x, $html);
     return $html;
 }
