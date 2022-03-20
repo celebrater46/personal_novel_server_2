@@ -30,6 +30,7 @@ $state = new State();
                 <?php echo SITE_NAME; ?>
             </a>
         </h1>
+        <p class="description"><?php echo DESCRIPTION; ?></p>
         <?php echo pns_get_html(); ?>
     </div>
     <?php echo get_nav($state); ?>

@@ -3,6 +3,7 @@
 ini_set('display_errors', 1); // エラーメッセージを常時表示する
 //define("INDEX_FILE", __DIR__ . '/index.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え
 define("SITE_NAME", 'Personal Novel Server');
+define("DESCRIPTION", 'ここに説明書きがあれば書いてください（init.php）。');
 define("AUTHOR", 'Enin Fujimi');
 define("INDEX_FILE", 'index.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え
 define("INDEX_FILE_NAME", 'index.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え（こちらはディレクトリなし）
