@@ -19,20 +19,30 @@ $state = new State();
     <meta name="Author" content="<?php echo AUTHOR; ?>">
     <?php echo get_web_fonts_links(); ?>
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/y.css" type="text/css">
     <title><?php echo SITE_NAME; ?></title>
     <?php echo get_style($state); ?>
 </head>
 <body>
-    <?php echo get_header($state); ?>
-    <div class="containter">
-        <h1>
-            <a href="/">
-<!--                --><?php //echo SITE_NAME; ?>
-            </a>
-        </h1>
-        <?php echo pns_get_html(); ?>
+<?php echo get_header($state); ?>
+<div class="containter">
+    <h1>
+        <a href="/">
+            <!--                --><?php //echo SITE_NAME; ?>
+        </a>
+    </h1>
+    <?php echo pns_get_html(); ?>
+    <div class="backHome">
+        <a href="<?php echo INDEX_FILE; ?>">トップへ戻る</a>
     </div>
-    <?php echo get_nav($state); ?>
-    <?php echo get_js_links(); ?>
+</div>
+<?php echo get_nav($state); ?>
+<?php echo get_js_links(); ?>
+<script>
+    // document.getElementById("container").scrollLeft = 10000;
+    window.scrollTo({
+        left: 10000,
+    });
+</script>
 </body>
 </html>

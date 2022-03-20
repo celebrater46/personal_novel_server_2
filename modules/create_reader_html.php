@@ -41,7 +41,7 @@ function get_new_chap($novel, $chap, $ep){
 }
 
 function create_link_new_ep($novel, $chap, $ep, $arrow, $state){
-    $html = '<a href="' . INDEX_FILE;
+    $html = '<a href="' . get_page_file_name($state->x);
     $html .= '?pns=2&novel=' . $novel;
     $html .= '&chap=' . $chap . '&ep=' . $ep;
     $html .= get_parameter($state) . '">' . $arrow . '</a>';
@@ -49,8 +49,12 @@ function create_link_new_ep($novel, $chap, $ep, $arrow, $state){
 }
 
 function get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, $arrow){
-    if(($state->x === 1 && $arrow === "＜＜")
-    || ($state->x === 0 && $arrow === "＞＞"))
+//    if($state->x === 0)
+//    {
+//        return "";
+//    }
+//    else if($state->x === 1 && $arrow === "＜＜")
+    if($arrow === "＜＜" || $arrow === "前の話へ")
     {
         if($ep - 1 > 0){
             $chap_prev = get_new_chap($novel, $chap, $ep - 1);
@@ -59,8 +63,8 @@ function get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, $arrow){
             return "";
         }
     }
-    else if(($state->x === 0 && $arrow === "＜＜")
-    || ($state->x === 1 && $arrow === "＞＞"))
+//    else if($state->x === 1 && $arrow === "＞＞")
+    else if($arrow === "＞＞" || $arrow === "次の話へ")
     {
         if($ep + 1 <= $ep_sum){
             $chap_next = get_new_chap($novel, $chap, $ep + 1);
@@ -69,6 +73,10 @@ function get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, $arrow){
             return "";
         }
     }
+    else
+    {
+        return "";
+    }
 }
 
 function create_div_text_links($novel, $state){
@@ -76,18 +84,29 @@ function create_div_text_links($novel, $state){
     $ep = $state->ep_id;
     $ep_sum = $novel->get_max_ep();
     $html = space_br('<div class="text links">', 2);
+    if($state->x === 1){
+        $html .= space_br('<div>', 3);
+        $html .= get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, "＜＜");
+        $html .= space_br('</div>', 3);
+    } else {
+        $html .= space_br('<div>', 3);
+        $html .= get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, "前の話へ");
+        $html .= space_br('</div>', 3);
+        $html .= space_br('<div>', 3);
+        $html .= get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, "次の話へ");
+        $html .= space_br('</div>', 3);
+    }
     $html .= space_br('<div>', 3);
-    $html .= get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, "＜＜");
+    $html .= space_br('<a href="' . get_page_file_name($state->x) . '?pns=1&novel=' . $novel->id . get_parameter($state) . '">目次へ戻る</a>', 4);
     $html .= space_br('</div>', 3);
-    $html .= space_br('<div>', 3);
-    $html .= space_br('<a href="' . INDEX_FILE . '?pns=1&novel=' . $novel->id . get_parameter($state) . '">一覧へ戻る</a>', 4);
-    $html .= space_br('</div>', 3);
-    $html .= space_br('<div>', 3);
-    $html .= get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, "＞＞");
-    $html .= space_br('</div>', 3);
+    if($state->x === 1){
+        $html .= space_br('<div>', 3);
+        $html .= get_link_new_ep($novel, $chap, $ep, $ep_sum, $state, "＞＞");
+        $html .= space_br('</div>', 3);
+    }
     $html .= space_br('</div>', 2);
     $html .= space_br('<div class="back">', 2);
-    $html .= space_br('<a href="' . INDEX_FILE . "?pns=0" . get_parameter($state) . '">小説一覧へ戻る</a>', 3);
+    $html .= space_br('<a href="' . get_page_file_name($state->x) . "?pns=0" . get_parameter($state) . '">小説一覧へ戻る</a>', 3);
     $html .= space_br('</div>', 2);
     return $html;
 }

@@ -38,8 +38,19 @@ ul{
 }
 
 li{
-    padding: 0.4rem;
+    /*padding: 0.4rem;*/
+    line-height: 1.5rem;
 }
+
+ul.read{
+    margin: 0 auto 40px 40px;
+}
+
+ul.read > li{
+    margin: 0;
+    padding: 0;
+}
+
 
 select{
     font-size: 1rem;
@@ -63,6 +74,17 @@ div.containter {
     margin: 0 auto;
 }
 
+div.iframe{
+    writing-mode: vertical-rl;
+    margin: 5vh auto;
+    padding: 5vh 0;
+    width: 100%;
+    height: 80vh;
+    overflow: auto;
+    overflow-x: scroll;
+    /*border: 1px solid gray;*/
+}
+
 div#navPc{
     /*background-color: #333333;*/
     width: 100vw;
@@ -78,7 +100,7 @@ div#navPc > div{
 }
 
 div.caption{
-    margin: 20px 20px 50px;
+    margin: 20px 20px 20px;
 }
 
 div.caption p{

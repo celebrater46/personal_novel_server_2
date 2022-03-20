@@ -17,7 +17,7 @@ function create_li_ep($novel_id, $chapter, $state){
 function create_li_ep_no_chapter($novel_id, $episodes, $state){
     $array = [];
     foreach ($episodes as $episode){
-        $html = '<li><a href="' . INDEX_FILE;
+        $html = '<li><a href="' . get_page_file_name($state->x);
         $html .= "?pns=2&novel=" . $novel_id;
         $html .= "&chap=0&ep=" . ($episode->id + 1);
         $html .= get_parameter($state) . '">';
@@ -67,9 +67,9 @@ function create_ep_list_html($novel, $state){
         $html .= create_html_ep($novel, $state);
     }
     $html .= space_br("</div>", 2);
-    $html = add_iframe($state->x, $html);
+//    $html = add_iframe($state->x, $html);
     $html .= space_br('<div class="back">', 2);
-    $html .= space_br('<a href="' . INDEX_FILE . "?pns=0" . get_parameter($state) . '">小説一覧へ戻る</a>', 3);
+    $html .= space_br('<a href="' . get_page_file_name($state->x) . "?pns=0" . get_parameter($state) . '">小説一覧へ戻る</a>', 3);
     $html .= space_br("</div>", 2);
     return $html;
 }

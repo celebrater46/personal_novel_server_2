@@ -1,11 +1,6 @@
 <?php
 
-ini_set('display_errors', 1); // エラーメッセージを常時表示する
-//define("INDEX_FILE", __DIR__ . '/index.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え
-define("INDEX_FILE", 'index.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え
-define('NOVELS_DIR', __DIR__ . '/novels'); // 小説のディレクトリ（__DIR__ は現在のディレクトリ取得）
-define('IMAGES_DIR_HTTP', 'img'); // HTTPでアクセスした際にディレクトリが変わるので用意
-define('USE_GET_FUNCTION', true); // 外部サイト組込用の関数を使用するか（true で使用）
+require_once "./init.php";
 
 function get_font_family($num){
     if($num === 0){
@@ -68,13 +63,20 @@ function get_color($num){
     return $str;
 }
 
+function get_xy($x){
+    if($x === 0){
+        return space_br("img.cover{ width: auto; height: 100%; }", 2);
+    }
+}
+
 function get_style($state) {
     $top = space_br("<style>", 0);
     $mincho = get_font_family($state->font_family);
     $size = get_font_size($state->font_size, true);
     $color = get_color($state->color);
+    $xy = get_xy($state->x);
     $bottom = space_br("</style>", 1);
-    return $top . $mincho . $size . $color . $bottom;
+    return $top . $mincho . $size . $color . $xy . $bottom;
 }
 
 function get_parameter($state){
@@ -98,6 +100,27 @@ function create_cover_img($cover){
     if($cover !== null){
         return space_br("<img class='cover' src='" . $cover . "' />", 2);
     }
+}
+
+function get_page_file_name($x){
+    return $x === 1 ? INDEX_FILE : "v.php";
+}
+
+function get_web_fonts_links(){
+    return <<<EOT
+<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap" rel="stylesheet">
+EOT;
+}
+
+function get_js_links(){
+    return <<<EOT
+<script type="text/javascript" src="js/burger.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+EOT;
+
 }
 
 // エスケープ

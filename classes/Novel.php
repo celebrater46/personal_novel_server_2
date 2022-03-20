@@ -29,6 +29,7 @@ class Novel
         $this->caption = $this->get_caption();
         $this->has_chapters = $this->has_chapters();
         $this->cover = $this->get_cover();
+        $this->get_links_to_posting_sites();
     }
 
     function get_text($chap, $ep){
@@ -54,7 +55,9 @@ class Novel
         if(file_exists($this->path . "links.txt")){
             $lines = file($this->path . "links.txt");
             foreach ($lines as $line){
+//                echo $line . "<br>";
                 $temp = explode("|", $line);
+//                var_dump($temp);
                 array_push(
                     $this->links,
                     [

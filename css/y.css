@@ -5,22 +5,60 @@ body{
     font-family: 'Noto Serif JP', 'Kosugi', Hiragino Kaku Gothic ProN W3, Helvetica, Meiryo, Tahoma;
 }
 
-div.iframe{
+div.containter{
     writing-mode: vertical-rl;
-    margin: 5vh auto;
-    padding: 5vh 0;
-    width: 100%;
+    margin: 5vh 0;
+    padding: 5vh 5vw;
+    width: auto;
     height: 80vh;
     overflow: auto;
-    overflow-x: scroll;
-    /*border: 1px solid gray;*/
+}
+
+div.iframe{
+    writing-mode: vertical-rl;
+    margin: 5vh 0;
+    padding: 5vh 5vw;
+    width: auto;
+    height: 80vh;
+    overflow: auto;
 }
 
 div.caption p{
     margin: 0;
 }
 
-/*img.cover{*/
-/*    width: auto;*/
-/*    height: 100%;*/
-/*}*/
+div.text.links{
+    text-align: left;
+    margin: 0 30px auto 0;
+    padding: 0;
+    display: block;
+}
+
+div.text.links div{
+    text-align: left;
+    margin: 40px 30px auto 0;
+}
+
+div.back{
+    text-align: left;
+    margin: 40px 30px auto 0;
+    padding: 0;
+}
+
+div.backHome{
+    margin: 40px 30px auto 0;
+}
+
+ul.read{
+    margin: 40px 0 0 50px;
+}
+
+img.cover{
+    width: auto; height: 100%;
+}
+
+div#burger {
+    display: block;
+    position: static;
+    margin: -5vh -2vw auto auto;
+}
