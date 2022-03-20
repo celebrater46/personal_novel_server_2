@@ -27,12 +27,12 @@ function delete_texts($path){
     }
 }
 
-function separate_once($title, $path){
+function separate_once($path){
     $unified = "novels/" . $path . "/unified.txt";
     delete_texts($path);
     if(file_exists($unified)){
         $lines = file($unified);
-        $novel = new Novel($title, $path);
+        $novel = new Novel(0, $path);
         $novel->separate_unified_text(1, $lines);
         echo "Separated: " . $unified . ".<br>";
     } else {
@@ -43,10 +43,10 @@ function separate_once($title, $path){
 function check_unified_text($list, $path){
     if($path === null || $path === "all"){
         foreach ($list as $item){
-            separate_once($item["title"], $item["path"]);
+            separate_once($item["path"]);
         }
     } else {
-        separate_once("Untitled", $path);
+        separate_once($path);
     }
 }
 
