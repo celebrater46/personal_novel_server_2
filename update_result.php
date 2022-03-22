@@ -2,16 +2,17 @@
 
 namespace personal_novel_server;
 
-use personal_novel_server\classes\Novel;
+use personal_novel_server\classes\Separator;
 
-require_once "classes/Novel.php";
+require_once "init.php";
+require_once "classes/Separator.php";
 
 $path = isset($_POST["path"]) ? $_POST["path"] : null;
-$msg = "";
+//$msg = "";
 $list = get_list();
 check_unified_text($list, $path);
 
-function delete_text($file){
+function delete_text_once($file){
     if(file_exists($file)){
         $bool = unlink($file);
         echo $bool ? "Deleted: " . $file : "Not deleted: " . $file;
@@ -24,10 +25,10 @@ function delete_text($file){
 function delete_texts($path){
     $chapters = "novels/" . $path . "/chapters.txt";
     $list = "novels/" . $path . "/list.txt";
-    delete_text($chapters);
-    delete_text($list);
+    delete_text_once($chapters);
+    delete_text_once($list);
     foreach (glob("novels/" . $path . "/txts/*.txt") as $file) {
-        delete_text($file);
+        delete_text_once($file);
     }
 }
 
@@ -36,7 +37,7 @@ function separate_once($path){
     delete_texts($path);
     if(file_exists($unified)){
         $lines = file($unified);
-        $novel = new Novel(0, "hoge|" . $path);
+        $novel = new Separator($path);
         $novel->separate_unified_text(1, $lines);
         echo "Separated: " . $unified . ".<br>";
     } else {
