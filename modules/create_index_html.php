@@ -38,7 +38,7 @@ function create_index_html($novels, $state){
             $html .= create_cover_img($novel->cover);
         }
         $html .= space_br("<h2>", 2);
-        $html .= space_br("<a href='" . get_page_file_name($state->x) . "?pns=1&novel=" . $novel->id . get_parameter($state) . "'>" . $novel->title . "</a>", 3);
+        $html .= space_br("<a href='" . get_page_file_name($state->x) . "?pns=" . ($novel->has_episodes ? 1 : 2) . "&novel=" . $novel->id . get_parameter($state) . "'>" . $novel->title . "</a>", 3);
         $html .= space_br("</h2>", 2);
         if($state->x === 0){
             $html .= create_cover_img($novel->cover);

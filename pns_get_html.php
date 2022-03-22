@@ -67,7 +67,7 @@ function get_html_reader($state){
 
 function get_novel_obj($id, $line, $state){
     $novel = new Novel($id, $line, $state);
-    $has_chapters = $novel->has_chapters();
+    $has_chapters = $novel->check_has_chapters();
     if($has_chapters){
         $novel->get_chapters();
     } else {

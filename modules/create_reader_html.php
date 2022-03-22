@@ -10,8 +10,10 @@ function create_title_chap_ep($novel, $chap, $ep){
         $html = space_br("<h2>" . $novel->chapters[$chap]->title . "</h2>", 2);
         $html .= space_br("<h3>" . $novel->chapters[$chap]->episodes[$ep - $start_ep_num]->title . "</h3>", 2);
         return $html;
-    } else {
+    } else if($novel->has_episodes){
         return space_br("<h2>" . $novel->episodes[$ep - 1]->title . "</h2>", 2);
+    } else {
+        return "";
     }
 }
 
@@ -110,7 +112,9 @@ function create_div_text_links($novel, $state){
         $html .= space_br('</div>', 3);
     }
     $html .= space_br('<div>', 3);
-    $html .= space_br('<a href="' . get_page_file_name($state->x) . '?pns=1&novel=' . $novel->id . get_parameter($state) . '">目次へ戻る</a>', 4);
+    if($novel->has_episodes){
+        $html .= space_br('<a href="' . get_page_file_name($state->x) . '?pns=1&novel=' . $novel->id . get_parameter($state) . '">目次へ戻る</a>', 4);
+    }
     $html .= space_br('</div>', 3);
     if($state->x === 1){
         $html .= space_br('<div>', 3);

@@ -15,6 +15,7 @@ class Novel
     public $path; // novels/shiroganeki/
     public $caption; // 世界からありとあらゆる争いを根絶し……
     public $has_chapters;
+    public $has_episodes; // 短編など、1エピソードしかないものは false（list.txt がないものは短編とみなす）
     public $chapters = [];
     public $episodes = [];
     public $links = [];
@@ -31,7 +32,8 @@ class Novel
         $temp[1] = str_replace([" ", "　", "\n", "\r", "\r\n"], "", $temp[1]); // 悪魔のバグ要因、全角＆半角スペース、改行コードの排除
         $this->path = ($state->is_v ? "" : PNS_PATH) . "novels/" . $temp[1] . "/";
         $this->caption = $this->get_caption();
-        $this->has_chapters = $this->has_chapters();
+        $this->has_chapters = $this->check_has_chapters();
+        $this->has_episodes = $this->check_has_episodes();
         $this->cover = $this->get_cover();
         $this->get_links_to_posting_sites();
     }
@@ -40,8 +42,10 @@ class Novel
         if($this->has_chapters){
             $start_ep_num = $this->chapters[$chap]->start_ep_num;
             $file_name = $this->chapters[$chap]->episodes[$ep - $start_ep_num]->file_name;
-        } else {
+        } else if($this->has_episodes){
             $file_name = $this->episodes[$ep - 1]->file_name;
+        } else {
+            $file_name = "text"; // 1話のみの短編の場合は、text.txt で統一
         }
         $text = [];
         if(file_exists($this->path . "txts/" . $file_name . ".txt")){
@@ -161,8 +165,16 @@ class Novel
         }
     }
 
-    function has_chapters(){
+    function check_has_chapters(){
         if(file_exists($this->path . "chapters.txt")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function check_has_episodes(){
+        if(file_exists($this->path . "list.txt")){
             return true;
         } else {
             return false;
