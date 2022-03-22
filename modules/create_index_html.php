@@ -7,7 +7,7 @@ require_once "main.php";
 function create_links_to_posting_sites($novel, $state){
     if($novel->links !== null){
         $html = space_br("<ul class='read'>", 2);
-        $html .= space_br("<li><a href='" . get_page_file_name($state->x) . "?pns=1&novel=" . $novel->id . get_parameter($state) . "'>当サイトで読む</a></li>", 3);
+        $html .= space_br("<li><a href='" . get_page_file_name($state->x) . "?pns=" . ($novel->has_episodes ? 1 : 2) . "&novel=" . $novel->id . get_parameter($state) . "'>当サイトで読む</a></li>", 3);
         foreach ($novel->links as $link){
             $html .= space_br("<li><a target='_blank' href='" . $link["url"] . "'>" . $link["site_name"] . "で読む</a></li>", 3);
         }
