@@ -82,9 +82,10 @@ PNS.xy_nav.onchange = event => {
 
 PNS.changeImg = () => {
     const agent = navigator.userAgent;
+    const search = location.search;
     if (agent.indexOf("iPad") > 0
         || agent.indexOf("iPhone") > 0
-        || agent.indexOf("Android") > 0
+        || (agent.indexOf("Android") > 0 && search.indexOf("pns=0") > -1)
         || (agent.indexOf("Macintosh") > 0 && agent.indexOf("Safari") > 0))
     {
         document.querySelector("body").style.backgroundImage = "none";
