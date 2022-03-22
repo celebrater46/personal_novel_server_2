@@ -31,9 +31,9 @@ function calc_font_size($size, $base){
     }
 }
 
-function get_color($num){
+function get_color($state){
     $str = "";
-    switch ($num){
+    switch ($state->color){
         // 0 == デフォルト値（暫定）
         case 0:
             $str .= space_br("body{ background-color: #000001; color: silver; }", 2);
@@ -57,7 +57,7 @@ function get_color($num){
             $str .= space_br("a:hover{ color: orangered; }", 2);
             break;
         case 3:
-            $str .= space_br("body{ background-color: #cccccc; color: black; background-image : url(" . PNS_PATH . "img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+            $str .= space_br("body{ background-color: #cccccc; color: black; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
 //            $str .= space_br("div.container{ background-image : url(img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
             $str .= space_br("div.novel.controller{ background-color: silver; color: black; }", 2);
             $str .= space_br("div#nav{ background-color: silver; color: black; }", 2);
@@ -65,7 +65,7 @@ function get_color($num){
             $str .= space_br("a:hover{ color: blue; }", 2);
             break;
         case 4:
-            $str .= space_br("body{ background-color: black; color: silver; background-image : url(" . PNS_PATH . "img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+            $str .= space_br("body{ background-color: black; color: silver; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
 //            $str .= space_br("div.container{  }", 2);
             $str .= space_br("div.novel.controller{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("div#nav{ background-color: #333333; color: silver; }", 2);
@@ -86,7 +86,7 @@ function get_style($state) {
     $top = space_br("<style>", 0);
     $mincho = get_font_family($state->font_family);
     $size = get_font_size($state);
-    $color = get_color($state->color);
+    $color = get_color($state);
     $xy = get_xy($state->x);
     $bottom = space_br("</style>", 1);
     return $top . $mincho . $size . $color . $xy . $bottom;
@@ -120,7 +120,7 @@ function create_cover_img($cover){
 }
 
 function get_page_file_name($x){
-    return $x === 1 ? INDEX_FILE : "v.php";
+    return $x === 1 ? PNS_INDEX_FILE : "v.php";
 }
 
 function get_web_fonts_links(){
@@ -132,10 +132,10 @@ function get_web_fonts_links(){
 EOT;
 }
 
-function get_js_links(){
-    $html = '<script type="text/javascript" src="' . PNS_PATH . 'js/burger.js"></script>';
-    $html .= '<script type="text/javascript" src="' . PNS_PATH . 'js/main.js"></script>';
-    $html .= '<script type="text/javascript" src="' . PNS_PATH . 'js/movePage.js"></script>';
+function get_js_links($state){
+    $html = '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/burger.js"></script>';
+    $html .= '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/main.js"></script>';
+    $html .= '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/movePage.js"></script>';
     return $html;
 }
 

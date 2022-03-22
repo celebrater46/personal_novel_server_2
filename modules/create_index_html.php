@@ -29,9 +29,10 @@ function create_caption_html($caption){
 
 function create_index_html($novels, $state){
     $html = get_header($state);
-    $html .= space_br('<h1><a href="/">' . ($state->pns === 0 ? SITE_NAME : "") . '</a></h1>', 2);
-    $html .= space_br('<p class="description">'. ($state->pns === 0 ? DESCRIPTION : "") . '</p>', 2);
+    $html .= space_br('<h1><a href="/">' . ($state->pns === 0 ? PNS_SITE_NAME : "") . '</a></h1>', 2);
+    $html .= space_br('<p class="description">'. ($state->pns === 0 ? PNS_DESCRIPTION : "") . '</p>', 2);
     foreach ($novels as $novel){
+//        var_dump($novel);
         $html .= $novel->id === 0 ? "" : space_br("<hr>", 2);
         if($state->x === 1){
             $html .= create_cover_img($novel->cover);
@@ -45,5 +46,6 @@ function create_index_html($novels, $state){
         $html .= create_caption_html($novel->caption);
         $html .= create_links_to_posting_sites($novel, $state);
     }
+//    var_dump($html);
     return $html;
 }

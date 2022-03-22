@@ -6,6 +6,7 @@ use personal_novel_server\modules as modules;
 
 require_once "Chapter.php";
 require_once "Episode.php";
+require_once( dirname(__FILE__) . '/../modules/converter.php');
 //require_once "modules/main.php";
 //require_once "modules/converter.php";
 
@@ -24,12 +25,13 @@ class Novel
     public $nums_eps_in_chap = []; // [3, 5, 2] (白金記サンプル、各チャプターの話数)
     public $nums_chap_start = [1]; // [1, 4, 8]（白金記サンプル、各チャプターが何話めから始まるか）
 
-    function __construct($id, $title_path){
+    function __construct($id, $title_path, $state){
         $this->id = $id;
         $temp = explode("|", $title_path);
+//        var_dump($temp);
         $this->title = $temp[0];
         $temp[1] = str_replace([" ", "　", "\n", "\r", "\r\n"], "", $temp[1]); // 悪魔のバグ要因、全角＆半角スペース、改行コードの排除
-        $this->path = PNS_PATH . "novels/" . $temp[1] . "/";
+        $this->path = ($state->is_v ? "" : PNS_PATH) . "novels/" . $temp[1] . "/";
         $this->caption = $this->get_caption();
         $this->has_chapters = $this->has_chapters();
         $this->cover = $this->get_cover();

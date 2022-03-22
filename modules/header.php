@@ -5,12 +5,13 @@ namespace personal_novel_server\modules;
 require_once "main.php";
 
 function get_header($state){
+//    var_dump($state);
     $div = space_br("<div id='navPc' class='novel controller'>", 0);
     $div .= space_br("<div>", 2);
     $div .= get_controller($state, false);
     $div .= space_br("</div>", 2);
     $div .= space_br("</div>", 1);
-    $burger = space_br('<div id="pns_burger"><img class="pns_burger" src="' . PNS_PATH . 'img/burger.png"></div>', 1);
+    $burger = space_br('<div id="pns_burger"><img class="pns_burger" src="' . ($state->is_v ? "" : PNS_PATH) . 'img/burger.png"></div>', 1);
 //    return $div;
     return $div . $burger;
 }
@@ -49,7 +50,7 @@ function get_html_font_size($state, $is_nav){
 }
 
 function get_html_color($state, $is_nav){
-    if(LIGHT_AND_DARK !== true){
+    if(PNS_LIGHT_AND_DARK !== true){
         $html = space_br('<div class="color label">', 3);
         $html .= space_br('<label for="color' . ($is_nav ? "_nav" : "") . '">背景色</label>', 4);
         $html .= space_br('</div>', 3);

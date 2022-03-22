@@ -1,19 +1,21 @@
 "use strict";
 
-const containerWidth = document.getElementById("container").clientWidth;
+// var PNS = PNS || {};
 
-const scroll = (x) => {
+PNS.containerWidth = document.getElementById("pns_container").clientWidth;
+
+PNS.scroll = (x) => {
     window.scrollTo({
         left: x,
         behavior: 'smooth'
     });
 }
-console.log(containerWidth);
+console.log(PNS.containerWidth);
 
-const clickedButton = (isLeft) => {
+PNS.clickedButton = (isLeft) => {
     console.log("button clicked.");
     console.log(window.innerWidth);
     console.log(window.scrollX);
     const x = window.scrollX + (isLeft ? - window.innerWidth * 0.8 : window.innerWidth * 0.8);
-    scroll(x);
+    PNS.scroll(x);
 }

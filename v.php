@@ -22,28 +22,23 @@ $state = new State();
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <meta name="Author" content="<?php echo AUTHOR; ?>">
+    <meta name="Author" content="<?php echo PNS_AUTHOR; ?>">
     <?php echo modules\get_web_fonts_links(); ?>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/y.css" type="text/css">
-    <title><?php echo SITE_NAME; ?></title>
+    <title><?php echo PNS_SITE_NAME; ?></title>
     <?php echo modules\get_style($state); ?>
 </head>
 <body>
-<div id="container" class="container">
     <?php echo pns\pns_get_html(); ?>
-    <div class="backHome">
-        <a href="<?php echo INDEX_FILE; ?>">トップへ戻る</a>
-    </div>
-</div>
 <?php echo modules\get_nav($state); ?>
-<div id="leftButton" class="stealthButton lr" onclick="clickedButton(true)">
+<div id="leftButton" class="stealthButton lr" onclick="PNS.clickedButton(true)">
     ＜＜
 </div>
-<div id="rightButton" class="stealthButton lr" onclick="clickedButton(false)">
+<div id="rightButton" class="stealthButton lr" onclick="PNS.clickedButton(false)">
     ＞＞
 </div>
-<?php echo modules\get_js_links(); ?>
+<?php echo modules\get_js_links($state); ?>
 <script>
     window.scrollTo({
         left: 1000000,

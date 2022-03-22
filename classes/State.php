@@ -2,6 +2,8 @@
 
 namespace personal_novel_server\classes;
 
+use personal_novel_server as pns;
+
 //require_once "./init.php";
 require_once( dirname(__FILE__) . '/../init.php');
 
@@ -16,6 +18,7 @@ class State
     public $font_size; // 1-9, 5 == default medium
     public $color; // 0 = black, 1 = white, 2 = beige, 3 = light mode, 4 = dark mode
     public $x; // 1 なら横書き
+    public $is_v; // v.php にいるなら true
     public $has_other_state = false; // Personal Novel Server 以外で使っている URL パラメーターがあるか
     public $other_states = [];
     public $other_states_str = "";
@@ -30,6 +33,8 @@ class State
         $this->font_size = isset($_GET["size"]) ? (int)$_GET["size"] : 1;
         $this->color = $this->get_color();
         $this->x = isset($_GET["x"]) ? (int)$_GET["x"] : 1;
+        $this->is_v = $this->x !== 1;
+//        var_dump($this->is_v);
         $this->get_other_states();
     }
 
@@ -61,7 +66,7 @@ class State
 
     function get_color(){
         // 個人サイト用（ライトモードとダークモードを適用）
-        if(LIGHT_AND_DARK){
+        if(PNS_LIGHT_AND_DARK){
             $mode = isset($_GET["mode"]) ? (int)isset($_GET["mode"]) : 0;
             if($mode > 0){
                 return $mode === 1 ? 3 : 4;

@@ -1,17 +1,19 @@
 "use strict";
 
-const burger = document.getElementById('pns_burger');
-const div = document.getElementById('navi_close');
+let PNS = {};
 
-const toggle = () => {
+PNS.burger = document.getElementById('pns_burger');
+PNS.div = document.getElementById('navi_close');
+
+PNS.toggle = () => {
     document.getElementById('navMobile').classList.toggle('mobilePanelIn');
     document.getElementById('navPc').classList.toggle('pcPanelIn');
 }
 
-burger.addEventListener('click' , () => {
-    toggle();
+PNS.burger.addEventListener('click' , () => {
+    PNS.toggle();
 });
 
-div.addEventListener('click' , () => {
-    toggle();
+PNS.div.addEventListener('click' , () => {
+    PNS.toggle();
 });

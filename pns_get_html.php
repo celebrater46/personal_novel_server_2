@@ -17,7 +17,6 @@ require_once "modules/create_reader_html.php";
 function pns_get_html(){
     $state = new State();
     switch ($state->pns){
-        case 0: return get_html_index($state);
         case 1: return get_html_ep_list($state);
         case 2: return get_html_reader($state);
         default: return get_html_index($state);
@@ -35,24 +34,43 @@ function add_iframe($x, $html){
     }
 }
 
+function add_pns_container($html, $state){
+    $div = modules\space_br("<div id='pns_container' class='pns_container'>", 2);
+    $div .= $html;
+    $div .= $state->is_v ? add_back_hone() : "";
+    $div .= modules\space_br("</div>", 2);
+    return $div;
+}
+
+function add_back_hone(){
+    return modules\space_br('<div class="backHome"><a href="' . PNS_INDEX_FILE . '">トップへ戻る</a></div>', 2);
+}
+
 function get_html_index($state){
-    $list = get_novel_list();
-    $novels = get_novel_obj_all($list);
-    return modules\create_index_html($novels, $state);
+//    var_dump($state);
+    $list = get_novel_list($state);
+    $novels = get_novel_obj_all($list, $state);
+    $html = modules\create_index_html($novels, $state);
+//    var_dump($novels);
+    return add_pns_container($html, $state);
 }
 
 function get_html_ep_list($state){
-    $novel = get_novel_obj_once($state->novel_id);
-    return modules\create_ep_list_html($novel, $state);
+//    var_dump($state);
+    $novel = get_novel_obj_once($state);
+    $html = modules\create_ep_list_html($novel, $state);
+    return add_pns_container($html, $state);
 }
 
 function get_html_reader($state){
-    $novel = get_novel_obj_once($state->novel_id);
-    return modules\create_html_reader($novel, $state);
+//    var_dump($state);
+    $novel = get_novel_obj_once($state);
+    $html = modules\create_html_reader($novel, $state);
+    return add_pns_container($html, $state);
 }
 
-function get_novel_obj($id, $line){
-    $novel = new Novel($id, $line);
+function get_novel_obj($id, $line, $state){
+    $novel = new Novel($id, $line, $state);
     $has_chapters = $novel->has_chapters();
     if($has_chapters){
         $novel->get_chapters();
@@ -62,23 +80,25 @@ function get_novel_obj($id, $line){
     return $novel;
 }
 
-function get_novel_obj_once($id){
-    $list = get_novel_list();
-    return get_novel_obj($id, $list[$id]);
+function get_novel_obj_once($state){
+//    var_dump($state);
+    $list = get_novel_list($state);
+    return get_novel_obj($state->novel_id, $list[$state->novel_id], $state);
 }
 
-function get_novel_obj_all($list){
+function get_novel_obj_all($list, $state){
     $objs = [];
     $i = 0;
     foreach ($list as $line){
-        array_push($objs, get_novel_obj($i, $line));
+        array_push($objs, get_novel_obj($i, $line, $state));
         $i++;
     }
     return $objs;
 }
 
-function get_novel_list(){
-    $list = PNS_PATH . "novels/novels_list.txt";
+function get_novel_list($state){
+//    var_dump($state);
+    $list = ($state->is_v ? "" : PNS_PATH) . "novels/novels_list.txt";
     if(file_exists($list)){
         return file($list);
     } else {

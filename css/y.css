@@ -5,7 +5,7 @@ body{
     font-family: 'Noto Serif JP', 'Kosugi', Hiragino Kaku Gothic ProN W3, Helvetica, Meiryo, Tahoma;
 }
 
-div.container{
+div.pns_container{
     writing-mode: vertical-rl;
     margin: 5vh 0;
     padding: 5vh 5vw;
@@ -69,7 +69,7 @@ div#pns_burger {
 }
 
 @media screen and (max-width: 1000px){
-    div.containter{
+    div.pns_container{
         margin: 0;
     }
 

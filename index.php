@@ -22,17 +22,23 @@ $state = new State();
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <meta name="Author" content="<?php echo AUTHOR; ?>">
+    <meta name="Author" content="<?php echo PNS_AUTHOR; ?>">
     <?php echo modules\get_web_fonts_links(); ?>
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title><?php echo SITE_NAME; ?></title>
+    <title><?php echo PNS_SITE_NAME; ?></title>
     <?php echo modules\get_style($state); ?>
 </head>
 <body>
-    <div id="container" class="container">
+    <div id="pns_container" class="pns_container">
+        <h1>
+            <a href="/">
+                <?php echo $state->pns === 0 ? PNS_SITE_NAME : ""; ?>
+            </a>
+        </h1>
+        <p class="description"><?php echo $state->pns === 0 ? PNS_DESCRIPTION : ""; ?></p>
         <?php echo pns\pns_get_html(); ?>
     </div>
     <?php echo modules\get_nav($state); ?>
-    <?php echo modules\get_js_links(); ?>
+    <?php echo modules\get_js_links($state); ?>
 </body>
 </html>
