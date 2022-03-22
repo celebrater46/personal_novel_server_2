@@ -64,6 +64,7 @@ function get_color($state){
             $str .= space_br("div#nav{ background-color: silver; color: black; }", 2);
             $str .= space_br("a{ color: #000055; }", 2);
             $str .= space_br("a:hover{ color: blue; }", 2);
+            $str .= space_br("@media screen and (max-width: 1000px){ body{ background-size: auto 100%; background-position: right bottom; }", 2);
             break;
         case 4:
             $str .= space_br("body{ background-color: black; color: silver; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
@@ -71,6 +72,7 @@ function get_color($state){
             $str .= space_br("div#nav{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("a{ color: #cccc99; }", 2);
             $str .= space_br("a:hover{ color: gold; }", 2);
+            $str .= space_br("@media screen and (max-width: 1000px){ body{ background-size: auto 100%; background-position: right bottom; }", 2);
             break;
     }
     return $str;

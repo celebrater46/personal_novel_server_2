@@ -79,3 +79,16 @@ PNS.xy_nav.onchange = event => {
     const index = PNS.xy_nav.selectedIndex === 1 ? 0 : 1;
     PNS.go_new_url("x", index);
 }
+
+PNS.changeImg = () => {
+    const agent = navigator.userAgent;
+    if (agent.indexOf("iPad") > 0
+        || agent.indexOf("iPhone") > 0
+        || agent.indexOf("Android") > 0
+        || (agent.indexOf("Macintosh") > 0 && agent.indexOf("Safari") > 0))
+    {
+        document.querySelector("body").style.backgroundImage = "none";
+    }
+}
+
+PNS.changeImg();
