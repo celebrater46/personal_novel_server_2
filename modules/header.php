@@ -5,14 +5,12 @@ namespace personal_novel_server\modules;
 require_once "main.php";
 
 function get_header($state){
-//    var_dump($state);
     $div = space_br("<div id='navPc' class='novel controller'>", 0);
     $div .= space_br("<div>", 2);
     $div .= get_controller($state, false);
     $div .= space_br("</div>", 2);
     $div .= space_br("</div>", 1);
     $burger = space_br('<div id="pns_burger"><img class="pns_burger" src="' . ($state->is_v ? "" : PNS_PATH) . 'img/burger.png"></div>', 1);
-//    return $div;
     return $div . $burger;
 }
 

@@ -47,23 +47,19 @@ function add_back_hone(){
 }
 
 function get_html_index($state){
-//    var_dump($state);
     $list = get_novel_list($state);
     $novels = get_novel_obj_all($list, $state);
     $html = modules\create_index_html($novels, $state);
-//    var_dump($novels);
     return add_pns_container($html, $state);
 }
 
 function get_html_ep_list($state){
-//    var_dump($state);
     $novel = get_novel_obj_once($state);
     $html = modules\create_ep_list_html($novel, $state);
     return add_pns_container($html, $state);
 }
 
 function get_html_reader($state){
-//    var_dump($state);
     $novel = get_novel_obj_once($state);
     $html = modules\create_html_reader($novel, $state);
     return add_pns_container($html, $state);
@@ -81,7 +77,6 @@ function get_novel_obj($id, $line, $state){
 }
 
 function get_novel_obj_once($state){
-//    var_dump($state);
     $list = get_novel_list($state);
     return get_novel_obj($state->novel_id, $list[$state->novel_id], $state);
 }
@@ -97,7 +92,6 @@ function get_novel_obj_all($list, $state){
 }
 
 function get_novel_list($state){
-//    var_dump($state);
     $list = ($state->is_v ? "" : PNS_PATH) . "novels/novels_list.txt";
     if(file_exists($list)){
         return file($list);

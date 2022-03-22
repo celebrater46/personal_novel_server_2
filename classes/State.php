@@ -2,9 +2,6 @@
 
 namespace personal_novel_server\classes;
 
-use personal_novel_server as pns;
-
-//require_once "./init.php";
 require_once( dirname(__FILE__) . '/../init.php');
 
 class State
@@ -66,8 +63,6 @@ class State
 
     function get_color(){
         // 個人サイト用（ライトモードとダークモードを適用）
-//        var_dump(PNS_LIGHT_AND_DARK);
-//        var_dump($this->is_daytime());
         if(PNS_LIGHT_AND_DARK){
             $mode = isset($_GET["mode"]) ? (int)$_GET["mode"] : 0;
             if($mode > 0){

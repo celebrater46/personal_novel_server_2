@@ -7,8 +7,6 @@ use personal_novel_server\modules as modules;
 require_once "Chapter.php";
 require_once "Episode.php";
 require_once( dirname(__FILE__) . '/../modules/converter.php');
-//require_once "modules/main.php";
-//require_once "modules/converter.php";
 
 class Novel
 {

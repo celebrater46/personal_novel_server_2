@@ -50,14 +50,8 @@ function create_html_chap_ep($novel, $state){
 
 function create_ep_list_html($novel, $state){
     $html = get_header($state);
-//    if($state->x === 1){
-//        $html .= create_cover_img($novel->cover);
-//    }
     $html .= space_br("<h1>" . $novel->title . "</h1>", 0);
     $html .= create_cover_img($novel->cover);
-//    if($state->x === 0){
-//        $html .= create_cover_img($novel->cover);
-//    }
     $html .= space_br('<div class="caption">', 2);
     foreach ($novel->caption as $line){
         $html .= space_br("<p>" . $line . "</p>", 3);

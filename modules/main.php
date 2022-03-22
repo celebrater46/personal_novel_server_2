@@ -59,7 +59,6 @@ function get_color($state){
             break;
         case 3:
             $str .= space_br("body{ background-color: #cccccc; color: black; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
-//            $str .= space_br("div.container{ background-image : url(img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
             $str .= space_br("div.novel.controller{ background-color: silver; color: black; }", 2);
             $str .= space_br("div#nav{ background-color: silver; color: black; }", 2);
             $str .= space_br("a{ color: blueviolet; }", 2);
@@ -67,7 +66,6 @@ function get_color($state){
             break;
         case 4:
             $str .= space_br("body{ background-color: black; color: silver; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
-//            $str .= space_br("div.container{  }", 2);
             $str .= space_br("div.novel.controller{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("div#nav{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("a{ color: #cccc99; }", 2);

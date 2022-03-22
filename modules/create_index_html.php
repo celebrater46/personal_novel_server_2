@@ -46,6 +46,5 @@ function create_index_html($novels, $state){
         $html .= create_caption_html($novel->caption);
         $html .= create_links_to_posting_sites($novel, $state);
     }
-//    var_dump($html);
     return $html;
 }
