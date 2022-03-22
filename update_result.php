@@ -26,9 +26,11 @@ function delete_texts($path){
     $chapters = "novels/" . $path . "/chapters.txt";
     $list = "novels/" . $path . "/list.txt";
     delete_text_once($chapters);
-    delete_text_once($list);
-    foreach (glob("novels/" . $path . "/txts/*.txt") as $file) {
-        delete_text_once($file);
+    if(file_exists($list)){
+        delete_text_once($list);
+        foreach (glob("novels/" . $path . "/txts/*.txt") as $file) {
+            delete_text_once($file);
+        }
     }
 }
 
@@ -53,6 +55,7 @@ function check_unified_text($list, $path){
     } else {
         separate_once($path);
     }
+    echo "<br><a href='update.php'>戻る</a>";
 }
 
 function get_list (){
