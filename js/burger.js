@@ -1,7 +1,5 @@
 "use strict";
 
-let PNS = {};
-
 PNS.burger = document.getElementById('pns_burger');
 PNS.div = document.getElementById('navi_close');
 

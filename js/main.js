@@ -2,10 +2,6 @@
 
 // var PNS = PNS || {};
 
-PNS.pnsPath = "app/php/personal_novel_server/"
-PNS.indexFileName = "novel.php"; // 別途ページを用意する場合、ここを書き換える
-PNS.vFileName = PNS.pnsPath + "v.php";
-
 PNS.font_family = document.querySelector('[name="font_family"]');
 PNS.font_size = document.querySelector('[name="font_size"]');
 PNS.color = document.querySelector('[name="color"]');

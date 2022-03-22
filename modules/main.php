@@ -134,7 +134,8 @@ EOT;
 }
 
 function get_js_links($state){
-    $html = '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/burger.js"></script>';
+    $html = '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/pns_js_init.js"></script>';
+    $html .= '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/burger.js"></script>';
     $html .= '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/main.js"></script>';
     $html .= '<script type="text/javascript" src="' . ($state->is_v ? "" : PNS_PATH) . 'js/movePage.js"></script>';
     return $html;

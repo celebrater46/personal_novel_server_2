@@ -30,12 +30,6 @@ $state = new State();
 </head>
 <body>
     <div id="pns_container" class="pns_container">
-        <h1>
-            <a href="/">
-                <?php echo $state->pns === 0 ? PNS_SITE_NAME : ""; ?>
-            </a>
-        </h1>
-        <p class="description"><?php echo $state->pns === 0 ? PNS_DESCRIPTION : ""; ?></p>
         <?php echo pns\pns_get_html(); ?>
     </div>
     <?php echo modules\get_nav($state); ?>
