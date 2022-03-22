@@ -32,6 +32,7 @@ function calc_font_size($size, $base){
 }
 
 function get_color($state){
+//    var_dump($state);
     $str = "";
     switch ($state->color){
         // 0 == デフォルト値（暫定）
@@ -69,7 +70,7 @@ function get_color($state){
 //            $str .= space_br("div.container{  }", 2);
             $str .= space_br("div.novel.controller{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("div#nav{ background-color: #333333; color: silver; }", 2);
-            $str .= space_br("a{ color: goldenrod; }", 2);
+            $str .= space_br("a{ color: #cccc99; }", 2);
             $str .= space_br("a:hover{ color: gold; }", 2);
             break;
     }

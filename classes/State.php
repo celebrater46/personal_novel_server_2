@@ -66,8 +66,10 @@ class State
 
     function get_color(){
         // 個人サイト用（ライトモードとダークモードを適用）
+//        var_dump(PNS_LIGHT_AND_DARK);
+//        var_dump($this->is_daytime());
         if(PNS_LIGHT_AND_DARK){
-            $mode = isset($_GET["mode"]) ? (int)isset($_GET["mode"]) : 0;
+            $mode = isset($_GET["mode"]) ? (int)$_GET["mode"] : 0;
             if($mode > 0){
                 return $mode === 1 ? 3 : 4;
             } else {

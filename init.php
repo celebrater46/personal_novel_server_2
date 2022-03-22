@@ -7,7 +7,8 @@ ini_set('display_errors', 1); // エラーメッセージを常時表示する
 define("PNS_SITE_NAME", '小説');
 define("PNS_DESCRIPTION", '富士見永人名義で小説を書いています。<br><a href="https://novelup.plus/user/350590019/profile">ノベルアッププラス</a>、 <a href="https://mypage.syosetu.com/476781/">小説家になろう</a>、 <a href="https://kakuyomu.jp/users/eningrad">カクヨム</a>で活動中です。');
 define("PNS_AUTHOR", 'Enin Fujimi');
-define("PNS_INDEX_FILE", 'http://localhost/myapps/fujimipolis/files/novel.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え
+//define("PNS_INDEX_FILE", 'http://localhost/myapps/fujimipolis/files/novel.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え
+define("PNS_INDEX_FILE", 'https://enin-world.sakura.ne.jp/files/novel.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え
 define("PNS_INDEX_FILE_NAME", 'novel.php'); // 小説一覧ページを別途用意する場合は、ここを書き換え（こちらはディレクトリなし）
 define('PNS_NOVELS_DIR', __DIR__ . '/novels'); // 小説のディレクトリ（__DIR__ は現在のディレクトリ取得）
 //define('PNS_PATH', 'https://enin-world.sakura.ne.jp/files/app/php/personal_novel_server/'); // プロジェクトフォルダのフルパス
