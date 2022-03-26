@@ -43,7 +43,7 @@ ul{
 
 li{
     /*padding: 0.4rem;*/
-    line-height: 1.5rem;
+    line-height: 150%;
 }
 
 ul.read{

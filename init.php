@@ -5,7 +5,7 @@ namespace personal_novel_server;
 ini_set('display_errors', 1); // エラーメッセージを常時表示する
 //define("PNS_SITE_NAME", 'Personal Novel Server');
 define("PNS_SITE_NAME", '小説');
-define("PNS_DESCRIPTION", '富士見永人名義で小説を書いています。<br><a href="https://novelup.plus/user/350590019/profile">ノベルアッププラス</a>、 <a href="https://mypage.syosetu.com/476781/">小説家になろう</a>、 <a href="https://kakuyomu.jp/users/eningrad">カクヨム</a>で活動中です。<br>縦書きモードで読む場合は<a href="https://enin-world.sakura.ne.jp/files/app/php/personal_novel_server/v.php?lang=0&mode=0&css=0&x=0">こちら</a>をクリックしてください。');
+define("PNS_DESCRIPTION", '富士見永人名義で小説を書いています。<br><a href="https://novelup.plus/user/350590019/profile">ノベルアッププラス</a>、 <a href="https://mypage.syosetu.com/476781/">小説家になろう</a>、 <a href="https://kakuyomu.jp/users/eningrad">カクヨム</a>で活動中です。<br>縦書きモードで読む場合は<a href="https://enin-world.sakura.ne.jp/files/app/php/personal_novel_server/v.php?lang=0&mode=' . (isset($_GET["mode"]) ? $_GET["mode"] : 0) . '&css=0&x=0">こちら</a>をクリックしてください。');
 define("PNS_AUTHOR", 'Enin Fujimi');
 //define("PNS_INDEX_FILE", ''); // 小説一覧ページを別途用意する場合は、ここを書き換え
 //define("PNS_INDEX_FILE", 'http://localhost/myapps/personal_novel_server_2/index.php');

@@ -14,11 +14,11 @@ function get_font_size($state){
     $base = $state->is_phone ? 4 : 18; // px(PC), vw(Phone)
     $scale = $state->is_phone ? "vw" : "px";
     $font_size = calc_font_size($state->font_size, $base);
-    $html = space_br("html{ font-size: " . $font_size . $scale . "; }", 2);
-//    $html = space_br("div.containter, p.text.line{ font-size: " . $font_size . $scale . "; }", 2);
-//    $html .= space_br("h1{ font-size: " . round($font_size * 2) . $scale . "; }", 2);
-//    $html .= space_br("h2{ font-size: " . round($font_size * 1.5) . $scale . "; }", 2);
-//    $html .= space_br("h3{ font-size: " . round($font_size * 1.2) . $scale . "; }", 2);
+//    $html = space_br("html{ font-size: " . $font_size . $scale . "; }", 2);
+    $html = space_br("div.pns_container, p.text.line{ font-size: " . $font_size . $scale . "; }", 2);
+    $html .= space_br("h1{ font-size: " . round($font_size * 2) . $scale . "; }", 2);
+    $html .= space_br("h2{ font-size: " . round($font_size * 1.5) . $scale . "; }", 2);
+    $html .= space_br("h3{ font-size: " . round($font_size * 1.2) . $scale . "; }", 2);
     return $html;
 }
 
@@ -59,7 +59,7 @@ function get_color($state){
             $str .= space_br("a:hover{ color: orangered; }", 2);
             break;
         case 3:
-            $str .= space_br("body{ background-color: #cccccc; color: black; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+            $str .= space_br("body{ background-color: #cbcbcb; color: black; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_daytime.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
             $str .= space_br("div.novel.controller{ background-color: silver; color: black; }", 2);
             $str .= space_br("div#nav{ background-color: silver; color: black; }", 2);
             $str .= space_br("a{ color: #000055; }", 2);
@@ -67,7 +67,7 @@ function get_color($state){
             $str .= space_br("@media screen and (max-width: 1000px){ body{ background-size: auto 100%; background-position: right bottom; }", 2);
             break;
         case 4:
-            $str .= space_br("body{ background-color: black; color: silver; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
+            $str .= space_br("body{ background-color: #161616; color: silver; background-image : url(" . ($state->is_v ? "" : PNS_PATH) . "img/back_night.jpg); background-repeat: no-repeat; background-position: right center; background-attachment : fixed; background-size: 100% auto; }", 2);
             $str .= space_br("div.novel.controller{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("div#nav{ background-color: #333333; color: silver; }", 2);
             $str .= space_br("a{ color: #cccc99; }", 2);

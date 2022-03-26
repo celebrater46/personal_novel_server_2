@@ -19,6 +19,7 @@ class State
     public $has_other_state = false; // Personal Novel Server 以外で使っている URL パラメーターがあるか
     public $other_states = [];
     public $other_states_str = "";
+    public $mode; // 自サイト用
 
     function __construct(){
         $this->pns = isset($_GET["pns"]) ? (int)$_GET["pns"] : 0;
@@ -33,6 +34,7 @@ class State
         $this->is_v = $this->x !== 1;
 //        var_dump($this->is_v);
         $this->get_other_states();
+        $this->mode = isset($_GET["mode"]) ? (int)$_GET["mode"] : 0;
     }
 
     function is_daytime(){

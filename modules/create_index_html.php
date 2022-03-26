@@ -7,7 +7,7 @@ require_once "main.php";
 function create_links_to_posting_sites($novel, $state){
     if($novel->links !== null){
         $html = space_br("<ul class='read'>", 2);
-        $html .= space_br("<li><a href='" . get_page_file_name($state->x) . "?pns=" . ($novel->has_episodes ? 1 : 2) . "&novel=" . $novel->id . get_parameter($state) . "'>当サイトで読む</a></li>", 3);
+        $html .= space_br("<li><a href='" . get_page_file_name($state->x) . "?pns=" . ($novel->has_episodes ? 1 : 2) . "&novel=" . $novel->id . get_parameter($state) . "&mode=" . $state->mode . "'>当サイトで読む</a></li>", 3);
         foreach ($novel->links as $link){
             $html .= space_br("<li><a target='_blank' href='" . $link["url"] . "'>" . $link["site_name"] . "で読む</a></li>", 3);
         }
@@ -38,7 +38,7 @@ function create_index_html($novels, $state){
             $html .= create_cover_img($novel->cover);
         }
         $html .= space_br("<h2>", 2);
-        $html .= space_br("<a href='" . get_page_file_name($state->x) . "?pns=" . ($novel->has_episodes ? 1 : 2) . "&novel=" . $novel->id . get_parameter($state) . "'>" . $novel->title . "</a>", 3);
+        $html .= space_br("<a href='" . get_page_file_name($state->x) . "?pns=" . ($novel->has_episodes ? 1 : 2) . "&novel=" . $novel->id . get_parameter($state) . "&mode=" . $state->mode . "'>" . $novel->title . "</a>", 3);
         $html .= space_br("</h2>", 2);
         if($state->x === 0){
             $html .= create_cover_img($novel->cover);
