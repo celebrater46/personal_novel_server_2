@@ -22,7 +22,8 @@ function create_li_ep_no_chapter($novel_id, $episodes, $state){
         $html = '<li><a href="' . get_page_file_name($state->x);
         $html .= "?pns=2&novel=" . $novel_id;
         $html .= "&chap=0&ep=" . ($episode->id + 1);
-        $html .= get_parameter($state) . '">';
+        $html .= get_parameter($state);
+        $html .= "&mode=" . $state->mode . '">';
         $html .= $episode->title;
         $html .= '</a></li>';
         array_push($array, space_br($html, 4));

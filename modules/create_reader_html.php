@@ -65,7 +65,8 @@ function create_link_new_ep($novel, $chap, $ep, $arrow, $state){
     $html = '<a href="' . get_page_file_name($state->x);
     $html .= '?pns=2&novel=' . $novel;
     $html .= '&chap=' . $chap . '&ep=' . $ep;
-    $html .= get_parameter($state) . '">' . $arrow . '</a>';
+    $html .= get_parameter($state);
+    $html .= "&mode=" . $state->mode . '">' . $arrow . '</a>';
     return space_br($html, 4);
 }
 
@@ -113,7 +114,7 @@ function create_div_text_links($novel, $state){
     }
     $html .= space_br('<div>', 3);
     if($novel->has_episodes){
-        $html .= space_br('<a href="' . get_page_file_name($state->x) . '?pns=1&novel=' . $novel->id . get_parameter($state) . '">目次へ戻る</a>', 4);
+        $html .= space_br('<a href="' . get_page_file_name($state->x) . '?pns=1&novel=' . $novel->id . get_parameter($state) . "&mode=" . $state->mode . '">目次へ戻る</a>', 4);
     }
     $html .= space_br('</div>', 3);
     if($state->x === 1){
@@ -123,7 +124,7 @@ function create_div_text_links($novel, $state){
     }
     $html .= space_br('</div>', 2);
     $html .= space_br('<div class="back">', 2);
-    $html .= space_br('<a href="' . get_page_file_name($state->x) . "?pns=0" . get_parameter($state) . '">小説一覧へ戻る</a>', 3);
+    $html .= space_br('<a href="' . get_page_file_name($state->x) . "?pns=0" . get_parameter($state) . "&mode=" . $state->mode . '">小説一覧へ戻る</a>', 3);
     $html .= space_br('</div>', 2);
     return $html;
 }
