@@ -37,13 +37,13 @@ function add_iframe($x, $html){
 function add_pns_container($html, $state){
     $div = modules\space_br("<div id='pns_container' class='pns_container'>", 2);
     $div .= $html;
-    $div .= $state->is_v ? add_back_hone() : "";
+    $div .= $state->is_v ? add_back_hone($state) : "";
     $div .= modules\space_br("</div>", 2);
     return $div;
 }
 
-function add_back_hone(){
-    return modules\space_br('<div class="backHome"><a href="' . PNS_INDEX_FILE . '">トップへ戻る</a></div>', 2);
+function add_back_hone($state){
+    return modules\space_br('<div class="backHome"><a href="' . PNS_INDEX_FILE . '?mode=' . $state->mode . '">トップへ戻る</a></div>', 2);
 }
 
 function get_html_index($state){
